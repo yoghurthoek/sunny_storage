@@ -1,2 +1,2 @@
 # sunny_storage
-Zonnige heuristieks voor een zonnige toekomst!
+Zonnige heuristieken voor een zonnige toekomst!
