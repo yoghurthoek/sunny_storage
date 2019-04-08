@@ -13,7 +13,7 @@ class grid():
 
     def create_grid(self, x, y):
         """create a grid to put objects"""
-        grid = [[[] for x in range(0,51)] for y in range (0, 51)]
+        grid = [[[] for x in range(0, x)] for y in range (0, y)]
         return grid
 
     def load_houses(self, file):
@@ -33,10 +33,10 @@ class grid():
                 houses[id] = house
 
                 # Add house to grid
-                grid[posy][posx] = houses[id]
+                self.grid[posy][posx] = houses[id]
 
         # voorbeeld voor indexen. Eerst y daarna x. Zou huis nr 0 moeten geven.
-        print(grid[47][34])
+        print(self.grid[47][34])
 
 
     def load_batteries(self, file):
@@ -55,11 +55,13 @@ class grid():
                     batteries[id] = battery
 
                     # Add battery to the grid
-                    grid[posy][posx] = batteries[id]
+                    self.grid[posy][posx] = batteries[id]
 
-        print(batteries[0])
+        print(batteries[1])
 
 if __name__ == "__main__":
         if len(argv) == 2:
-            if argv[1] == 1 or argv[1] == 2 or argv[1] == 3:
+            if argv[1] == '1' or argv[1] == '2' or argv[1] == '3':
                 grid = grid(argv[1])
+        else:
+            print("not correct input")
