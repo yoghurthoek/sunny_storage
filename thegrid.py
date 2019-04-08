@@ -63,16 +63,33 @@ class grid():
 
     def connect(self):
         for key in self.batteries:
-            count = 0
+            count = 1
             backcount = 150
             while self.batteries[key].filled < self.batteries[key].capacity:
-                count += 1
-                if self.batteries[key].capacity - self.batteries[key].filled < self.houses[150].output:
+                if count > 150 or backcount < 1:
                     break
-                if self.houses[count].output + self.batteries[key].filled < self.batteries[key].capacity and self.houses[count].pluggedin is False:
-                    self.batteries[key].connected.append(self.houses[count])
-                    self.batteries[key].filled += self.houses[count].output
-                    self.houses[count].pluggedin = self.batteries[key]
+                if self.houses[count].output + self.houses[backcount].output + self.batteries[key].filled < self.batteries[key].capacity:
+                    if self.houses[count].pluggedin is not False:
+                        count += 1
+                    elif self.houses[backcount].pluggedin is not False:
+                        backcount -= 1
+                    else:
+                        self.batteries[key].connected.append(self.houses[count])
+                        self.batteries[key].connected.append(self.houses[backcount])
+                        self.batteries[key].filled += self.houses[count].output + self.houses[backcount].output
+                        self.houses[count].pluggedin = self.batteries[key]
+                        self.houses[backcount].pluggedin = self.batteries[key]
+                        count += 1
+                        backcount -= 1
+                else:
+                    count += 1
+
+                # if self.batteries[key].capacity - self.batteries[key].filled < self.houses[150].output:
+                #     break
+                # if self.houses[count].output + self.batteries[key].filled < self.batteries[key].capacity and self.houses[count].pluggedin is False:
+                #     self.batteries[key].connected.append(self.houses[count])
+                #     self.batteries[key].filled += self.houses[count].output
+                #     self.houses[count].pluggedin = self.batteries[key]
 
         for key in self.batteries:
             print(self.batteries[key].filled)
