@@ -9,7 +9,7 @@ class grid():
     def __init__(self, nr):
         self.grid = self.create_grid(51,51)
         self.houses =self.load_houses(f"Huizen&Batterijen/wijk{nr}_huizen.csv")
-        self.batteries =self.load_batteries(f"Huizen&Batterijen/wijk{nr}_batterijen.txt")
+        self.batteries =self.load_batteries(f"Huizen&Batterijen/wijk{nr}_batterijen.csv")
 
     def create_grid(self, x, y):
         """create a grid to put objects"""
@@ -40,7 +40,7 @@ class grid():
 
 
     def load_batteries(self, file):
-        """Loads in batteries from txt"""
+        """Loads in batteries from csv"""
         batteries = {}
         with open("Huizen&Batterijen/wijk2_batterijen.csv", "r") as f:
                 reader = csv.reader(f, delimiter=',')
