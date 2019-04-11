@@ -9,6 +9,7 @@ class grid():
 
     def __init__(self, nr):
         """initializes grid"""
+
         self.grid = self.create_grid(51, 51)
         self.houses = self.load_houses(
             f"Huizen&Batterijen/wijk{nr}_huizensortedhigh-low.csv")
@@ -17,11 +18,13 @@ class grid():
 
     def create_grid(self, x, y):
         """create a grid to put objects"""
+
         grid = [[[] for x in range(0, x)] for y in range(0, y)]
         return grid
 
     def load_houses(self, file):
         """Loads in houses from csv"""
+
         # create dictionary
         houses = {}
         with open(file, "r") as f:
@@ -38,11 +41,11 @@ class grid():
 
                 # Add house to grid
                 self.grid[posy][posx] = houses[id]
-
         return houses
 
     def load_batteries(self, file):
         """Loads in batteries from csv"""
+
         batteries = {}
         with open(file, "r") as f:
             reader = csv.reader(f, delimiter=',')
@@ -109,3 +112,5 @@ if __name__ == "__main__":
             grid.connect()
     else:
         print("not correct input")
+
+    # hier nog prompten voor welk algoritme je wilt kiezen
