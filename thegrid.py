@@ -12,7 +12,7 @@ class grid():
 
         self.grid = self.create_grid(51, 51)
         self.houses = self.load_houses(
-            f"Huizen&Batterijen/wijk{nr}_huizensortedhigh-low.csv")
+            f"Huizen&Batterijen/wijk{nr}_huizensortedhigh_low.csv")
         self.batteries = self.load_batteries(
             f"Huizen&Batterijen/wijk{nr}_batterijen.csv")
 
@@ -64,7 +64,7 @@ class grid():
 
         return batteries
 
-    def connect(self):
+    def averagefit(self):
         for key in self.batteries:
             count = 1
             backcount = 150
@@ -87,6 +87,20 @@ class grid():
                 else:
                     count += 1
 
+            for house in self.houses:
+                print(self.houses[house].pluggedin)
+
+    def decreasingfirstfit(self, b, h):
+        for nr in h:
+            for key in b:
+                if h[nr].output + b[key].filled < b[key].capacity:
+                    b[key].connected.append(h[nr])
+                    b[key].filled += h[nr].output
+                    h[nr].pluggedin = b[key]
+                    break
+
+
+
 
 
                 # if self.batteries[key].capacity - self.batteries[key].filled < self.houses[150].output:
@@ -98,8 +112,8 @@ class grid():
 
         for key in self.batteries:
             print(self.batteries[key].filled)
-            for house in self.batteries[key].connected:
-                print(house)
+            # for house in self.batteries[key].connected:
+            #     print(house)
 
         for house in self.houses:
             print(self.houses[house].pluggedin)
@@ -109,7 +123,8 @@ if __name__ == "__main__":
     if len(argv) == 2:
         if argv[1] == '1' or argv[1] == '2' or argv[1] == '3':
             grid = grid(argv[1])
-            grid.connect()
+            # grid.connect()
+            grid.decreasingfirstfit(grid.batteries, grid.houses)
     else:
         print("not correct input")
 
