@@ -1,4 +1,5 @@
-Hierin komen alle algoritmes, woeh
+Hierin komen alle algoritmes
+
 
 A*
 Breadth first search
