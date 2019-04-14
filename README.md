@@ -1,10 +1,9 @@
 # sunny_storage
 
-fasdf
+Veel huizen hebben zonnepanelen. Deze leveren allemaal stroom op die ergens opgeslagen moet worden, in batterijen! 
+Dit project is onze oplossing voor het probleem: The grid, voor het vak Programeertheorie aan de UvA.
 
-# Getting Started
-
-asdf
+## Getting Started
 
 ### Vereisten
 
@@ -16,5 +15,22 @@ pip install -r requirements.txt
 
 ### Structuur
 
-Alle python scripts staan in de folder Code
-The grid contains all other classes. To use open thegrid.py.
+Alle verkregen en zelf gecreëerde data staat in de folder Data, en is voornamelijk opgeslagen in dde vorm van .csv bestanden.
+Alle benodigde classes (e.g. huizen, batterijen en thegrid) staan in de folder Classes. 
+Alle algorithmes staan in de folder Algorithmes.
+
+Door het main.py bestand te runnen kan het gehele programma worden uitgevoerd.
+dit kan worden gedaan als volgt:
+```
+python main.py
+```
+### Auteurs
+* Bart-Jan Akerboom
+* Feline Benavides
+* Jochem van den Hoek
+
+### Dankwoord 
+
+* StackOverFlow
+* Minor programmeren van de UvA
+* papers die we uitvoerig gaan gebruiken (nog niet echt iets)
