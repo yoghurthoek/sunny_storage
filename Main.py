@@ -1,6 +1,6 @@
 from sys import argv
 from Algorithms.averagefit import Averagefit
-import csv
+from Algorithms.decreasingfirstfit import Decreasingfirstfit
 from Classes.thegrid import Grid
 
 if __name__ == "__main__":
@@ -16,10 +16,9 @@ choices:
             if command == "RANDOM":
                 grid.random(grid.batteries, grid.houses)
             elif command == "FIRST-FIT":
-                # grid.connect()
-                grid.decreasingfirstfit(grid.batteries, grid.houses)
+                Decreasingfirstfit(grid, grid.batteries, grid.houses)
             elif command == "AVERAGE-FIT":
-                Averagefit.averagefit(grid)
+                Averagefit(grid, grid.batteries, grid.houses)
             else:
                 print("invalid command")
 
@@ -27,5 +26,3 @@ choices:
             print("neigborhood doesn't exist")
     else:
         print("not correct input")
-
-    # hier nog prompten voor welk algoritme je wilt kiezen

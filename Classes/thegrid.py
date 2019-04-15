@@ -1,6 +1,7 @@
-from sys import argv
+from sys import argv, path
 import csv
 import matplotlib.pyplot as plt
+"""classes"""
 from Classes.house import House
 from Classes.battery import Battery
 import os
@@ -94,27 +95,14 @@ class Grid():
     #         for house in self.houses:
     #             print(self.houses[house].pluggedin)
 
-    def decreasingfirstfit(self, b, h):
-        for nr in h:
-            for key in b:
-                if h[nr].output + b[key].filled < b[key].capacity:
-                    b[key].connected.append(h[nr])
-                    b[key].filled += h[nr].output
-                    h[nr].pluggedin = b[key]
-                    break
 
-        for key in self.batteries:
-            print(self.batteries[key].filled)
-
-        for house in self.houses:
-            print(self.houses[house].pluggedin)
 
 
 # if __name__ == "__main__":
 #     if len(argv) == 2:
 #         if argv[1] == '1' or argv[1] == '2' or argv[1] == '3':
-#             grid = grid(argv[1])
-#             # grid.connect()
+#             grid = Grid(argv[1])
+#             # grid.averagefit(grid.batteries, grid.houses)
 #             grid.decreasingfirstfit(grid.batteries, grid.houses)
 #     else:
 #         print("not correct input")
