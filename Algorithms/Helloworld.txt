@@ -1,2 +1,0 @@
-In deze map komen alle algoritmes, die worden aangeroepen in de main
-Hiervoor moet er nog een prompt komen

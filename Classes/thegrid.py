@@ -1,21 +1,24 @@
 from sys import argv
 import csv
-from house import House
-from battery import Battery
 import matplotlib.pyplot as plt
+from Classes.house import House
+from Classes.battery import Battery
+import os
 
 
-class grid():
+
+class Grid():
     """Class governing batteries and houses"""
 
     def __init__(self, nr):
         """initializes grid"""
 
+        batteryload = os.path.dirname(os.getcwd())+f"\\sunny_storage\\Data\\wijk{nr}_batterijen.csv"
+        housesload = os.path.dirname(os.getcwd())+f"\\sunny_storage\\Data\\wijk{nr}_huizensortedhigh-low.csv"
+
         self.grid = self.create_grid(51, 51)
-        self.houses = self.load_houses(
-            f"Huizen&Batterijen/wijk{nr}_huizen.csv")
-        self.batteries = self.load_batteries(
-            f"Huizen&Batterijen/wijk{nr}_batterijen.csv")
+        self.houses = self.load_houses(housesload)
+        self.batteries = self.load_batteries(batteryload)
 
     def create_grid(self, x, y):
         """create a grid to put objects"""
@@ -65,31 +68,31 @@ class grid():
 
         return batteries
 
-    def averagefit(self):
-        for key in self.batteries:
-            count = 1
-            backcount = 150
-            while self.batteries[key].filled < self.batteries[key].capacity:
-                if count > 150 or backcount < 1:
-                    break
-                if self.houses[count].output + self.houses[backcount].output + self.batteries[key].filled < self.batteries[key].capacity:
-                    if self.houses[count].pluggedin is not False:
-                        count += 1
-                    elif self.houses[backcount].pluggedin is not False:
-                        backcount -= 1
-                    else:
-                        self.batteries[key].connected.append(self.houses[count])
-                        self.batteries[key].connected.append(self.houses[backcount])
-                        self.batteries[key].filled += self.houses[count].output + self.houses[backcount].output
-                        self.houses[count].pluggedin = self.batteries[key]
-                        self.houses[backcount].pluggedin = self.batteries[key]
-                        count += 1
-                        backcount -= 1
-                else:
-                    count += 1
-
-            for house in self.houses:
-                print(self.houses[house].pluggedin)
+    # def averagefit(self):
+    #     for key in self.batteries:
+    #         count = 1
+    #         backcount = 150
+    #         while self.batteries[key].filled < self.batteries[key].capacity:
+    #             if count > 150 or backcount < 1:
+    #                 break
+    #             if self.houses[count].output + self.houses[backcount].output + self.batteries[key].filled < self.batteries[key].capacity:
+    #                 if self.houses[count].pluggedin is not False:
+    #                     count += 1
+    #                 elif self.houses[backcount].pluggedin is not False:
+    #                     backcount -= 1
+    #                 else:
+    #                     self.batteries[key].connected.append(self.houses[count])
+    #                     self.batteries[key].connected.append(self.houses[backcount])
+    #                     self.batteries[key].filled += self.houses[count].output + self.houses[backcount].output
+    #                     self.houses[count].pluggedin = self.batteries[key]
+    #                     self.houses[backcount].pluggedin = self.batteries[key]
+    #                     count += 1
+    #                     backcount -= 1
+    #             else:
+    #                 count += 1
+    #
+    #         for house in self.houses:
+    #             print(self.houses[house].pluggedin)
 
     def decreasingfirstfit(self, b, h):
         for nr in h:
@@ -107,15 +110,13 @@ class grid():
             print(self.houses[house].pluggedin)
 
 
-if __name__ == "__main__":
-    if len(argv) == 2:
-        if argv[1] == '1' or argv[1] == '2' or argv[1] == '3':
-            grid = grid(argv[1])
-            # grid.averagefit()
-            plt.matshow(grid.grid)
-            plt.show()
-            # grid.decreasingfirstfit(grid.batteries, grid.houses)
-    else:
-        print("not correct input")
+# if __name__ == "__main__":
+#     if len(argv) == 2:
+#         if argv[1] == '1' or argv[1] == '2' or argv[1] == '3':
+#             grid = grid(argv[1])
+#             # grid.connect()
+#             grid.decreasingfirstfit(grid.batteries, grid.houses)
+#     else:
+#         print("not correct input")
 
     # hier nog prompten voor welk algoritme je wilt kiezen
