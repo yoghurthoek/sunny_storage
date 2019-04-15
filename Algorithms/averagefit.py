@@ -22,10 +22,3 @@ def Averagefit(grid, b, h):
                 count += 1
     for house in h:
         print(h[house].pluggedin)
-
-
-# def averagefit(grid, b, h):
-#     for nr in h:
-#         for lastnr in reverse(h):
-#             for key in b:
-#                 if
