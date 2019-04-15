@@ -2,6 +2,7 @@ from sys import argv
 import csv
 from house import House
 from battery import Battery
+import matplotlib.pyplot as plt
 
 
 class grid():
@@ -12,7 +13,7 @@ class grid():
 
         self.grid = self.create_grid(51, 51)
         self.houses = self.load_houses(
-            f"Huizen&Batterijen/wijk{nr}_huizensortedhigh_low.csv")
+            f"Huizen&Batterijen/wijk{nr}_huizen.csv")
         self.batteries = self.load_batteries(
             f"Huizen&Batterijen/wijk{nr}_batterijen.csv")
 
@@ -99,21 +100,8 @@ class grid():
                     h[nr].pluggedin = b[key]
                     break
 
-
-
-
-
-                # if self.batteries[key].capacity - self.batteries[key].filled < self.houses[150].output:
-                #     break
-                # if self.houses[count].output + self.batteries[key].filled < self.batteries[key].capacity and self.houses[count].pluggedin is False:
-                #     self.batteries[key].connected.append(self.houses[count])
-                #     self.batteries[key].filled += self.houses[count].output
-                #     self.houses[count].pluggedin = self.batteries[key]
-
         for key in self.batteries:
             print(self.batteries[key].filled)
-            # for house in self.batteries[key].connected:
-            #     print(house)
 
         for house in self.houses:
             print(self.houses[house].pluggedin)
@@ -123,8 +111,10 @@ if __name__ == "__main__":
     if len(argv) == 2:
         if argv[1] == '1' or argv[1] == '2' or argv[1] == '3':
             grid = grid(argv[1])
-            # grid.connect()
-            grid.decreasingfirstfit(grid.batteries, grid.houses)
+            # grid.averagefit()
+            plt.matshow(grid.grid)
+            plt.show()
+            # grid.decreasingfirstfit(grid.batteries, grid.houses)
     else:
         print("not correct input")
 
