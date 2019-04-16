@@ -1,11 +1,11 @@
-from sys import argv, path
 import csv
 import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+# import numpy as np
 """classes"""
 from Classes.house import House
 from Classes.battery import Battery
 import os
-
 
 
 class Grid():
@@ -46,6 +46,7 @@ class Grid():
 
                 # Add house to grid
                 self.grid[posy][posx] = houses[id]
+
         return houses
 
     def load_batteries(self, file):
@@ -69,42 +70,36 @@ class Grid():
 
         return batteries
 
-    # def averagefit(self):
-    #     for key in self.batteries:
-    #         count = 1
-    #         backcount = 150
-    #         while self.batteries[key].filled < self.batteries[key].capacity:
-    #             if count > 150 or backcount < 1:
-    #                 break
-    #             if self.houses[count].output + self.houses[backcount].output + self.batteries[key].filled < self.batteries[key].capacity:
-    #                 if self.houses[count].pluggedin is not False:
-    #                     count += 1
-    #                 elif self.houses[backcount].pluggedin is not False:
-    #                     backcount -= 1
-    #                 else:
-    #                     self.batteries[key].connected.append(self.houses[count])
-    #                     self.batteries[key].connected.append(self.houses[backcount])
-    #                     self.batteries[key].filled += self.houses[count].output + self.houses[backcount].output
-    #                     self.houses[count].pluggedin = self.batteries[key]
-    #                     self.houses[backcount].pluggedin = self.batteries[key]
-    #                     count += 1
-    #                     backcount -= 1
-    #             else:
-    #                 count += 1
-    #
-    #         for house in self.houses:
-    #             print(self.houses[house].pluggedin)
+    def visualize(self, b):
+        fig, ax = plt.subplots()
 
+        # Use different colors depending on battery connection
+        colors = ["r", "b", "g", "c", "m"]
+        i = 0
 
+        # Plot battery and connected houses, then go to next battery
+        for k in b:
+            ax.plot(b[k].posx, b[k].posy, color=colors[i], marker='P')
+            for house in b[k].connected:
+                ax.plot(house.posx, house.posy, color=colors[i], marker='o')
+            i += 1
 
+        # Set grid limits
+        ax.set_xlim((-1, 51))
+        ax.set_ylim((-1, 51))
 
-# if __name__ == "__main__":
-#     if len(argv) == 2:
-#         if argv[1] == '1' or argv[1] == '2' or argv[1] == '3':
-#             grid = Grid(argv[1])
-#             # grid.averagefit(grid.batteries, grid.houses)
-#             grid.decreasingfirstfit(grid.batteries, grid.houses)
-#     else:
-#         print("not correct input")
+        # Set ticks for minor gridlines
+        minorspace = ticker.MultipleLocator()
+        ax.xaxis.set_minor_locator(minorspace)
+        ax.yaxis.set_minor_locator(minorspace)
 
-    # hier nog prompten voor welk algoritme je wilt kiezen
+        # Set ticks for major gridlines
+        majorspace = ticker.MultipleLocator(10)
+        ax.xaxis.set_major_locator(majorspace)
+        ax.yaxis.set_major_locator(majorspace)
+
+        # Draw in gridlines
+        ax.grid(b=True, which='major', linewidth=1.5)
+        ax.grid(b=True, which='minor', linewidth=0.5)
+
+        plt.show()
