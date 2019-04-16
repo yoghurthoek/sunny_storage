@@ -17,9 +17,10 @@ choices:
                 grid.random(grid.batteries, grid.houses)
             elif command == "FIRST-FIT":
                 Decreasingfirstfit(grid, grid.batteries, grid.houses)
-                grid.visualize(grid.batteries)
+                grid.visualize(grid.batteries, grid.houses)
             elif command == "AVERAGE-FIT":
                 Averagefit(grid, grid.batteries, grid.houses)
+                grid.visualize(grid.batteries, grid.houses)
             else:
                 print("invalid command")
 

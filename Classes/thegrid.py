@@ -71,7 +71,7 @@ class Grid():
 
         return batteries
 
-    def visualize(self, b):
+    def visualize(self, b, h):
         fig, ax = plt.subplots()
 
         # Use different colors depending on battery connection
@@ -90,6 +90,12 @@ class Grid():
                 ax.plot(house.posx, house.posy, color=colors[i],
                         marker=cmarker, markersize=10)
             i += 1
+
+        # Plot unconnected houses if they are there
+        for k in h:
+            if h[k].pluggedin is False:
+                ax.plot(h[k].posx, h[k].posy, color='k', marker=cmarker,
+                        markersize=15)
 
         # Set grid limits
         ax.set_xlim((-1, 51))
