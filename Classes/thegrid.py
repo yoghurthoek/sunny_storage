@@ -1,5 +1,6 @@
 import csv
 import matplotlib.pyplot as plt
+from matplotlib.path import Path
 import matplotlib.ticker as ticker
 # import numpy as np
 """classes"""
@@ -76,12 +77,18 @@ class Grid():
         # Use different colors depending on battery connection
         colors = ["r", "b", "g", "c", "m"]
         i = 0
+        cmarker = Path([(-0.5, -0.5), (-0.5, 0.5), (0., 1.), (0.5, 0.5),
+                        (0.5, -0.5), (-0.5, -0.5), ],
+                       [Path.MOVETO, Path.LINETO, Path.LINETO,
+                        Path.LINETO, Path.LINETO, Path.CLOSEPOLY, ])
 
         # Plot battery and connected houses, then go to next battery
         for k in b:
-            ax.plot(b[k].posx, b[k].posy, color=colors[i], marker='P')
+            ax.plot(b[k].posx, b[k].posy, color=colors[i],
+                    marker='P', markersize=10, markeredgecolor='k')
             for house in b[k].connected:
-                ax.plot(house.posx, house.posy, color=colors[i], marker='o')
+                ax.plot(house.posx, house.posy, color=colors[i],
+                        marker=cmarker, markersize=10)
             i += 1
 
         # Set grid limits
