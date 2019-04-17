@@ -1,17 +1,19 @@
 from sys import argv
 from Algorithms.averagefit import Averagefit
 from Algorithms.decreasingfirstfit import Decreasingfirstfit
+from Algorithms.greedyclimber import Greedy
 from Classes.thegrid import Grid
 
 if __name__ == "__main__":
     if len(argv) == 2:
-        if argv[1] == '1' or argv[1] == '2' or argv[1] == '3':
+        if argv[1] == '1' or argv[1] == '2' or argv[1] == '3' or argv[1] == '4':
             grid = Grid(argv[1])
             print("""which algorithm to execute:
 choices:
     random
     first-fit
-    average-fit""")
+    average-fit
+    greedy-climber""")
             command = (input("> ")).upper()
             if command == "RANDOM":
                 grid.random(grid.batteries, grid.houses)
@@ -20,6 +22,11 @@ choices:
                 grid.visualize(grid.batteries, grid.houses)
             elif command == "AVERAGE-FIT":
                 Averagefit(grid, grid.batteries, grid.houses)
+                grid.visualize(grid.batteries, grid.houses)
+            elif command == "GREEDY-CLIMBER":
+                dist = grid.Distancearr(grid.batteries, grid.houses)
+                price = Greedy(dist, grid.batteries, grid.houses)
+                print(price)
                 grid.visualize(grid.batteries, grid.houses)
             else:
                 print("invalid command")

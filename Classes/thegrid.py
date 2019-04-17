@@ -16,7 +16,7 @@ class Grid():
         """initializes grid"""
 
         batteryload = os.path.dirname(os.getcwd())+f"\\sunny_storage\\Data\\wijk{nr}_batterijen.csv"
-        housesload = os.path.dirname(os.getcwd())+f"\\sunny_storage\\Data\\wijk{nr}_huizensortedhigh-low.csv"
+        housesload = os.path.dirname(os.getcwd())+f"\\sunny_storage\\Data\\wijk{nr}_huizen.csv"
 
         self.grid = self.create_grid(51, 51)
         self.houses = self.load_houses(housesload)
@@ -35,7 +35,7 @@ class Grid():
         houses = {}
         with open(file, "r") as f:
             reader = csv.reader(f, delimiter=',')
-            for row in enumerate(reader, 1):
+            for row in enumerate(reader):
                 id = row[0]
                 posx = int(row[1][0])
                 posy = int(row[1][1])
@@ -56,7 +56,7 @@ class Grid():
         batteries = {}
         with open(file, "r") as f:
             reader = csv.reader(f, delimiter=',')
-            for row in enumerate(reader, 1):
+            for row in enumerate(reader):
                 id = row[0]
                 posx = int(row[1][0])
                 posy = int(row[1][1])
@@ -71,11 +71,28 @@ class Grid():
 
         return batteries
 
+    def Distancearr(self, b, h):
+        """
+        Gives manhattan distance for every combination of battery and house
+        format: [for every house[(mhdistance, key of battery), ...]]
+        """
+        dist = []
+        for house in h:
+            dist.append([])
+            for batt in b:
+                # manhattan distance calculation |x1 - x2| + |y1 - y2|
+                manhat = abs(b[batt].posx - h[house].posx) + \
+                         abs(b[batt].posy - h[house].posy)
+                dist[house].append((manhat, batt))
+            dist[house] = sorted(dist[house])
+
+        return dist
+
     def visualize(self, b, h):
         fig, ax = plt.subplots()
 
         # Use different colors depending on battery connection
-        colors = ["r", "b", "g", "c", "m"]
+        colors = ["r", "b", "g", "gold", "m"]
         i = 0
         cmarker = Path([(-0.5, -0.5), (-0.5, 0.5), (0., 1.), (0.5, 0.5),
                         (0.5, -0.5), (-0.5, -0.5), ],

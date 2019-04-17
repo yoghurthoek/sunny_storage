@@ -7,8 +7,8 @@ def Decreasingfirstfit(grid, b, h):
                 h[nr].pluggedin = b[key]
                 break
 
+    # Checks
     for key in b:
-        print(b[key].connected)
-
+        print(b[key].filled)
     for house in h:
         print(h[house].pluggedin)
