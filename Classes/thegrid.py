@@ -102,10 +102,6 @@ class Grid():
                     h[nr].pluggedin = b[key]
                     break
 
-
-
-
-
                 # if self.batteries[key].capacity - self.batteries[key].filled < self.houses[150].output:
                 #     break
                 # if self.houses[count].output + self.batteries[key].filled < self.batteries[key].capacity and self.houses[count].pluggedin is False:
