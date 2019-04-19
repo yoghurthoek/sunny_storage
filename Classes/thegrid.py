@@ -71,33 +71,6 @@ class Grid():
 
         return batteries
 
-<<<<<<< HEAD
-    # def averagefit(self):
-    #     for key in self.batteries:
-    #         count = 1
-    #         backcount = 150
-    #         while self.batteries[key].filled < self.batteries[key].capacity:
-    #             if count > 150 or backcount < 1:
-    #                 break
-    #             if self.houses[count].output + self.houses[backcount].output + self.batteries[key].filled < self.batteries[key].capacity:
-    #                 if self.houses[count].pluggedin is not False:
-    #                     count += 1
-    #                 elif self.houses[backcount].pluggedin is not False:
-    #                     backcount -= 1
-    #                 else:
-    #                     self.batteries[key].connected.append(self.houses[count])
-    #                     self.batteries[key].connected.append(self.houses[backcount])
-    #                     self.batteries[key].filled += self.houses[count].output + self.houses[backcount].output
-    #                     self.houses[count].pluggedin = self.batteries[key]
-    #                     self.houses[backcount].pluggedin = self.batteries[key]
-    #                     count += 1
-    #                     backcount -= 1
-    #             else:
-    #                 count += 1
-    #
-    #         for house in self.houses:
-    #             print(self.houses[house].pluggedin)
-
     def decreasingfirstfit(self, b, h):
         for nr in h:
             for key in b:
@@ -107,13 +80,6 @@ class Grid():
                     h[nr].pluggedin = b[key]
                     break
 
-                # if self.batteries[key].capacity - self.batteries[key].filled < self.houses[150].output:
-                #     break
-                # if self.houses[count].output + self.batteries[key].filled < self.batteries[key].capacity and self.houses[count].pluggedin is False:
-                #     self.batteries[key].connected.append(self.houses[count])
-                #     self.batteries[key].filled += self.houses[count].output
-                #     self.houses[count].pluggedin = self.batteries[key]
-
         for key in self.batteries:
             print(self.batteries[key].filled)
             # for house in self.batteries[key].connected:
@@ -122,18 +88,6 @@ class Grid():
         for house in self.houses:
             print(self.houses[house].pluggedin)
 
-
-# if __name__ == "__main__":
-#     if len(argv) == 2:
-#         if argv[1] == '1' or argv[1] == '2' or argv[1] == '3':
-#             grid = grid(argv[1])
-#             # grid.connect()
-#             grid.decreasingfirstfit(grid.batteries, grid.houses)
-#     else:
-#         print("not correct input")
-
-    # hier nog prompten voor welk algoritme je wilt kiezen
-=======
     def Distancearr(self, b, h):
         """
         Gives manhattan distance for every combination of battery and house
@@ -169,6 +123,8 @@ class Grid():
             for house in b[k].connected:
                 ax.plot(house.posx, house.posy, color=colors[i],
                         marker=cmarker, markersize=10)
+                ax.plot([b[k].posx, house.posx], [b[k].posy, house.posy],
+                        color=colors[i], linestyle=':', linewidth=1)
             i += 1
 
         # Plot unconnected houses if they are there
@@ -196,4 +152,3 @@ class Grid():
         ax.grid(b=True, which='minor', linewidth=0.5)
 
         plt.show()
->>>>>>> e3c303a2fcaad5aee72db4bde2f0d18524301a86
