@@ -1,29 +1,29 @@
 # sunny_storage
 
-Veel huizen hebben zonnepanelen. Deze leveren allemaal stroom op die ergens opgeslagen moet worden, in batterijen!
-Dit project is onze oplossing voor het probleem: The grid, voor het vak Programmeertheorie aan de UvA. De state space van het probleem is 150 boven 5, is ongeveer 5.9E8.
+The project SmartGrid is conducted for the course 'Heuristieken' for the Minor Programming (2019) at the University of Amsterdam. In this project there are three different neighborhoods, all with 150 houses and 5 batteries. All of the houses have solar panels and need to store the energy they produce in a battery. The houses are connected with cables to the batteries. The goal for this project is to connect houses in a way that the total costs are lowest. Total costs are based on cable price per gridline and battery costs.
 
 ## Getting Started
 
-### Vereisten
+### Prerequisites
 
-Deze codebase is geschreven in [Python3.6.3](https://www.python.org/downloads/). In requirements.txt kunnen de packages gevonden worden die benodigd zijn voor het runnen van deze code. Deze zijn te installeren via pip dmv. De volgende instructie:
+The codebase is written in [Python3.6.3](https://www.python.org/downloads/). Packages can be found in requirements.txt. These packages are needed for running the code. Installing can via pip dmv, namely:
 
 ```
 pip install -r requirements.txt
 ```
 
-### Structuur
+### Structure
 
-Alle verkregen en zelf gecreëerde data staat in de folder Data, en is voornamelijk opgeslagen in dde vorm van .csv bestanden.
-Alle benodigde classes (e.g. huizen, batterijen en thegrid) staan in de folder Classes.
-Alle algorithmes staan in de folder Algorithmes.
+<li>Algoritms: in this folder are all the scripts for programmed algorithms.</li>
+<li>Classes: all needed classes are in this folder. We implemented classes for houses, batteries and the grid.</li>
+<li>Data: all data that we created is in this folder. Most of the data is saved in .csv files.</li
 
-Door het main.py bestand te runnen kan het gehele programma worden uitgevoerd.
-Dit kan worden gedaan als volgt:
+You can run the entire code by running main.py:
+
 ```
 python main.py
 ```
+
 ### Auteurs
 * Bart-Jan Akerboom
 * Feline Benavides
