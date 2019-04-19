@@ -152,4 +152,3 @@ class Grid():
         ax.grid(b=True, which='minor', linewidth=0.5)
 
         plt.show()
->>>>>>> e3c303a2fcaad5aee72db4bde2f0d18524301a86
