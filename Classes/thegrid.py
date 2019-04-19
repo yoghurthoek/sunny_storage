@@ -1,5 +1,9 @@
-from sys import argv
 import csv
+import matplotlib.pyplot as plt
+from matplotlib.path import Path
+import matplotlib.ticker as ticker
+# import numpy as np
+"""classes"""
 from Classes.house import House
 from Classes.battery import Battery
 import os
@@ -12,8 +16,7 @@ class Grid():
         """initializes grid"""
 
         batteryload = os.path.dirname(os.getcwd())+f"\\sunny_storage\\Data\\wijk{nr}_batterijen.csv"
-
-        housesload = os.path.dirname(os.getcwd())+f"\\sunny_storage\\Data\\wijk{nr}_huizensortedhigh-low.csv"
+        housesload = os.path.dirname(os.getcwd())+f"\\sunny_storage\\Data\\wijk{nr}_huizen.csv"
 
         self.grid = self.create_grid(51, 51)
         self.houses = self.load_houses(housesload)
@@ -32,7 +35,7 @@ class Grid():
         houses = {}
         with open(file, "r") as f:
             reader = csv.reader(f, delimiter=',')
-            for row in enumerate(reader, 1):
+            for row in enumerate(reader):
                 id = row[0]
                 posx = int(row[1][0])
                 posy = int(row[1][1])
@@ -44,6 +47,7 @@ class Grid():
 
                 # Add house to grid
                 self.grid[posy][posx] = houses[id]
+
         return houses
 
     def load_batteries(self, file):
@@ -52,7 +56,7 @@ class Grid():
         batteries = {}
         with open(file, "r") as f:
             reader = csv.reader(f, delimiter=',')
-            for row in enumerate(reader, 1):
+            for row in enumerate(reader):
                 id = row[0]
                 posx = int(row[1][0])
                 posy = int(row[1][1])
@@ -67,6 +71,7 @@ class Grid():
 
         return batteries
 
+<<<<<<< HEAD
     # def averagefit(self):
     #     for key in self.batteries:
     #         count = 1
@@ -128,3 +133,67 @@ class Grid():
 #         print("not correct input")
 
     # hier nog prompten voor welk algoritme je wilt kiezen
+=======
+    def Distancearr(self, b, h):
+        """
+        Gives manhattan distance for every combination of battery and house
+        format: [for every house[(mhdistance, key of battery), ...]]
+        """
+        dist = []
+        for house in h:
+            dist.append([])
+            for batt in b:
+                # manhattan distance calculation |x1 - x2| + |y1 - y2|
+                manhat = abs(b[batt].posx - h[house].posx) + \
+                         abs(b[batt].posy - h[house].posy)
+                dist[house].append((manhat, batt))
+            dist[house] = sorted(dist[house])
+
+        return dist
+
+    def visualize(self, b, h):
+        fig, ax = plt.subplots()
+
+        # Use different colors depending on battery connection
+        colors = ["r", "b", "g", "gold", "m"]
+        i = 0
+        cmarker = Path([(-0.5, -0.5), (-0.5, 0.5), (0., 1.), (0.5, 0.5),
+                        (0.5, -0.5), (-0.5, -0.5), ],
+                       [Path.MOVETO, Path.LINETO, Path.LINETO,
+                        Path.LINETO, Path.LINETO, Path.CLOSEPOLY, ])
+
+        # Plot battery and connected houses, then go to next battery
+        for k in b:
+            ax.plot(b[k].posx, b[k].posy, color=colors[i],
+                    marker='P', markersize=10, markeredgecolor='k')
+            for house in b[k].connected:
+                ax.plot(house.posx, house.posy, color=colors[i],
+                        marker=cmarker, markersize=10)
+            i += 1
+
+        # Plot unconnected houses if they are there
+        for k in h:
+            if h[k].pluggedin is False:
+                ax.plot(h[k].posx, h[k].posy, color='k', marker=cmarker,
+                        markersize=15)
+
+        # Set grid limits
+        ax.set_xlim((-1, 51))
+        ax.set_ylim((-1, 51))
+
+        # Set ticks for minor gridlines
+        minorspace = ticker.MultipleLocator()
+        ax.xaxis.set_minor_locator(minorspace)
+        ax.yaxis.set_minor_locator(minorspace)
+
+        # Set ticks for major gridlines
+        majorspace = ticker.MultipleLocator(10)
+        ax.xaxis.set_major_locator(majorspace)
+        ax.yaxis.set_major_locator(majorspace)
+
+        # Draw in gridlines
+        ax.grid(b=True, which='major', linewidth=1.5)
+        ax.grid(b=True, which='minor', linewidth=0.5)
+
+        plt.show()
+>>>>>>> e3c303a2fcaad5aee72db4bde2f0d18524301a86

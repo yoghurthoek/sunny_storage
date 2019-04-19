@@ -3,3 +3,6 @@
 
 # negeer de bestanden die mijn text-editor aanmaakt
 .idea/*
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
