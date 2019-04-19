@@ -18,4 +18,3 @@ def Greedy(dist, b, h):
         print(h[house].pluggedin)
 
 # def Hillclimber():
-#
