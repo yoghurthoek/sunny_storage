@@ -25,13 +25,14 @@ You can run the entire code by running main.py:
 python main.py
 ```
 
-### Auteurs
+
+### Authors
 * Bart-Jan Akerboom
 * Feline Benavides
 * Jochem van den Hoek
 
-### Dankwoord
+
+### Acknowledgments
 
 * StackOverFlow
-* Minor programmeren van de UvA
-* Papers die we uitvoerig gaan gebruiken (nog niet echt iets)
+* Minor Programming at the University of Amsterdam
