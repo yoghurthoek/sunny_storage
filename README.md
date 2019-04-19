@@ -1,7 +1,7 @@
 # sunny_storage
 
 Veel huizen hebben zonnepanelen. Deze leveren allemaal stroom op die ergens opgeslagen moet worden, in batterijen!
-Dit project is onze oplossing voor het probleem: The grid, voor het vak Programmeertheorie aan de UvA. De stage space van het probleem is 150 boven 5, is ongeveer 590 miljoen.
+Dit project is onze oplossing voor het probleem: The grid, voor het vak Programmeertheorie aan de UvA. De state space van het probleem is 150 boven 5, is ongeveer 5.9E8.
 
 ## Getting Started
 
