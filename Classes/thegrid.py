@@ -94,6 +94,7 @@ class Grid():
         format: [for every house[(mhdistance, key of battery), ...]]
         """
         dist = []
+        lowbprice = 0
         for house in h:
             dist.append([])
             for batt in b:
@@ -102,8 +103,14 @@ class Grid():
                          abs(b[batt].posy - h[house].posy)
                 dist[house].append((manhat, batt))
             dist[house] = sorted(dist[house])
-
-        return dist
+            # lowbprice += dist[house][0][0] * 9
+        print(lowbprice)
+        distdict = {}
+        for nr in h:
+            distdict[nr] = {}
+            for batt in dist[nr]:
+                distdict[nr][batt[1]] = batt[0]
+        return dist, distdict
 
     def visualize(self, b, h):
         fig, ax = plt.subplots()
@@ -128,10 +135,10 @@ class Grid():
             i += 1
 
         # Plot unconnected houses if they are there
-        for k in h:
-            if h[k].pluggedin is False:
-                ax.plot(h[k].posx, h[k].posy, color='k', marker=cmarker,
-                        markersize=15)
+        # for k in h:
+        #     if h[k].pluggedin is False:
+        #         ax.plot(h[k].posx, h[k].posy, color='k', marker=cmarker,
+        #                 markersize=15)
 
         # Set grid limits
         ax.set_xlim((-1, 51))
