@@ -4,6 +4,7 @@ from Algorithms.decreasingfirstfit import Decreasingfirstfit
 from Algorithms.greedyclimber import Greedy
 from Algorithms.bfs import bfs
 from Algorithms.astar import astar
+from Algorithms.dfs import dfs
 from Classes.thegrid import Grid
 from Classes.node import Node
 from Classes.node2 import Noot
@@ -20,7 +21,8 @@ choices:
     average-fit
     greedy-climber
     breadth-first
-    A-star""")
+    A-star
+    depth-first""")
             command = (input("> ")).upper()
             if command == "RANDOM":
                 grid.random(grid.batteries, grid.houses)
@@ -49,6 +51,8 @@ choices:
                 # goal = (18,34) # batt randomly gepakt
                 # astar(start, goal, dist)
                 # grid.visualize(grid.batteries, grid.houses)
+                print("not available at the moment!")
+            elif command == "DEPTH_FIRST":
                 print("not available at the moment!")
             else:
                 print("invalid command")

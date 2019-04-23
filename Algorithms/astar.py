@@ -5,6 +5,15 @@ https://gist.github.com/jamiees2/5531924
 http://mat.uab.cat/~alseda/MasterOpt/AStar-Algorithm.pdf
 https://medium.com/@nicholas.w.swift/easy-a-star-pathfinding-7e6689c7f7b2
 
+
+Werkt nog van geen kant :D, want problems:
+    # hoe de fack loopen over huisjes?
+    # ideetjes: huizen in de openlist gooien en batts als goals
+    # alsnog dan check inbouwen of het mogelijk is om deze huizen te koppelen
+        # dat gaat echt oneindig lang duren en fakking veel geheugen kosten
+    # of eerst koppelen en daarna snelste pad berekenen
+        # maar dan wil je optimale sort functie
+
 """
 
 # start en goal maar even gedefinieerd, dist is afstand tussen alle
@@ -17,12 +26,6 @@ def astar(start, goal, grid):
     goal_node = Node(None, goal)
     start_node.g, start_node.h, start_node.f = 0
     end_node.g, end_node.h, end_node.f = 0
-    # hoe de fack loopen over huisjes?
-    # ideetjes: huizen in de openlist gooien en batts als goals
-    # alsnog dan check inbouwen of het mogelijk is om deze huizen te koppelen
-        # dat gaat echt oneindig lang duren en fakking veel geheugen kosten
-    # of eerst koppelen en daarna snelste pad berekenen
-        # maar dan wil je optimale sort functie
     # h is al gegeven in dist
 
     # Make open and closed list and append start_node to open
@@ -49,6 +52,8 @@ def astar(start, goal, grid):
             if current_node == end_node:
                 break
                 # maar ik wil hier nog wel de lengte van het pad?
+                # return current_node.h
+
             # if a node with the same position as successor is
                 # open list, which has a lower f, skip this successor
             # if a node with same position as successor is in closed
