@@ -3,8 +3,10 @@ from Algorithms.averagefit import Averagefit
 from Algorithms.decreasingfirstfit import Decreasingfirstfit
 from Algorithms.greedyclimber import Greedy
 from Algorithms.bfs import bfs
+from Algorithms.astar import astar
 from Classes.thegrid import Grid
 from Classes.node import Node
+from Classes.node2 import Noot
 
 if __name__ == "__main__":
     if len(argv) == 2:
@@ -17,7 +19,8 @@ choices:
     first-fit
     average-fit
     greedy-climber
-    breadth-first""")
+    breadth-first
+    A-star""")
             command = (input("> ")).upper()
             if command == "RANDOM":
                 grid.random(grid.batteries, grid.houses)
@@ -39,6 +42,14 @@ choices:
                 dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
                 bfs(node, grid.batteries, grid.houses, distdict, best)
                 grid.visualize(grid.batteries, grid.houses)
+            elif command == "A-STAR":
+                # node = Noot()
+                # dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
+                # start = (3,4) # huis
+                # goal = (18,34) # batt
+                # astar(start, goal, dist)
+                # grid.visualize(grid.batteries, grid.houses)
+                print("not available at the moment!")
             else:
                 print("invalid command")
 
