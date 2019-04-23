@@ -22,7 +22,7 @@ pip install -r requirements.txt
 You can run the entire code by running main.py:
 
 ```
-python main.py
+python main.py [number of the neigborhood]
 ```
 
 

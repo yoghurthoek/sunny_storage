@@ -45,8 +45,8 @@ choices:
             elif command == "A-STAR":
                 # node = Noot()
                 # dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
-                # start = (3,4) # huis
-                # goal = (18,34) # batt
+                # start = (3,4) # huis randomly gepakt
+                # goal = (18,34) # batt randomly gepakt
                 # astar(start, goal, dist)
                 # grid.visualize(grid.batteries, grid.houses)
                 print("not available at the moment!")
