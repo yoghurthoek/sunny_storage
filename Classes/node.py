@@ -6,3 +6,6 @@ class Node(object):
         self.level = 0
         self.fill = [[0], [0], [0], [0], [0]]
         self.price = 0
+
+    def __str__(self):
+        return f"price: {self.price}"

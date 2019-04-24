@@ -40,7 +40,7 @@ choices:
             elif command == "BREADTH-FIRST":
                 node = Node()
                 best = Node()
-                best.price = 9999
+                best.price = 999999
                 dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
                 bfs(node, grid.batteries, grid.houses, distdict, best)
                 grid.visualize(grid.batteries, grid.houses)

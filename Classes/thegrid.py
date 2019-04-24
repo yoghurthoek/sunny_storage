@@ -94,7 +94,7 @@ class Grid():
         format: [for every house[(mhdistance, key of battery), ...]]
         """
         dist = []
-        lowbprice = 0
+        # lowbprice = 0
         for house in h:
             dist.append([])
             for batt in b:
@@ -104,7 +104,6 @@ class Grid():
                 dist[house].append((manhat, batt))
             dist[house] = sorted(dist[house])
             # lowbprice += dist[house][0][0] * 9
-        print(lowbprice)
         distdict = {}
         for nr in h:
             distdict[nr] = {}
