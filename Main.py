@@ -8,6 +8,8 @@ from Algorithms.dfs import dfs
 from Classes.thegrid import Grid
 from Classes.node import Node
 from Classes.node2 import Noot
+from Algorithms.hillclimber import Hillclimber
+
 
 if __name__ == "__main__":
     if len(argv) == 2:
@@ -22,7 +24,8 @@ choices:
     greedy-climber
     breadth-first
     A-star
-    depth-first""")
+    depth-first
+    hillclimber""")
             command = (input("> ")).upper()
             if command == "RANDOM":
                 grid.random(grid.batteries, grid.houses)
@@ -54,6 +57,10 @@ choices:
                 print("not available at the moment!")
             elif command == "DEPTH_FIRST":
                 print("not available at the moment!")
+            elif command == "HILLCLIMBER":
+                dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
+                price = Hillclimber(dist, grid.batteries, grid.houses)
+                print(price)
             else:
                 print("invalid command")
 
