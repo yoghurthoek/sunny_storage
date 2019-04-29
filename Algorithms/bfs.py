@@ -5,7 +5,7 @@ import time
 
 def bfs(startnode, b, h, distdict, best):
     """
-    Implements a depth first search, but should only try wijk5
+    Implements a breadth first search, but should only try wijk5
     because it takes long
     """
     start = time.time()
