@@ -15,5 +15,3 @@ def Greedy(dist, b, h):
         print(b[key].filled)
     for house in h:
         print(h[house].pluggedin)
-
-# def Hillclimber():

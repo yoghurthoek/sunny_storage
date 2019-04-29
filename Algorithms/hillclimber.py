@@ -1,4 +1,4 @@
-def Hillclimber(dist, b, h):
+def hillclimber(dist, distdict, b, h):
     price = 0
     for nr in h:
         for cell in dist[nr]:
@@ -8,24 +8,32 @@ def Hillclimber(dist, b, h):
                 h[nr].pluggedin = b[cell[1]]
                 price += cell[0] * 9
                 break
+    #averagefit
 
+    print(distdict)
     for nr1 in h:
             for nr2 in h:
                 if not h[nr1].pluggedin == h[nr2].pluggedin:
-                    for cell1 in dist[nr1]:
-                        for cell2 in dist[nr2]:
-                            if (b[cell2[1]].filled - h[nr1].output + h[nr2].output < b[cell2[1]].capacity) and (b[cell1[1]].filled - h[nr2].output + h[nr1].output < b[cell1[1]].capacity):
-                                if dist[nr1][cell1[1]][0] + dist[nr2][cell2[1]][0] > dist[nr1][cell2[1]][0] + dist[nr2][cell1[1]][0]:
-                                    temporary = h[nr2].pluggedin
-                                    h[nr2].pluggedin = h[nr1].pluggedin
-                                    h[nr1].pluggedin = temporary
-                                    print(dist[nr1][cell1[1]][0])
-                                    #b[cell1[1]].connected.remove(h[nr1])
-                                    #b[cell2[1]].connected.remove(h[nr2])
+                    if (b[h[nr1].pluggedin.id].filled - h[nr1].output + h[nr2].output < b[h[nr1].pluggedin.id].capacity) and (b[h[nr2].pluggedin.id].filled - h[nr2].output + h[nr1].output < b[h[nr2].pluggedin.id].capacity):
+                        if distdict[nr1][h[nr1].pluggedin.id] + distdict[nr2][h[nr2].pluggedin.id] > distdict[nr1][h[nr2].pluggedin.id] + distdict[nr2][h[nr1].pluggedin.id]:
 
-                                    # better insert I think
-                                    b[cell2[1]].connected.append(h[nr1])
-                                    b[cell1[1]].connected.append(h[nr2])
+                            # a = b[h[nr1].pluggedin.id].connected
+                            # c = b[h[nr2].pluggedin.id].connected
+                            # print(a)
+                            #
+                            # a[h[nr1]], c[h[nr2]] = c[h[nr1]], a[h[nr2]]
 
-                                    price = price - (dist[nr1][cell1[1]][0] + dist[nr2][cell2[1]][0] - (dist[nr1][cell2[1]][0] + dist[nr2][cell1[1]][0])) * 9
+                            b[h[nr2].pluggedin.id].connected.remove(h[nr2])
+                            b[h[nr2].pluggedin.id].connected.append(h[nr1])
+
+                            b[h[nr1].pluggedin.id].connected.remove(h[nr1])
+                            b[h[nr1].pluggedin.id].connected.append(h[nr2])
+
+
+                            # klopt niet
+                            price = price - (dist[nr1][h[nr1].pluggedin.id][0] + dist[nr2][h[nr2].pluggedin.id][0]) * 9 + (dist[nr1][h[nr2].pluggedin.id][0] + dist[nr2][h[nr1].pluggedin.id][0]) * 9
+
+                            temporary = h[nr2].pluggedin
+                            h[nr2].pluggedin = h[nr1].pluggedin
+                            h[nr1].pluggedin = temporary
     return price
