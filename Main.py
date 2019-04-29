@@ -40,6 +40,7 @@ choices:
                 price = Greedy(dist, grid.batteries, grid.houses)
                 print(price)
                 grid.visualize(grid.batteries, grid.houses)
+                grid.savefig('hallo.png') # plus 1 voor elke run?
             elif command == "BREADTH-FIRST":
                 node = Node()
                 best = Node()
