@@ -11,6 +11,7 @@ def Hillclimber(dist, b, h):
 
     for nr1 in h:
             for nr2 in h:
+                # Checkt of huizen niet al bij zelfde batterij zitten
                 if not h[nr1].pluggedin == h[nr2].pluggedin:
                     for cell1 in dist[nr1]:
                         for cell2 in dist[nr2]:

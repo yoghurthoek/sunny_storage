@@ -1,10 +1,11 @@
 from sys import argv
 from Algorithms.averagefit import Averagefit
 from Algorithms.decreasingfirstfit import Decreasingfirstfit
-from Algorithms.greedyclimber import Greedy
+from Algorithms.greedy import Greedy
 from Algorithms.bfs import bfs
 from Algorithms.astar import astar
 from Algorithms.dfs import dfs
+from Algorithms.randclimber import Randclimber
 from Classes.thegrid import Grid
 from Classes.node import Node
 from Classes.node2 import Noot
@@ -21,11 +22,12 @@ choices:
     random
     first-fit
     average-fit
-    greedy-climber
+    greedy
     breadth-first
     A-star
     depth-first
-    hillclimber""")
+    hillclimber
+    randclimber""")
             command = (input("> ")).upper()
             if command == "RANDOM":
                 grid.random(grid.batteries, grid.houses)
@@ -35,7 +37,7 @@ choices:
             elif command == "AVERAGE-FIT":
                 Averagefit(grid, grid.batteries, grid.houses)
                 grid.visualize(grid.batteries, grid.houses)
-            elif command == "GREEDY-CLIMBER":
+            elif command == "GREEDY":
                 dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
                 price = Greedy(dist, grid.batteries, grid.houses)
                 print(price)
@@ -43,8 +45,9 @@ choices:
             elif command == "BREADTH-FIRST":
                 node = Node()
                 best = Node()
-                best.price = 999999
                 dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
+                # Only use this if greedy gives a allowed solution
+                best.price = Greedy(dist, grid.batteries, grid.houses)
                 bfs(node, grid.batteries, grid.houses, distdict, best)
                 grid.visualize(grid.batteries, grid.houses)
             elif command == "A-STAR":
@@ -55,12 +58,26 @@ choices:
                 # astar(start, goal, dist)
                 # grid.visualize(grid.batteries, grid.houses)
                 print("not available at the moment!")
-            elif command == "DEPTH_FIRST":
-                print("not available at the moment!")
+            elif command == "DEPTH-FIRST":
+                node = Node()
+                best = Node()
+                dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
+                best.price = 700000
+                dfs(node, grid.batteries, grid.houses, distdict, best)
+                grid.visualize(grid.batteries, grid.houses)
             elif command == "HILLCLIMBER":
                 dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
                 price = Hillclimber(dist, grid.batteries, grid.houses)
                 print(price)
+            elif command == "RANDCLIMBER":
+                print("Choose number of repetitions")
+                repetitions = int(input("> "))
+                dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
+                price = Greedy(dist, grid.batteries, grid.houses)
+                initial = Node()
+                initial.fillnode(grid.batteries, grid.houses, price)
+                price = Randclimber(initial, price, repetitions, distdict, grid.batteries, grid.houses)
+                # print(price)
             else:
                 print("invalid command")
 

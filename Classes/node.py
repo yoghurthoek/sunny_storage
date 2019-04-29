@@ -7,5 +7,11 @@ class Node(object):
         self.fill = [[0], [0], [0], [0], [0]]
         self.price = 0
 
+    def fillnode(self, b, h, price):
+        for battery in b:
+            self.fill[battery][0] = b[battery].filled
+            self.batts[battery] = b[battery].connected
+        self.price = price
+
     def __str__(self):
         return f"price: {self.price}"
