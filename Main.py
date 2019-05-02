@@ -8,7 +8,8 @@ from Algorithms.dfs import dfs
 from Classes.thegrid import Grid
 from Classes.node import Node
 from Classes.node2 import Noot
-from Algorithms.hillclimber import Hillclimber
+from Algorithms.hillclimber import hillclimber
+from Algorithms.random import random_alg
 
 
 if __name__ == "__main__":
@@ -28,7 +29,20 @@ choices:
     hillclimber""")
             command = (input("> ")).upper()
             if command == "RANDOM":
-                grid.random(grid.batteries, grid.houses)
+                dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
+                output = random_alg(grid, distdict, grid.batteries, grid.houses)
+                if output == 0:
+                    for key in grid.batteries:
+                        grid.batteries[key].connected = []
+                    for key in grid.houses:
+                        grid.houses[key].pluggedin = False
+                    print(output)
+                    print(grid.batteries)
+                    print(grid.houses)
+                    output = random_alg(grid, distdict, grid.batteries, grid.houses)
+                    print("second time")
+                print(output)
+                grid.visualize(grid.batteries, grid.houses)
             elif command == "FIRST-FIT":
                 Decreasingfirstfit(grid, grid.batteries, grid.houses)
                 grid.visualize(grid.batteries, grid.houses)
@@ -37,8 +51,8 @@ choices:
                 grid.visualize(grid.batteries, grid.houses)
             elif command == "GREEDY-CLIMBER":
                 dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
-                price = Greedy(dist, grid.batteries, grid.houses)
-                print(price)
+                greedy = Greedy(dist, grid.batteries, grid.houses)
+                print(greedy[0])
                 grid.visualize(grid.batteries, grid.houses)
             elif command == "BREADTH-FIRST":
                 node = Node()
@@ -59,8 +73,23 @@ choices:
                 print("not available at the moment!")
             elif command == "HILLCLIMBER":
                 dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
-                price = Hillclimber(dist, grid.batteries, grid.houses)
+                print("""what is the base?
+    choices:
+        random
+        greedy-climber
+        """)
+                command = (input("> ")).upper()
+                if command == "RANDOM":
+                    random = random_alg(grid, distdict, grid.batteries, grid.houses)
+                    print(random)
+                    price = hillclimber(dist, distdict, random[0], random[1], random[2])
+                elif command == "GREEDY-CLIMBER":
+                    greedy = Greedy(dist, grid.batteries, grid.houses)
+                    price = hillclimber(dist, distdict, greedy[0], greedy[1], greedy[2])
+                else:
+                    print("invalid command")
                 print(price)
+                grid.visualize(grid.batteries, grid.houses)
             else:
                 print("invalid command")
 

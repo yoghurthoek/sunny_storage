@@ -1,15 +1,14 @@
-def hillclimber(dist, distdict, b, h):
-    price = 0
-    for nr in h:
-        for cell in dist[nr]:
-            if b[cell[1]].filled + h[nr].output < b[cell[1]].capacity:
-                b[cell[1]].connected.append(h[nr])
-                b[cell[1]].filled += h[nr].output
-                h[nr].pluggedin = b[cell[1]]
-                price += cell[0] * 9
-                break
+def hillclimber(dist, distdict, price, b, h):
+    # price = 0
+    # for nr in h:
+    #     for cell in dist[nr]:
+    #         if b[cell[1]].filled + h[nr].output < b[cell[1]].capacity:
+    #             b[cell[1]].connected.append(h[nr])
+    #             b[cell[1]].filled += h[nr].output
+    #             h[nr].pluggedin = b[cell[1]]
+    #             price += cell[0] * 9
+    #             break
     #averagefit
-
     print(distdict)
     for nr1 in h:
             for nr2 in h:
@@ -29,8 +28,6 @@ def hillclimber(dist, distdict, b, h):
                             b[h[nr1].pluggedin.id].connected.remove(h[nr1])
                             b[h[nr1].pluggedin.id].connected.append(h[nr2])
 
-
-                            # klopt niet
                             price = price - (dist[nr1][h[nr1].pluggedin.id][0] + dist[nr2][h[nr2].pluggedin.id][0]) * 9 + (dist[nr1][h[nr2].pluggedin.id][0] + dist[nr2][h[nr1].pluggedin.id][0]) * 9
 
                             temporary = h[nr2].pluggedin
