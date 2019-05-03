@@ -71,23 +71,6 @@ class Grid():
 
         return batteries
 
-    def decreasingfirstfit(self, b, h):
-        for nr in h:
-            for key in b:
-                if h[nr].output + b[key].filled < b[key].capacity:
-                    b[key].connected.append(h[nr])
-                    b[key].filled += h[nr].output
-                    h[nr].pluggedin = b[key]
-                    break
-
-        for key in self.batteries:
-            print(self.batteries[key].filled)
-            # for house in self.batteries[key].connected:
-            #     print(house)
-
-        for house in self.houses:
-            print(self.houses[house].pluggedin)
-
     def Distancearr(self, b, h):
         """
         Gives manhattan distance for every combination of battery and house
@@ -133,11 +116,11 @@ class Grid():
                         color=colors[i], linestyle=':', linewidth=1)
             i += 1
 
-        # Plot unconnected houses if they are there
-        # for k in h:
-        #     if h[k].pluggedin is False:
-        #         ax.plot(h[k].posx, h[k].posy, color='k', marker=cmarker,
-        #                 markersize=15)
+        #Plot unconnected houses if they are there
+        for k in h:
+            if h[k].pluggedin is False:
+                ax.plot(h[k].posx, h[k].posy, color='k', marker=cmarker,
+                        markersize=15)
 
         # Set grid limits
         ax.set_xlim((-1, 51))

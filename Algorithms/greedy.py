@@ -8,7 +8,7 @@ def Greedy(dist, b, h):
                 h[nr].pluggedin = b[cell[1]]
                 price += cell[0] * 9
                 break
-    return price
+    return price, b, h
 
     # Checks
     # for key in b:

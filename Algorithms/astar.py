@@ -22,4 +22,4 @@ open list: huis connecten met batt (kies beste optie)?
 # huizen en batteries
 
 def astar(start, grid):
-    # hellepies
+    hellepies
