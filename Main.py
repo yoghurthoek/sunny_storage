@@ -32,18 +32,8 @@ choices:
             command = (input("> ")).upper()
             if command == "RANDOM":
                 dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
-                output = random_alg(distdict, grid.batteries, grid.houses)
-                if output == 0:
-                    for key in grid.batteries:
-                        grid.batteries[key].connected = []
-                    for key in grid.houses:
-                        grid.houses[key].pluggedin = False
-                    print(output)
-                    print(grid.batteries)
-                    print(grid.houses)
-                    output = random_alg(distdict, grid.batteries, grid.houses)
-                    print("second time")
-                print(output)
+                price = random_alg(distdict, grid.batteries, grid.houses)
+                print(price)
                 grid.visualize(grid.batteries, grid.houses)
             elif command == "FIRST-FIT":
                 Decreasingfirstfit(grid, grid.batteries, grid.houses)
@@ -53,8 +43,8 @@ choices:
                 grid.visualize(grid.batteries, grid.houses)
             elif command == "GREEDY":
                 dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
-                greedy = Greedy(dist, grid.batteries, grid.houses)
-                print(greedy[0])
+                price = Greedy(dist, grid.batteries, grid.houses)
+                print(price)
                 grid.visualize(grid.batteries, grid.houses)
                 grid.savefig('hallo.png') # plus 1 voor elke run?
             elif command == "BREADTH-FIRST":
@@ -85,19 +75,23 @@ choices:
                 print("""what is the base?
     choices:
         random
-        greedy-climber
+        greedy
         """)
                 command = (input("> ")).upper()
                 if command == "RANDOM":
-                    random = random_alg(distdict, grid.batteries, grid.houses)
-                    print(random)
-                    price = hillclimber(dist, distdict, random[0], random[1], random[2])
-                elif command == "GREEDY-CLIMBER":
-                    greedy = Greedy(dist, grid.batteries, grid.houses)
-                    price = hillclimber(dist, distdict, greedy[0], greedy[1], greedy[2])
+                    price = random_alg(distdict, grid.batteries, grid.houses)
+                    print(price)
+                    price = hillclimber(dist, distdict, price, grid.batteries, grid.houses)
+                    print(price)
+                    grid.visualize(grid.batteries, grid.houses)
+                elif command == "GREEDY":
+                    price = Greedy(dist, grid.batteries, grid.houses)
+                    print(price)
+                    price = hillclimber(dist, distdict, price, grid.batteries, grid.houses)
+                    print(price)
+                    grid.visualize(grid.batteries, grid.houses)
                 else:
                     print("invalid command")
-                print(price)
             elif command == "RANDCLIMBER":
                 print("Choose number of repetitions")
                 repetitions = int(input("> "))
