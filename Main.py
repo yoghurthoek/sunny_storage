@@ -30,7 +30,7 @@ choices:
             command = (input("> ")).upper()
             if command == "RANDOM":
                 dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
-                output = random_alg(grid, distdict, grid.batteries, grid.houses)
+                output = random_alg(distdict, grid.batteries, grid.houses)
                 if output == 0:
                     for key in grid.batteries:
                         grid.batteries[key].connected = []
@@ -39,7 +39,7 @@ choices:
                     print(output)
                     print(grid.batteries)
                     print(grid.houses)
-                    output = random_alg(grid, distdict, grid.batteries, grid.houses)
+                    output = random_alg(distdict, grid.batteries, grid.houses)
                     print("second time")
                 print(output)
                 grid.visualize(grid.batteries, grid.houses)
@@ -80,7 +80,7 @@ choices:
         """)
                 command = (input("> ")).upper()
                 if command == "RANDOM":
-                    random = random_alg(grid, distdict, grid.batteries, grid.houses)
+                    random = random_alg(distdict, grid.batteries, grid.houses)
                     print(random)
                     price = hillclimber(dist, distdict, random[0], random[1], random[2])
                 elif command == "GREEDY-CLIMBER":

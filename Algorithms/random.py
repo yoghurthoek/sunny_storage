@@ -1,7 +1,7 @@
 import random
 import copy
 
-def random_alg(grid, distdict, b, h):
+def random_alg(distdict, b, h):
     #h2 = copy.deepcopy(h)
     keylist = list(range(0, 150))
     price = 0
