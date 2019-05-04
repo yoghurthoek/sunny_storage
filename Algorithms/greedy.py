@@ -4,7 +4,6 @@ def Greedy(dist, b, h):
     output = 0
     while output == 0:
         output = 1
-        price = 0
         keylist = list(range(0, 150))
         for nr in h:
             key = random.choice(keylist)
@@ -14,7 +13,6 @@ def Greedy(dist, b, h):
                     b[cell[1]].connected.append(h[key])
                     b[cell[1]].filled += h[nr].output
                     h[key].pluggedin = b[cell[1]]
-                    price += cell[0] * 9
                     break
             if h[h[key].id].pluggedin == False:
                 output = 0
@@ -24,5 +22,3 @@ def Greedy(dist, b, h):
                 for key in h:
                     h[key].pluggedin = False
                 break
-        print(output)        
-    return price

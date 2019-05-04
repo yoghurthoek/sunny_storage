@@ -27,5 +27,5 @@ def random_alg(distdict, b, h):
                     h[key].pluggedin = False
                 break
         print(output)
-        print("second time")
+        print("rerun")
     return price

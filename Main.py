@@ -11,6 +11,8 @@ from Classes.node import Node
 from Classes.node2 import Noot
 from Algorithms.hillclimber import hillclimber
 from Algorithms.random import random_alg
+from Algorithms.hillclimber_batteries import hillclimber_batteries
+from Helper_algorithms.price_calc import price_calc
 
 
 if __name__ == "__main__":
@@ -32,7 +34,8 @@ choices:
             command = (input("> ")).upper()
             if command == "RANDOM":
                 dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
-                price = random_alg(distdict, grid.batteries, grid.houses)
+                random_alg(distdict, grid.batteries, grid.houses)
+                price = price_calc(grid.batteries, distdict)
                 print(price)
                 grid.visualize(grid.batteries, grid.houses)
             elif command == "FIRST-FIT":
@@ -43,7 +46,8 @@ choices:
                 grid.visualize(grid.batteries, grid.houses)
             elif command == "GREEDY":
                 dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
-                price = Greedy(dist, grid.batteries, grid.houses)
+                Greedy(dist, grid.batteries, grid.houses)
+                price = price_calc(grid.batteries, distdict)
                 print(price)
                 grid.visualize(grid.batteries, grid.houses)
                 grid.savefig('hallo.png') # plus 1 voor elke run?
@@ -79,19 +83,33 @@ choices:
         """)
                 command = (input("> ")).upper()
                 if command == "RANDOM":
-                    price = random_alg(distdict, grid.batteries, grid.houses)
-                    print(price)
-                    price = hillclimber(dist, distdict, price, grid.batteries, grid.houses)
+                    random_alg(distdict, grid.batteries, grid.houses)
+                    hillclimber(dist, distdict, grid.batteries, grid.houses)
+                    price = price_calc(grid.batteries, distdict)
                     print(price)
                     grid.visualize(grid.batteries, grid.houses)
                 elif command == "GREEDY":
-                    price = Greedy(dist, grid.batteries, grid.houses)
-                    print(price)
-                    price = hillclimber(dist, distdict, price, grid.batteries, grid.houses)
+                    Greedy(dist, grid.batteries, grid.houses)
+                    hillclimber(dist, distdict, grid.batteries, grid.houses)
+                    price = price_calc(grid.batteries, distdict)
                     print(price)
                     grid.visualize(grid.batteries, grid.houses)
                 else:
                     print("invalid command")
+                print("""Do you want to optimize the location of the batteries with hillclimber?
+            Yes
+            No
+            """)
+                command = (input("> ")).upper()
+                if command == "YES":
+                    dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
+                    hillclimber_batteries(grid.batteries)
+                    dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
+                    price = price_calc(grid.batteries, distdict)
+                    print(price)
+                    grid.visualize(grid.batteries, grid.houses)
+                elif command == "NO":
+                    print("nothing")
             elif command == "RANDCLIMBER":
                 print("Choose number of repetitions")
                 repetitions = int(input("> "))
@@ -102,7 +120,6 @@ choices:
                 price = Randclimber(initial, price, repetitions, distdict, grid.batteries, grid.houses)
             else:
                 print("invalid command")
-
         else:
             print("neigborhood doesn't exist")
     else:

@@ -1,4 +1,4 @@
-def hillclimber(dist, distdict, price, b, h):
+def hillclimber(dist, distdict, b, h):
 
     for nr1 in h:
         for nr2 in h:
@@ -16,8 +16,3 @@ def hillclimber(dist, distdict, price, b, h):
                         temporary = h[nr2].pluggedin
                         h[nr2].pluggedin = h[nr1].pluggedin
                         h[nr1].pluggedin = temporary
-    price = 0
-    for bat in b:
-        for house in b[bat].connected:
-            price += distdict[house.id][house.pluggedin.id] * 9
-    return price
