@@ -1,4 +1,4 @@
-def Kmeansclustering_batteries(b):
+def battery_optimization(b):
 
     positions = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
 

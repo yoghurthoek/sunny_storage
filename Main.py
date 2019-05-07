@@ -1,6 +1,4 @@
 from sys import argv
-import csv
-import os
 from Algorithms.averagefit import Averagefit
 from Algorithms.decreasingfirstfit import Decreasingfirstfit
 from Algorithms.greedy import Greedy
@@ -13,7 +11,7 @@ from Classes.node import Node
 from Classes.node2 import Noot
 from Algorithms.hillclimber import hillclimber
 from Algorithms.random import random_alg
-from Algorithms.Kmeansclustering_batteries import Kmeansclustering_batteries
+from Algorithms.battery_optimization import battery_optimization
 from Helper_algorithms.price_calc import price_calc
 from Helper_algorithms.write_to_csv import write_to_csv
 
