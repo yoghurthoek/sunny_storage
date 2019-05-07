@@ -53,7 +53,7 @@ choices:
                 price = price_calc(grid.batteries, distdict)
                 print(price)
                 grid.visualize(grid.batteries, grid.houses)
-                grid.savefig('hallo.png') # plus 1 voor elke run?
+                # grid.savefig('hallo.png') # plus 1 voor elke run?
             elif command == "BREADTH-FIRST":
                 node = Node()
                 best = Node()
