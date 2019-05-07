@@ -107,7 +107,7 @@ choices:
                 command3 = (input("> ")).upper()
                 if command3 == "OPTIMIZE":
                     dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
-                    Kmeansclustering_batteries(grid.batteries)
+                    battery_optimization(grid.batteries)
                     dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
                     price = price_calc(grid.batteries, distdict)
                     print(price)

@@ -1,0 +1,3 @@
+price,20763,0,HILLCLIMBER --> GREEDY --> OPTIMIZE
+price,42111,1,RANDOM --> no --> no
+price,19458,2,HILLCLIMBER --> GREEDY --> OPTIMIZE
