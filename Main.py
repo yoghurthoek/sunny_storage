@@ -1,4 +1,6 @@
 from sys import argv
+import csv
+import os
 from Algorithms.averagefit import Averagefit
 from Algorithms.decreasingfirstfit import Decreasingfirstfit
 from Algorithms.greedy import Greedy
@@ -11,8 +13,9 @@ from Classes.node import Node
 from Classes.node2 import Noot
 from Algorithms.hillclimber import hillclimber
 from Algorithms.random import random_alg
-from Algorithms.hillclimber_batteries import hillclimber_batteries
+from Algorithms.Kmeansclustering_batteries import Kmeansclustering_batteries
 from Helper_algorithms.price_calc import price_calc
+from Helper_algorithms.write_to_csv import write_to_csv
 
 
 if __name__ == "__main__":
@@ -32,6 +35,8 @@ choices:
     hillclimber
     randclimber""")
             command = (input("> ")).upper()
+            command2 = "no"
+            command3 = "no"
             if command == "RANDOM":
                 dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
                 random_alg(distdict, grid.batteries, grid.houses)
@@ -81,14 +86,14 @@ choices:
         random
         greedy
         """)
-                command = (input("> ")).upper()
-                if command == "RANDOM":
+                command2 = (input("> ")).upper()
+                if command2 == "RANDOM":
                     random_alg(distdict, grid.batteries, grid.houses)
                     hillclimber(dist, distdict, grid.batteries, grid.houses)
                     price = price_calc(grid.batteries, distdict)
                     print(price)
                     grid.visualize(grid.batteries, grid.houses)
-                elif command == "GREEDY":
+                elif command2 == "GREEDY":
                     Greedy(dist, grid.batteries, grid.houses)
                     hillclimber(dist, distdict, grid.batteries, grid.houses)
                     price = price_calc(grid.batteries, distdict)
@@ -97,18 +102,18 @@ choices:
                 else:
                     print("invalid command")
                 print("""Do you want to optimize the location of the batteries with hillclimber?
-            Yes
-            No
+            Optimize
+            no optimize
             """)
-                command = (input("> ")).upper()
-                if command == "YES":
+                command3 = (input("> ")).upper()
+                if command3 == "OPTIMIZE":
                     dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
-                    hillclimber_batteries(grid.batteries)
+                    Kmeansclustering_batteries(grid.batteries)
                     dist, distdict = grid.Distancearr(grid.batteries, grid.houses)
                     price = price_calc(grid.batteries, distdict)
                     print(price)
                     grid.visualize(grid.batteries, grid.houses)
-                elif command == "NO":
+                elif command == "NO OPTIMIZE":
                     print("nothing")
             elif command == "RANDCLIMBER":
                 print("Choose number of repetitions")
@@ -120,6 +125,16 @@ choices:
                 price = Randclimber(initial, price, repetitions, distdict, grid.batteries, grid.houses)
             else:
                 print("invalid command")
+
+            print("""do you want to save your run?
+            Options:
+            Yes
+            No
+            """)
+            if (input("> ")).upper() == "YES":
+                algorithm = (command + " --> " + command2 + " --> " + command3)
+                write_to_csv(argv[1], algorithm, price, grid.batteries, grid.houses)
+
         else:
             print("neigborhood doesn't exist")
     else:

@@ -1,4 +1,4 @@
-def hillclimber_batteries(b):
+def Kmeansclustering_batteries(b):
 
     positions = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
 
