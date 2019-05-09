@@ -1,6 +1,7 @@
 import csv
 import os
 
+
 def write_to_csv(wijk, algorithm, price, batteries, houses):
     print("which run is this?")
     runnumber = (input("> ")).upper()
