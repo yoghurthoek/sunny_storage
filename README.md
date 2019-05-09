@@ -19,7 +19,7 @@ pip install -r requirements.txt
 * Algoritms: in this folder are all the scripts for programmed algorithms.
 * Classes: all needed classes are in this folder. We implemented classes for houses, batteries and the grid.
 * Data: all data that we created is in this folder. Most of the data is saved in .csv files.
-
+* Presentations: all presentations for this course are saved here in .pptx and .pdf files
 
 You can run the entire code by running main.py:
 
