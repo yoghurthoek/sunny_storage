@@ -12,7 +12,7 @@ from Classes.node2 import Noot
 from Algorithms.hillclimber import hillclimber
 from Algorithms.random import random_alg
 from Algorithms.battery_optimization import battery_optimization
-from Helper_algorithms.distancearr import distancearr
+# from Helper_algorithms.distancearr import distancearr
 from Helper_algorithms.price_calc import price_calc
 from Helper_algorithms.visualize import visualize
 from Helper_algorithms.write_to_csv import write_to_csv

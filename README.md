@@ -2,6 +2,9 @@
 
 The project SmartGrid is conducted for the course 'Heuristieken' for the Minor Programming (2019) at the University of Amsterdam. In this project there are three different neighborhoods, all with 150 houses and 5 batteries. All of the houses have solar panels and need to store the energy they produce in a battery. The houses are connected with cables to the batteries. The goal for this project is to connect houses in a way that the total costs are lowest. Total costs are based on cable price per gridline and battery costs.
 
+![](wijk1.png)
+
+
 > meer richting Heuristieken.nl
 
 ## Getting Started
