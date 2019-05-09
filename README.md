@@ -1,10 +1,19 @@
 # sunny_storage
 
-The project SmartGrid is conducted for the course 'Heuristieken' for the Minor Programming (2019) at the University of Amsterdam. In this project there are three different neighborhoods, all with 150 houses and 5 batteries. All of the houses have solar panels and need to store the energy they produce in a battery. The houses are connected with cables to the batteries. The goal for this project is to connect houses in a way that the total costs are lowest. Total costs are based on cable price per gridline and battery costs.
+The project SmartGrid is conducted for the course 'Programming theory/Heuristics' for the Minor Programming (2019) at the University of Amsterdam.
 
+
+If we still want our lamp to work at night and our phones charged in 100 years, somethings have to change in this world. Primary energy sources are running out, so we have to look at alternative energy sources. Green energy is the energy of the future. This is energy produced from inexhaustible sources, like wind or sun. It sounds good, however there are 'buts'. Sometimes solar panels (fortunately!) produce too many energy for their household. Ideally, the energy is transferred back to energy suppliers. Unfortunately, the infrastructure (the grid) is not designed for that. In our case, to still be able to use this energy, we use batteries.
+
+To test if we can actually make a 'smart grid', we use different neighborhoods for this project. We have 3 standard neighborhoods, which all have 150 houses and 5 batteries. Since we have to connect the houses to the batteries, we are working with a state space of 5^150 = 7E104. So, a lot of possibilities to connect the houses! We generated our own neighborhoods with less houses and batteries to reduce the state space and test our algorithms. The images of the standard neighborhoods can be found in the folder 'Data'. An example of the first neighborhood:
 <img src="Data/wijk1.png" />
-<img src="Data/wijk2.png" />
-<img src="Data/wijk3.png" />
+
+So, we have a lot of possibilities to connect houses with batteries. However, we also have limitations. All of the houses have solar panels that generate a maximum output. All of the batteries have a maximum capacity, which can not be exceeded
+
+The houses are connected with cables to the batteries. The goal for this project is to connect houses in a way that the total costs are lowest. Total costs are based on cable price per gridline and battery costs.
+
+
+
 
 > meer richting Heuristieken.nl
 
