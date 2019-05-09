@@ -1,6 +1,6 @@
 # Sunny_storage
 
-The project SmartGrid is conducted for the course 'Programming theory/Heuristics' for the Minor Programming (2019) at the University of Amsterdam.
+*The project SmartGrid is conducted for the course 'Programming theory/Heuristics' for the Minor Programming (2019) at the University of Amsterdam.*
 
 <br></br>
 If we still want our lamp to work at night and our phones charged in 100 years, somethings have to change in this world. Primary energy sources are running out, so we have to look at alternative energy sources. Green energy is the energy of the future. This is energy produced from inexhaustible sources, like wind or sun. It sounds good, however there are 'buts'. Sometimes solar panels (fortunately!) produce too many energy for their household. Ideally, the energy is transferred back to energy suppliers. Unfortunately, the infrastructure (the grid) is not designed for that. In our case, to still be able to use this energy, we use batteries.
