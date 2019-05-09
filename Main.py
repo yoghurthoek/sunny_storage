@@ -3,12 +3,10 @@ from Algorithms.averagefit import Averagefit
 from Algorithms.decreasingfirstfit import Decreasingfirstfit
 from Algorithms.greedy import Greedy
 from Algorithms.bfs import bfs
-from Algorithms.astar import astar
 from Algorithms.dfs import dfs
 from Algorithms.randclimber import Randclimber
 from Classes.thegrid import Grid
 from Classes.node import Node
-from Classes.node2 import Noot
 from Algorithms.hillclimber import hillclimber
 from Algorithms.random import random_alg
 from Algorithms.battery_optimization import battery_optimization
@@ -64,14 +62,6 @@ choices:
                 best.price = Greedy(dist, grid.batteries, grid.houses)
                 bfs(node, grid.batteries, grid.houses, distdict, best)
                 visualize(grid.batteries, grid.houses)
-            elif command == "A-STAR":
-                # node = Noot()
-                # dist, distdict = distancearr(grid.batteries, grid.houses)
-                # start = (3,4) # huis randomly gepakt
-                # goal = (18,34) # batt randomly gepakt
-                # astar(start, goal, dist)
-                # visualize(grid.batteries, grid.houses)
-                print("not available at the moment!")
             elif command == "DEPTH-FIRST":
                 node = Node()
                 best = Node()

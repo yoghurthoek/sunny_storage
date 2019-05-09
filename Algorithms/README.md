@@ -1,17 +1,13 @@
 # Algorithms
 
-hier alle algorithmes
+In this folder are the scripts of the algorithms we implemented.
 
-## Averagefit
-
-Dit algoritme vult elke batterijen op een gelijkmatige manier door afwisselend de grootste en kleinste objecten toe te voegen. 
-
-## A*
-
-nog niet gebruikt
-
-## Breadth first search
-
-nog niet gebruikt
-Dijkstra
-
+* **averagefit:** this algorithm fills batteries by getting a house with the highest and lowest output and putting them together in a battery
+* **battery_optimization:**
+* **bfs:**
+* **decreasingfirstfit:**
+* **dfs:**
+* **greedy:**
+* **hillclimber:**
+* **randclimber:**
+* **random:** this algorithm connects houses and batteries randomly

@@ -1,7 +1,8 @@
-# Helper_algorithms 
+# Helper_algorithms
 
-In deze folder staan alle kleine algorithms die vaak aangeroepen moeten worden door andere algorithms. 
+In this folder are the functions that all algorithms need.
 
-bv. prijsberekening, opslag in csv files, missch ook dist en distdict formatie.
-
-Als je dit soort bestanden hebt/maakt, zet ze hierin
+* **distancearr:** text
+* **price_calc:** this function calculates the cable price
+* **visualize:** this function visualizes the solution for the given neighborhood
+* **write_to_csv:** this function saves the solution for the given neighborhood in a .csv file
