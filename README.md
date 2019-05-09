@@ -14,8 +14,7 @@ So, we have a lot of possibilities to connect houses with batteries. However, we
 Next to this houses can only be connected to 1 battery and not with eachother.
 
 The first part of the assignment is to connect all the houses with the batteries and take care of the limitations. The second part is to calculate the total costs of the neighborhood and try to optimize that. The third part is the total cost need to optimized by moving the batteries. For the last part we get a little help from the SmartBatteryCompany! They have developed three new batteries with different capacities and prices. We can use as many as we want, but the goal is again to optimize the total cost.
-
-
+<br></br>
 
 ## Getting Started
 ### Prerequisites
