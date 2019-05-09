@@ -132,7 +132,7 @@ choices:
             if (input("> ")).upper() == "YES":
                 algorithm = (command + " --> " + command2 + " --> " + command3)
                 write_to_csv(argv[1], algorithm, price, grid.batteries, grid.houses)
-
+                # save fig
         else:
             print("neigborhood doesn't exist")
     else:
