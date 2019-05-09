@@ -27,16 +27,16 @@ pip install -r requirements.txt
 
 
 ### Structure
-* Algorithms: in this folder are all the scripts for programmed algorithms
-* Classes: all needed classes are in this folder
+* **Algorithms:** in this folder are all the scripts for programmed algorithms
+* **Classes:** all needed classes are in this folder
     * We implemented classes for houses, batteries and the grid
     * All other classes are needed for the algorithms
-* Data: all data of the neighborhoods is in this folder
+* **Data:** all data of the neighborhoods is in this folder
     * For the standard neighborhoods there are also .png files
-* Findings: in this folder are all the solved neighborhoods in .png files
-* Helper_algorithms: in this folder are all the functions that we need to run for all algorithms
-* Output_Data: in this folder are all the solved neighborhoods in .csv files and one overview .csv for all calculated prices for all run algorithms
-* Presentations: all presentations for this course are saved here in .pptx and .pdf files
+* **Findings:** in this folder are all the solved neighborhoods in .png files
+* **Helper_algorithms:** in this folder are all the functions that we need to run for all algorithms
+* **Output_Data:** in this folder are all the solved neighborhoods in .csv files and one overview .csv for all calculated prices for all run algorithms
+* **Presentations:** all presentations for this course are saved here in .pptx and .pdf files
 
 
 You can run the entire code by running main.py:
@@ -53,6 +53,5 @@ python main.py [number of the neigborhood]
 
 
 ### Acknowledgments
-
 * StackOverFlow
 * Minor Programming at the University of Amsterdam
