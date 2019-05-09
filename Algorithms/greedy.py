@@ -1,5 +1,6 @@
 import random
 
+
 def Greedy(dist, b, h):
     output = 0
     while output == 0:
@@ -14,7 +15,7 @@ def Greedy(dist, b, h):
                     b[cell[1]].filled += h[nr].output
                     h[key].pluggedin = b[cell[1]]
                     break
-            if h[h[key].id].pluggedin == False:
+            if h[h[key].id].pluggedin is False:
                 output = 0
                 for key in b:
                     b[key].connected = []

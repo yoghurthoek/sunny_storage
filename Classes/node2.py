@@ -1,5 +1,5 @@
 class Noot(object):
-    def __init__(self, parent = None, position = None):
+    def __init__(self, parent=None, position=None):
         self.parent = parent
         self.position = position
 
