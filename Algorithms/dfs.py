@@ -56,10 +56,9 @@ def dfs(startnode, b, h, distdict, dist, best):
             b[bat].connected.append(h[housekey])
 
     # Set house connections to true, so does not get blacked out in visualize
-    for nr in h:
-        h[nr].pluggedin = True
-
-    return best.price
+    for bat in b:
+        for house in b[bat].connected:
+            house.pluggedin = b[bat]
 
 
 def children(node, b, h, distdict, dist, max):

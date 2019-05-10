@@ -68,7 +68,8 @@ choices:
                 dist, distdict, lowbprice = distancearr(grid.batteries, grid.houses)
                 best.price = 700000
                 node.lowbound = lowbprice
-                price = dfs(node, grid.batteries, grid.houses, distdict, dist, best)
+                dfs(node, grid.batteries, grid.houses, distdict, dist, best)
+                price = price_calc(grid.batteries, distdict)
                 visualize(grid.batteries, grid.houses)
             elif command == "HILLCLIMBER":
                 dist, distdict, lowbprice = distancearr(grid.batteries, grid.houses)
@@ -107,13 +108,16 @@ choices:
                 elif command == "NO OPTIMIZE":
                     print("nothing")
             elif command == "RANDCLIMBER":
-                print("Choose number of repetitions")
+                print("repeat until no change for how many times?")
                 repetitions = int(input("> "))
                 dist, distdict, lowbprice = distancearr(grid.batteries, grid.houses)
-                price = Greedy(dist, grid.batteries, grid.houses)
-                initial = Node()
-                initial.fillnode(grid.batteries, grid.houses, price)
-                price = Randclimber(initial, price, repetitions, distdict, grid.batteries, grid.houses)
+                Greedy(dist, grid.batteries, grid.houses)
+                price = price_calc(grid.batteries, distdict)
+                print(f"Price of greedy: {price}")
+                Randclimber(price, repetitions, distdict, grid.batteries, grid.houses)
+                price = price_calc(grid.batteries, distdict)
+                print(f"Price after climbing: {price}")
+                visualize(grid.batteries, grid.houses)
             else:
                 print("invalid command")
 
