@@ -3,7 +3,7 @@
 *The project SmartGrid is conducted for the course 'Programming theory/Heuristics' for the Minor Programming (2019) at the University of Amsterdam.*
 
 <br></br>
-If we still want our lamp to work at night and our phones charged in 100 years, somethings have to change in this world. Primary energy sources are running out, so we have to look at alternative energy sources. Green energy is the energy of the future. This is energy produced from inexhaustible sources, like wind or sun. It sounds good, however there are 'buts'. Sometimes solar panels (fortunately!) produce too many energy for their household. Ideally, the energy is transferred back to energy suppliers. Unfortunately, the infrastructure (the grid) is not designed for that. In our case, to still be able to use this energy, we use batteries.
+If we still want our lamp to work at night and our phones charged in 100 years, some things have to change in this world. Primary energy sources are running out, so we have to look at alternative energy sources. Green energy is the energy of the future. This is energy produced from inexhaustible sources, like wind or sun. It sounds good, however there are 'buts'. Sometimes solar panels (fortunately!) produce too many energy for their household. Ideally, the energy is transferred back to energy suppliers. Unfortunately, the infrastructure (the grid) is not designed for that. In our case, to still be able to use this energy, we use batteries.
 
 To test if we can actually make a 'smart grid', we use different neighborhoods for this project. We have 3 standard neighborhoods, which all have 150 houses and 5 batteries. Since we have to connect the houses to the batteries, we are working with a state space of 5^150 = 7E104. So, a lot of possibilities to connect the houses! We generated our own neighborhoods with less houses and batteries to reduce the state space and test our algorithms. The images of the standard neighborhoods can be found in the folder 'Data'. An example of the first neighborhood:
 <img src="Data/wijk1.png" />
@@ -11,6 +11,7 @@ To test if we can actually make a 'smart grid', we use different neighborhoods f
 So, we have a lot of possibilities to connect houses with batteries. However, we also have limitations. Firstly, all of the houses have solar panels that generate a maximum output. Secondly, all of the batteries have a maximum capacity, which can not be exceeded when connecting houses to batteries. Lastly, the total costs have to be a low as possible. The costs are calculated as following:
 * **Battery costs:** 5000 per battery (until SmartBatteryCompany helps us!)
 * **Cable costs:** 9 per grid segment
+
 Next to this houses can only be connected to 1 battery and not with eachother.
 
 The first part of the assignment is to connect all the houses with the batteries and take care of the limitations. The second part is to calculate the total costs of the neighborhood and try to optimize that. The third part is the total cost need to optimized by moving the batteries. For the last part we get a little help from the SmartBatteryCompany! They have developed three new batteries with different capacities and prices. We can use as many as we want, but the goal is again to optimize the total cost.
