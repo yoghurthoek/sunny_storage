@@ -10,7 +10,7 @@ from Classes.node import Node
 from Algorithms.hillclimber import hillclimber
 from Algorithms.random import random_alg
 from Algorithms.battery_optimization import battery_optimization
-# from Helper_algorithms.distancearr import distancearr
+from Helper_algorithms.distancearr import distancearr
 from Helper_algorithms.price_calc import price_calc
 from Helper_algorithms.visualize import visualize
 from Helper_algorithms.write_to_csv import write_to_csv
@@ -36,7 +36,7 @@ choices:
             command2 = "no"
             command3 = "no"
             if command == "RANDOM":
-                dist, distdict = distancearr(grid.batteries, grid.houses)
+                dist, distdict, lowbprice = distancearr(grid.batteries, grid.houses)
                 random_alg(distdict, grid.batteries, grid.houses)
                 price = price_calc(grid.batteries, distdict)
                 print(price)
@@ -48,7 +48,7 @@ choices:
                 Averagefit(grid, grid.batteries, grid.houses)
                 visualize(grid.batteries, grid.houses)
             elif command == "GREEDY":
-                dist, distdict = distancearr(grid.batteries, grid.houses)
+                dist, distdict, lowbprice = distancearr(grid.batteries, grid.houses)
                 Greedy(dist, grid.batteries, grid.houses)
                 price = price_calc(grid.batteries, distdict)
                 print(price)
@@ -57,7 +57,7 @@ choices:
             elif command == "BREADTH-FIRST":
                 node = Node()
                 best = Node()
-                dist, distdict = distancearr(grid.batteries, grid.houses)
+                dist, distdict, lowbprice = distancearr(grid.batteries, grid.houses)
                 # Only use this if greedy gives a allowed solution
                 best.price = Greedy(dist, grid.batteries, grid.houses)
                 bfs(node, grid.batteries, grid.houses, distdict, best)
@@ -65,12 +65,13 @@ choices:
             elif command == "DEPTH-FIRST":
                 node = Node()
                 best = Node()
-                dist, distdict = distancearr(grid.batteries, grid.houses)
+                dist, distdict, lowbprice = distancearr(grid.batteries, grid.houses)
                 best.price = 700000
-                dfs(node, grid.batteries, grid.houses, distdict, best)
+                node.lowbound = lowbprice
+                price = dfs(node, grid.batteries, grid.houses, distdict, dist, best)
                 visualize(grid.batteries, grid.houses)
             elif command == "HILLCLIMBER":
-                dist, distdict = distancearr(grid.batteries, grid.houses)
+                dist, distdict, lowbprice = distancearr(grid.batteries, grid.houses)
                 print("""what is the base?
     choices:
         random
@@ -97,9 +98,9 @@ choices:
             """)
                 command3 = (input("> ")).upper()
                 if command3 == "OPTIMIZE":
-                    dist, distdict = distancearr(grid.batteries, grid.houses)
+                    dist, distdict, lowbprice = distancearr(grid.batteries, grid.houses)
                     battery_optimization(grid.batteries)
-                    dist, distdict = distancearr(grid.batteries, grid.houses)
+                    dist, distdict, lowbprice = distancearr(grid.batteries, grid.houses)
                     price = price_calc(grid.batteries, distdict)
                     print(price)
                     visualize(grid.batteries, grid.houses)
@@ -108,7 +109,7 @@ choices:
             elif command == "RANDCLIMBER":
                 print("Choose number of repetitions")
                 repetitions = int(input("> "))
-                dist, distdict = distancearr(grid.batteries, grid.houses)
+                dist, distdict, lowbprice = distancearr(grid.batteries, grid.houses)
                 price = Greedy(dist, grid.batteries, grid.houses)
                 initial = Node()
                 initial.fillnode(grid.batteries, grid.houses, price)

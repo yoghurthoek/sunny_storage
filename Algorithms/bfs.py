@@ -39,6 +39,7 @@ def bfs(startnode, b, h, distdict, best):
         b[bat].connected = best.batts[bat]
 
 
+
 def children(node, b, h, distdict, max):
     """
     Creates nodes for every battery

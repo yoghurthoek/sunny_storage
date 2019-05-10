@@ -21,8 +21,10 @@ def visualize(b, h):
         for house in b[k].connected:
             ax.plot(house.posx, house.posy, color=colors[i],
                     marker=cmarker, markersize=10)
-            ax.plot([b[k].posx, house.posx], [b[k].posy, house.posy],
-                    color=colors[i], linestyle=':', linewidth=1)
+            ax.plot([b[k].posx, b[k].posx], [b[k].posy, house.posy],
+                    color=colors[i], linestyle='-', linewidth=2)
+            ax.plot([b[k].posx, house.posx], [house.posy, house.posy],
+                    color=colors[i], linestyle='-', linewidth=2)
         i += 1
 
     # Plot unconnected houses if they are there

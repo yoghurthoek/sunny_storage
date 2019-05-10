@@ -6,6 +6,7 @@ class Node(object):
         self.level = 0
         self.fill = [[0], [0], [0], [0], [0]]
         self.price = 0
+        self.lowbound = 0
 
     def fillnode(self, b, h, price):
         for battery in b:
