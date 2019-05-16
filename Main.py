@@ -4,7 +4,7 @@ from Algorithms.bfs import bfs
 from Algorithms.decreasingfirstfit import Decreasingfirstfit
 from Algorithms.dfs import dfs
 from Algorithms.greedy import Greedy
-from Algorithms.multiplehillclimber import multhillclimber
+#from Algorithms.multiplehillclimber import multhillclimber
 from Algorithms.randclimber import Randclimber
 from Classes.thegrid import Grid
 from Classes.node import Node
