@@ -28,7 +28,6 @@ choices:
     average-fit
     greedy
     breadth-first
-    A-star
     depth-first
     hillclimber
     randclimber""")
