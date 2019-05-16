@@ -1,8 +1,7 @@
 import random
-import copy
 
 
-def Randclimber( price, repetitions, distdict, b, h):
+def Randclimber(repetitions, distdict, b, h):
     """
     A version of hillclimber which switches random houses iteratively
     """
@@ -24,6 +23,8 @@ def Randclimber( price, repetitions, distdict, b, h):
                 swapprice = distdict[h1.id][h2.pluggedin.id] + distdict[h2.id][h1.pluggedin.id]
                 if curprice > swapprice:
                     # Swapping
+                    b[h1.pluggedin.id].filled += h2.output - h1.output
+                    b[h2.pluggedin.id].filled += h1.output - h2.output
                     b[h2.pluggedin.id].connected.remove(h2)
                     b[h2.pluggedin.id].connected.append(h1)
                     b[h1.pluggedin.id].connected.remove(h1)
@@ -35,4 +36,3 @@ def Randclimber( price, repetitions, distdict, b, h):
                     # Reset counter
                     startover = 0
         startover += 1
-    return price
