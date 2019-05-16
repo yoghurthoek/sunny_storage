@@ -7,6 +7,9 @@ def hillclimber(dist, distdict, b, h):
                 if (b[h[nr1].pluggedin.id].filled - h[nr1].output + h[nr2].output < b[h[nr1].pluggedin.id].capacity) and (b[h[nr2].pluggedin.id].filled - h[nr2].output + h[nr1].output < b[h[nr2].pluggedin.id].capacity):
                     if distdict[nr1][h[nr1].pluggedin.id] + distdict[nr2][h[nr2].pluggedin.id] > distdict[nr1][h[nr2].pluggedin.id] + distdict[nr2][h[nr1].pluggedin.id]:
 
+                        b[h[nr1].pluggedin.id].filled += h[nr2].output - h[nr1].output
+                        b[h[nr2].pluggedin.id].filled += h[nr1].output - h[nr2].output
+
                         b[h[nr2].pluggedin.id].connected.remove(h[nr2])
                         b[h[nr2].pluggedin.id].connected.append(h[nr1])
 

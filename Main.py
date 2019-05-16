@@ -1,9 +1,10 @@
 from sys import argv
 from Algorithms.averagefit import Averagefit
-from Algorithms.decreasingfirstfit import Decreasingfirstfit
-from Algorithms.greedy import Greedy
 from Algorithms.bfs import bfs
+from Algorithms.decreasingfirstfit import Decreasingfirstfit
 from Algorithms.dfs import dfs
+from Algorithms.greedy import Greedy
+from Algorithms.multiplehillclimber import multhillclimber
 from Algorithms.randclimber import Randclimber
 from Classes.thegrid import Grid
 from Classes.node import Node
@@ -31,7 +32,8 @@ choices:
     A-star
     depth-first
     hillclimber
-    randclimber""")
+    randclimber
+    multiplehillclimber""")
             command = (input("> ")).upper()
             command2 = "no"
             command3 = "no"
@@ -114,22 +116,35 @@ choices:
                 Greedy(dist, grid.batteries, grid.houses)
                 price = price_calc(grid.batteries, distdict)
                 print(f"Price of greedy: {price}")
-                Randclimber(price, repetitions, distdict, grid.batteries, grid.houses)
+                Randclimber(repetitions, distdict, grid.batteries, grid.houses)
+                price = price_calc(grid.batteries, distdict)
+                print(f"Price after climbing: {price}")
+                visualize(grid.batteries, grid.houses)
+            elif command == "MULTIPLEHILLCLIMBER":
+                print("repeat until no change for how many times?")
+                repetitions = int(input("> "))
+                dist, distdict, lowbprice = distancearr(grid.batteries, grid.houses)
+                Greedy(dist, grid.batteries, grid.houses)
+                price = price_calc(grid.batteries, distdict)
+                node = Node()
+                node.fillnode(grid.batteries, grid.houses, price)
+                print(f"Price of greedy: {price}")
+                multhillclimber(node, repetitions, distdict, grid.batteries, grid.houses)
                 price = price_calc(grid.batteries, distdict)
                 print(f"Price after climbing: {price}")
                 visualize(grid.batteries, grid.houses)
             else:
                 print("invalid command")
 
-            print("""do you want to save your run?
-            Options:
-            Yes
-            No
-            """)
-            if (input("> ")).upper() == "YES":
-                algorithm = (command + " --> " + command2 + " --> " + command3)
-                write_to_csv(argv[1], algorithm, price, grid.batteries, grid.houses)
-                # save fig
+            # print("""do you want to save your run?
+            # Options:
+            # Yes
+            # No
+            # """)
+            # if (input("> ")).upper() == "YES":
+            #     algorithm = (command + " --> " + command2 + " --> " + command3)
+            #     write_to_csv(argv[1], algorithm, price, grid.batteries, grid.houses)
+            #     # save fig
         else:
             print("neigborhood doesn't exist")
     else:
