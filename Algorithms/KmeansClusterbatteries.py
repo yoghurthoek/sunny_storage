@@ -1,4 +1,6 @@
-from pandas import DataFrame
+import pandas as pd
+import numpy
+
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 
@@ -10,7 +12,7 @@ for i in grid.houses:
     Data('x').append(thegrid.houses[i].posx)
     Data('Y').append(thegrid.houses[i].posy)
 
-df = DataFrame(Data,columns=['x','y'])
+df = pd(Data,columns=['x','y'])
 
 kmeans = KMeans(n_clusters=4).fit(df)
 centroids = kmeans.cluster_centers_

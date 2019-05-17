@@ -1,7 +1,7 @@
 import random
 
 
-def Greedy(dist, b, h):
+def greedy(dist, b, h):
     output = 0
     while output == 0:
         output = 1
