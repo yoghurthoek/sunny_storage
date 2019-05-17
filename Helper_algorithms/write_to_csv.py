@@ -2,7 +2,7 @@ import csv
 import os
 
 
-def write_to_csv(wijk, algorithm, price, batteries, houses):
+def write_to_csv(wijk, algorithm, price):
     # print("which run is this?")
     # runnumber = (input("> ")).upper()
     # file = os.path.dirname(os.getcwd())+f"\\sunny_storage\\Output_Data\\wijk{wijk}_gridout{runnumber}.csv"
@@ -15,7 +15,7 @@ def write_to_csv(wijk, algorithm, price, batteries, houses):
     #         for h in batteries[b].connected:
     #             connections.append(h.id)
     #         file_writer.writerow([runnumber, "battery", batteries[b].id, batteries[b].posx, batteries[b].posy, batteries[b].capacity, batteries[b].filled, connections, algorithm])
-    # file2 = os.path.dirname(os.getcwd())+f"\\sunny_storage\\Output_Data\\wijk{wijk}_prices.csv"
-    with open(file2, mode='a') as f:
+    file = os.path.dirname(os.getcwd())+f"\\sunny_storage\\Output_Data\\wijk{wijk}_prices.csv"
+    with open(file, mode='a') as f:
         file_writer = csv.writer(f, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        file_writer.writerow([price, runnumber, algorithm])
+        file_writer.writerow([price, algorithm])
