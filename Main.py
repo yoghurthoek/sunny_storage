@@ -15,7 +15,7 @@ from Helper_algorithms.distancearr import distancearr
 from Helper_algorithms.price_calc import price_calc
 from Helper_algorithms.visualize import visualize
 from Helper_algorithms.write_to_csv import write_to_csv
-
+from Algorithms.KmeansClusterdistance import KmeansClusterdistance
 
 if __name__ == "__main__":
     if len(argv) == 2:
@@ -32,7 +32,8 @@ choices:
     depth-first
     hillclimber
     randclimber
-    multiplehillclimber""")
+    multiplehillclimber
+    Kmeansclusterdistance""")
             command = (input("> ")).upper()
             command2 = "no"
             command3 = "no"
@@ -132,6 +133,10 @@ choices:
                 price = price_calc(grid.batteries, distdict)
                 print(f"Price after climbing: {price}")
                 visualize(grid.batteries, grid.houses)
+            elif command == "KMEANSCLUSTERDISTANCE":
+                print("how many clusters?")
+                k = int(input("> "))
+                KmeansClusterdistance(grid.houses, grid.batteries, k)
             else:
                 print("invalid command")
 

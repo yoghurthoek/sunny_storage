@@ -1,10 +1,9 @@
 import csv
 import os
 
-
 def write_to_csv(wijk, algorithm, price, batteries, houses):
     # print("which run is this?")
-    # runnumber = (input("> ")).upper()
+    runnumber = (input("> ")).upper()
     # file = os.path.dirname(os.getcwd())+f"\\sunny_storage\\Output_Data\\wijk{wijk}_gridout{runnumber}.csv"
     # with open(file, mode='w') as f:
     #     file_writer = csv.writer(f, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
