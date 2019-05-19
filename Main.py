@@ -22,7 +22,6 @@ from Algorithms.KmeansClusterdistance import KmeansClusterdistance
 
 def input_random(batteries, houses, command, repeats=1):
     dist, distdict, lowbprice = distancearr(batteries, houses)
-    print(lowbprice)
     if repeats == 1:
         print("run how many times?")
         repeats = int(input("> "))
