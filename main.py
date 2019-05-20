@@ -2,7 +2,7 @@ from sys import argv
 from Algorithms.averagefit import Averagefit
 from Algorithms.bfs import bfs
 from Algorithms.decreasingfirstfit import Decreasingfirstfit
-from Algorithms.dfs import dfs
+from Algorithms.branchnbound import branchnbound
 from Algorithms.greedy import greedy
 #from Algorithms.multiplehillclimber import multhillclimber
 from Algorithms.randclimber import Randclimber
@@ -80,13 +80,13 @@ def input_bfs(batteries, houses, command, repeats=1):
     visualize(batteries, houses)
 
 
-def input_dfs(batteries, houses, command, repeats=1):
+def input_branchnbound(batteries, houses, command, repeats=1):
     node = Node()
     best = Node()
     dist, distdict, lowbprice = distancearr(batteries, houses)
     best.price = 100000
     node.lowbound = lowbprice
-    dfs(node, batteries, houses, distdict, dist, best)
+    branchnbound(node, batteries, houses, distdict, dist, best)
     price = price_calc(batteries, distdict)
     print(price)
     visualize(batteries, houses)
@@ -183,10 +183,10 @@ def input_batoptimize(batteries, houses, command, base, repeats=1):
 functions = {
     "RANDOM": input_random,
     "FIRST-FIT": input_firstfit,
-    "AVERAGE_FIT": input_averagefit,
+    "AVERAGE-FIT": input_averagefit,
     "GREEDY": input_greedy,
     "BREADTH-FIRST": input_bfs,
-    "DEPTH-FIRST": input_dfs,
+    "BRANCHNBOUND": input_branchnbound,
     "HILLCLIMBER": input_hillclimber,
     "RANDCLIMBER": input_randclimber,
     "MULTIPLEHILLCLIMBER": input_multclimber,

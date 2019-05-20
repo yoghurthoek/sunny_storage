@@ -1,5 +1,5 @@
 """
-Simpelere dfs
+Simpelere branchnbound
 """
 
 from collections import deque
@@ -8,7 +8,7 @@ import time
 import operator
 
 
-def dfs(startnode, b, h, distdict, dist, best):
+def branchnbound(startnode, b, h, distdict, dist, best):
     """
     Implements a depth first search
     because it takes long
