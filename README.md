@@ -44,7 +44,6 @@ pip install -r requirements.txt
     * All other classes are needed for the algorithms
 * **Data:** all data of the neighborhoods is in this folder
     * For the standard neighborhoods there are also .png files
-* **Findings:** in this folder are all the solved neighborhoods in .png files
 * **Helper_algorithms:** in this folder are all the functions that we need to run for all algorithms
 * **Output_Data:** in this folder are all the solved neighborhoods in .csv files and one overview .csv for all calculated prices for all run algorithms
 * **Presentations:** all presentations for this course are saved here in .pptx and .pdf files

@@ -13,8 +13,8 @@ In this folder are the scripts of the algorithms we implemented for every part o
     * **branchnbound:** this algorithm creates a stack with all possible configurations. It is also an exhaustive algorithm with a (very) long runtime. We tried to prune the stack, making it a branch 'n bound algorithm.
         * Since the runningtime is still long, it can only be runned with neighborhood 4/5
     * **greedy:** this algorithm chooses randomly a house and connects it to a battery based on best (shortest) distance.
-    * **hillclimber:** this algorithm can be based on greedy and random. 
-    * **randclimber:** text
+    * **hillclimber:** this algorithm starts with a greedy or random base and tries to find a better solution by  switching houses.
+    * **randclimber:** this algorithm connects houses and batteries randomly and tries to optimize by switching houses.
     * **random:** this algorithm connects houses and batteries randomly
 
 
