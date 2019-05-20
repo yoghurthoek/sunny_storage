@@ -14,18 +14,18 @@ def KmeansClusterdistance(h, b, k):
         clustercenters[number][2] = number
         housecoordinates[number] = []
 
+    for house in h:
+        manhatbest = 1000
+        for p in clustercenters:
+            manhat = abs(p[0] - h[house].posx) + \
+                     abs(p[1] - h[house].posy)
+            if manhat < manhatbest:
+                manhatbest = manhat
+                bestp = p[2]
+        housecoordinates[bestp].append(h[house].id)
+
     startover = 0
     while startover < k:
-        for house in h:
-            manhatbest = 1000
-            for p in clustercenters:
-                manhat = abs(p[0] - h[house].posx) + \
-                         abs(p[1] - h[house].posy)
-                if manhat < manhatbest:
-                    manhatbest = manhat
-                    bestp = p[2]
-            housecoordinates[bestp].append(h[house].id)
-
         startover = 0
         oldclustercenters = deepcopy(clustercenters)
         for i in k_list:
@@ -42,6 +42,7 @@ def KmeansClusterdistance(h, b, k):
                 clustercenters[i][1] = round(totaly/totalh)
             if clustercenters[i][0] == clustercenters[i][0] and oldclustercenters[i][1] == clustercenters[i][1]:
                 startover += 1
+    print(clustercenters, housecoordinates)
     return clustercenters, housecoordinates
 
 
