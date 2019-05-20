@@ -11,6 +11,7 @@ from Classes.node import Node
 from Algorithms.hillclimber import hillclimber
 from Algorithms.random import random_alg
 from Algorithms.battery_optimization import battery_optimization
+from Helper_algorithms.clustertoclasses import clustertoclasses
 from Helper_algorithms.distancearr import distancearr
 from Helper_algorithms.nodetoclasses import nodetoclasses
 from Helper_algorithms.price_calc import price_calc
@@ -162,7 +163,10 @@ def input_multclimber(batteries, houses, command, base):
 def input_kmeans(batteries, houses, command, repeats=1):
     print("how many clusters?")
     k = int(input("> "))
-    KmeansClusterdistance(houses, batteries, k)
+    clusters, connectedhomes = KmeansClusterdistance(houses, batteries, k)
+    # print(clusters, connectedhomes)
+    clustertoclasses(batteries, houses, clusters, connectedhomes)
+    visualize(batteries, houses)
 
 
 def input_batoptimize(batteries, houses, command, base, repeats=1):
@@ -224,7 +228,7 @@ if __name__ == "__main__":
             print("""which algorithm to execute:
 choices:
     random
-    first_fit
+    first-fit
     average-fit
     greedy
     breadth-first
