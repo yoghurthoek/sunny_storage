@@ -7,4 +7,5 @@ To do list
 - README van algoritmes en helper
 - Opslaan van beste configuratie wijk
 - Findings eruit gooien?
-- requirements checken + aanvullen? 
+- requirements checken + aanvullen?
+- grote main mist ook nog iets (staat erin)
