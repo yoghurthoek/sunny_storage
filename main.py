@@ -222,6 +222,7 @@ if __name__ == "__main__":
         elif len(argv) == 3:
             grid = Grid(argv[1])
             command = argv[2].lower()
+            repeats = 1
             if command == "hillclimber" or command == "randclimber" or command == "optimize":
                 print("base: greedy or random")
                 base = (input("> ")).lower()
@@ -244,6 +245,7 @@ choices:
     Kmeansclusterdistance
     optimize""")
             command = (input("> ")).lower()
+            repeats = 1
             if command == "hillclimber" or command == "randclimber" or command == "optimize":
                 print("base: greedy or random")
                 base = (input("> ")).lower()
