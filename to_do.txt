@@ -1,13 +1,19 @@
 To do list
 
-- plotjes
-- Als je een hele grote stoel hebt, is het dan een bank?
-- Helper_algoritme: save_fig? Runtime?
-- Kmeansclustering
-- README van algoritmes
-- README van helper
-- Opslaan van beste configuratie wijk
-- Findings eruit gooien? (ik heb het fig al ergens anders opgeslagen)
-- requirements checken + aanvullen?
-- Als we mappen veranderen: grote README aanpassen
-- Hoofdletters uit algorithms halen
+* Runnen en plotjes maken (Feline)
+* Nog een Helper_algoritme implementeren voor save_fig? en runtime?
+* Kmeansclustering
+* README algorithms: (feline mee bezig)
+    * hillclimber
+    * RANDCLIMBER
+    * battery_optimization
+    * Kmeansclustering
+* README Helper_algoritme
+* Als je een hele grote stoel hebt, is het dan een bank?
+* Opslaan van beste prijs png wijk
+* Findings eruit gooien (plaatje dfs al opgeslagen)
+    * Als we mappen veranderen -> grote README aanpassen
+* Requirements checken + aanvullen?
+    * ergens een library gedownload?
+* Hoofdletters uit algoritmes halen
+* Ik heb BFS gesloopt denk ik :)

@@ -1,7 +1,6 @@
 # Algorithms
 
-In this folder are the scripts of the algorithms we implemented.
-
+In this folder are the scripts of the algorithms we implemented for every part of the assignment.
 
 1. Connecting the houses with batteries:
     * **averagefit:** this algorithm fills batteries by getting a house with the highest and lowest output and putting them together in a battery
@@ -13,8 +12,8 @@ In this folder are the scripts of the algorithms we implemented.
         * Since this algorithm uses so much memory, it can only be runned with neighborhood 4/5
     * **branchnbound:** this algorithm creates a stack with all possible configurations. It is also an exhaustive algorithm with a (very) long runtime. We tried to prune the stack, making it a branch 'n bound algorithm.
         * Since the runningtime is still long, it can only be runned with neighborhood 4/5
-    * **greedy:** text
-    * **hillclimber:** text
+    * **greedy:** this algorithm chooses randomly a house and connects it to a battery based on best (shortest) distance.
+    * **hillclimber:** this algorithm can be based on greedy and random. 
     * **randclimber:** text
     * **random:** this algorithm connects houses and batteries randomly
 
