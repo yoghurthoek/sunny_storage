@@ -11,6 +11,7 @@ from Classes.node import Node
 from Algorithms.hillclimber import hillclimber
 from Algorithms.random import random_alg
 from Algorithms.battery_optimization import battery_optimization
+from Helper_algorithms.bestplot import bestplot
 from Helper_algorithms.clustertoclasses import clustertoclasses
 from Helper_algorithms.distancearr import distancearr
 from Helper_algorithms.nodetoclasses import nodetoclasses
@@ -36,9 +37,11 @@ def input_random(batteries, houses, command, repeats=1):
             best.fillnode(batteries, houses, price)
         write_to_csv(argv[1], command, price)
         reset(batteries, houses)
+    savefig = bestplot(argv[1], command, best.price)
     print(best.price)
-    nodetoclasses(batteries, houses, best)
-    visualize(batteries, houses)
+    if savefig is True:
+        nodetoclasses(batteries, houses, best)
+        visualize(batteries, houses, argv[1], command)
 
 
 def input_firstfit(batteries, houses, command, repeats=1):
@@ -66,9 +69,11 @@ def input_greedy(batteries, houses, command, repeats=1):
             best.fillnode(batteries, houses, price)
         write_to_csv(argv[1], command, price)
         reset(batteries, houses)
+    savefig = bestplot(argv[1], command, best.price)
     print(best.price)
-    nodetoclasses(batteries, houses, best)
-    visualize(batteries, houses)
+    if savefig is True:
+        nodetoclasses(batteries, houses, best)
+        visualize(batteries, houses, argv[1], command)
 
 
 def input_bfs(batteries, houses, command, repeats=1):
@@ -94,16 +99,16 @@ def input_branchnbound(batteries, houses, command, repeats=1):
 
 def input_hillclimber(batteries, houses, command, base, repeats=1):
     dist, distdict, lowbprice = distancearr(batteries, houses)
-    command = base + "-->" + command
+    command = base + "_" + command
     if repeats == 1:
         print("run how many times?")
         repeats = int(input("> "))
     best = Node()
     best.price = 100000
     for i in range(0, repeats):
-        if base == "GREEDY":
+        if base == "greedy":
             greedy(dist, batteries, houses)
-        elif base == "RANDOM":
+        elif base == "random":
             random_alg(distdict, batteries, houses)
         hillclimber(dist, distdict, batteries, houses)
         price = price_calc(batteries, distdict)
@@ -112,25 +117,27 @@ def input_hillclimber(batteries, houses, command, base, repeats=1):
             best.fillnode(batteries, houses, price)
         write_to_csv(argv[1], command, price)
         reset(batteries, houses)
+    savefig = bestplot(argv[1], command, best.price)
     print(best.price)
-    nodetoclasses(batteries, houses, best)
-    visualize(batteries, houses)
+    if savefig is True:
+        nodetoclasses(batteries, houses, best)
+        visualize(batteries, houses, argv[1], command)
 
 
 def input_randclimber(batteries, houses, command, base, repeats=1):
     dist, distdict, lowbprice = distancearr(batteries, houses)
-    command = base + "-->" + command
     print("repeat until no change for how many times?")
     repetitions = int(input("> "))
+    command = base + "_" + command + str(repetitions)
     if repeats == 1:
         print("run how many times?")
         repeats = int(input("> "))
     best = Node()
     best.price = 100000
     for i in range(0, repeats):
-        if base == "GREEDY":
+        if base == "greedy":
             greedy(dist, batteries, houses)
-        elif base == "RANDOM":
+        elif base == "random":
             random_alg(distdict, batteries, houses)
         Randclimber(repetitions, distdict, batteries, houses)
         price = price_calc(batteries, distdict)
@@ -139,9 +146,11 @@ def input_randclimber(batteries, houses, command, base, repeats=1):
             best.fillnode(batteries, houses, price)
         write_to_csv(argv[1], command, price)
         reset(batteries, houses)
+    savefig = bestplot(argv[1], command, best.price)
     print(best.price)
-    nodetoclasses(batteries, houses, best)
-    visualize(batteries, houses)
+    if savefig is True:
+        nodetoclasses(batteries, houses, best)
+        visualize(batteries, houses, argv[1], command)
 
 
 def input_multclimber(batteries, houses, command, base):
@@ -170,8 +179,8 @@ def input_kmeans(batteries, houses, command, repeats=1):
 
 
 def input_batoptimize(batteries, houses, command, base, repeats=1):
-    command = base + "-->" + "HILLCLIMBER" + "-->" + "OPTIMIZE"
-    input_hillclimber(batteries, houses, "HILLCLIMBER", base)
+    command = base + "-->" + "hillclimber" + "-->" + "optimize"
+    input_hillclimber(batteries, houses, "hillclimber", base)
     battery_optimization(batteries)
     dist, distdict, lowbprice = distancearr(batteries, houses)
     price = price_calc(batteries, distdict)
@@ -181,48 +190,44 @@ def input_batoptimize(batteries, houses, command, base, repeats=1):
 
 
 functions = {
-    "RANDOM": input_random,
-    "FIRST-FIT": input_firstfit,
-    "AVERAGE-FIT": input_averagefit,
-    "GREEDY": input_greedy,
-    "BREADTH-FIRST": input_bfs,
-    "BRANCHNBOUND": input_branchnbound,
-    "HILLCLIMBER": input_hillclimber,
-    "RANDCLIMBER": input_randclimber,
-    "MULTIPLEHILLCLIMBER": input_multclimber,
-    "KMEANSCLUSTERDISTANCE": input_kmeans,
-    "OPTIMIZE": input_batoptimize
+    "random": input_random,
+    "first-fit": input_firstfit,
+    "average-fit": input_averagefit,
+    "greedy": input_greedy,
+    "breadth-first": input_bfs,
+    "branchnbound": input_branchnbound,
+    "hillclimber": input_hillclimber,
+    "randclimber": input_randclimber,
+    "multiplehillclimber": input_multclimber,
+    "kmeansclusterdistance": input_kmeans,
+    "optimize": input_batoptimize
 }
 
 if __name__ == "__main__":
     if int(argv[1]) > 0 and int(argv[1]) < 6:
         if len(argv) == 4:
             grid = Grid(argv[1])
-            command = argv[2].upper()
+            command = argv[2].lower()
             try:
                 repeats = int(argv[3])
             except ValueError:
                 print("input a positive int")
                 repeats = 1
-            try:
-                functions[command](grid.batteries, grid.houses, command, repeats)
-            except TypeError:
+            if command == "hillclimber" or command == "randclimber" or command == "optimize":
                 print("base: greedy or random")
-                base = (input("> ")).upper()
+                base = (input("> ")).lower()
                 functions[command](grid.batteries, grid.houses, command, base, repeats)
-            except KeyError:
-                print("invalid command")
+            else:
+                functions[command](grid.batteries, grid.houses, command, repeats)
         elif len(argv) == 3:
             grid = Grid(argv[1])
-            command = argv[2].upper()
-            try:
-                functions[command](grid.batteries, grid.houses, command)
-            except TypeError:
+            command = argv[2].lower()
+            if command == "hillclimber" or command == "randclimber" or command == "optimize":
                 print("base: greedy or random")
-                base = (input("> ")).upper()
-                functions[command](grid.batteries, grid.houses, command, base)
-            except KeyError:
-                print("invalid command")
+                base = (input("> ")).lower()
+                functions[command](grid.batteries, grid.houses, command, base, repeats)
+            else:
+                functions[command](grid.batteries, grid.houses, command, repeats)
         elif len(argv) == 2:
             grid = Grid(argv[1])
             print("""which algorithm to execute:
@@ -238,12 +243,10 @@ choices:
     multiplehillclimber
     Kmeansclusterdistance
     optimize""")
-            command = (input("> ")).upper()
-            try:
-                functions[command](grid.batteries, grid.houses, command)
-            except TypeError:
+            command = (input("> ")).lower()
+            if command == "hillclimber" or command == "randclimber" or command == "optimize":
                 print("base: greedy or random")
-                base = (input("> ")).upper()
-                functions[command](grid.batteries, grid.houses, command, base)
-            except KeyError:
-                print("invalid command")
+                base = (input("> ")).lower()
+                functions[command](grid.batteries, grid.houses, command, base, repeats)
+            else:
+                functions[command](grid.batteries, grid.houses, command, repeats)
