@@ -2,9 +2,11 @@
 
 In this folder are the scripts of the algorithms we implemented.
 
+
 Connecting the houses with batteries:
 * **averagefit:** this algorithm fills batteries by getting a house with the highest and lowest output and putting them together in a battery
 * **decreasingfirstfit:** this algorithm fills batteries by getting houses from a sorted list (high to low capacity) and starts with houses with the highest capacity.
+
 
 Calculate the total costs of the neighborhood and try to optimize:
 * **bfs:** this algorithm creates a queue with all possible configurations. It is an exhaustive algorithm and uses a lot of memory.
@@ -16,8 +18,10 @@ Calculate the total costs of the neighborhood and try to optimize:
 * **randclimber:** text
 * **random:** this algorithm connects houses and batteries randomly
 
+
 Optimization of the total costs by moving the batteries:
 * **battery_optimization:** text
+
 
 Optimization of the total costs by moving and using other batteries:
 * **KmeansClusterBatteries**
