@@ -6,15 +6,18 @@ def bestplot(wijk, algorithm, price):
     savefig = False
     absent = True
     file = os.path.dirname(os.getcwd())+f"\\sunny_storage\\Output_Data\\bestwijk{wijk}.csv"
-    with open(file, mode='r') as f:
-        reader = csv.reader(f)
-        copy = list(reader)
-        for row in copy:
-            if algorithm in row:
-                absent = False
-                if price < int(row[0]):
-                    savefig = True
-                    row[0] = price
+    try:
+        with open(file, mode='r') as f:
+            reader = csv.reader(f)
+            copy = list(reader)
+            for row in copy:
+                if algorithm in row:
+                    absent = False
+                    if price < int(row[0]):
+                        savefig = True
+                        row[0] = price
+    except FileNotFoundError:
+        pass
 
     if absent is True:
         savefig = True
