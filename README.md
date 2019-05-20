@@ -8,11 +8,12 @@ If we still want our lamp to work at night and our phones charged in 100 years, 
 To test if we can actually make a 'smart grid', we use different neighborhoods for this project. We have 3 standard neighborhoods, which all have 150 houses and 5 batteries. Since we have to connect the houses to the batteries, we are working with a state space of 5^150 = 7E104. So, a lot of possibilities to connect the houses! We generated our own neighborhoods with less houses and batteries to reduce the state space and test our algorithms. The images of the standard neighborhoods can be found in the folder 'Data'. An example of the first neighborhood:
 
 **FUCKING TITEL**
+
 <img src="Data/wijk1.png" />
 
 <sub><sup>onder titel</sup></sub>
 
-<br>
+<br></br>
 So, we have a lot of possibilities to connect houses with batteries. However, we also have limitations. Firstly, all of the houses have solar panels that generate a maximum output. Secondly, all of the batteries have a maximum capacity, which can not be exceeded when connecting houses to batteries. Lastly, the total costs have to be a low as possible. The costs are calculated as following:
 * **Battery costs:** 5000 per battery (until SmartBatteryCompany helps us!)
 * **Cable costs:** 9 per grid segment
