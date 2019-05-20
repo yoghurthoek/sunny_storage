@@ -1,4 +1,2 @@
-random
-matlibplot
-numpy
-copy
+matplotlib==3.0.3
+numpy==1.16.2

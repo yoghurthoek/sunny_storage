@@ -7,8 +7,4 @@ To do list
     * battery_optimization
     * Kmeansclustering
 * README Helper_algoritme
-* Als je een hele grote stoel hebt, is het dan een bank?
-* Requirements checken + aanvullen?
-    * libraries erin gezet, maar missen nog versie nummers
-* Hoofdletters uit algoritmes halen
 * Ik heb BFS gesloopt denk ik :)
