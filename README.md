@@ -15,11 +15,14 @@ So, we have a lot of possibilities to connect houses with batteries. However, we
 
 Next to this houses can only be connected to 1 battery and not with each other.
 
-The first part of the assignment is to connect all the houses with the batteries and take care of the limitations. We implemented the algorithms averagefit and decreasingfirstfit for this part. The second part is to calculate the total costs of the neighborhood and try to optimize that. We implemented
+The first part of the assignment is to connect all the houses with the batteries and take care of the limitations. We implemented the algorithms averagefit and decreasingfirstfit for this part. The second part is to calculate the total costs of the neighborhood and try to optimize that. We implemented breadth first search (bfs), branchnbound, greedy, hillclimber (base greedy or random), randclimber and random for this part. The third part is the total cost need to optimized by moving the batteries. We implemented battery_optimization for this. For the last part we get a little help from the SmartBatteryCompany! They have developed three new batteries with different capacities and prices. We can use as many as we want, but the goal is again to optimize the total cost.
 
 
-The third part is the total cost need to optimized by moving the batteries. For the last part we get a little help from the SmartBatteryCompany! They have developed three new batteries with different capacities and prices. We can use as many as we want, but the goal is again to optimize the total cost.
-
+| Battery type   |      Capacity      |  Price |
+|----------|:-------------:|------:|
+| Powerstar |  450 | 900 |
+| Imerse-II |    900   |   1350 |
+| Imerse-III | 1800 |    1800 |
 >> hier moet nog stuk over die nieuwe batterijen
 
 <br></br>
