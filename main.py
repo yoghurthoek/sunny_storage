@@ -20,6 +20,7 @@ from Helper_algorithms.reset import reset
 from Helper_algorithms.visualize import visualize
 from Helper_algorithms.write_to_csv import write_to_csv
 from Algorithms.KmeansClusterdistance import KmeansClusterdistance
+from Algorithms.KmeansClusterbatteries import KmeansClusterbatteries
 
 
 def input_random(batteries, houses, command, repeats=1):
@@ -188,6 +189,11 @@ def input_batoptimize(batteries, houses, command, base, repeats=1):
     print(price)
     visualize(batteries, houses)
 
+def battery_Kmeans(batteries, houses, command):
+    a, b = KmeansClusterbatteries(batteries, houses)
+    print(a)
+    print(b)
+
 
 functions = {
     "random": input_random,
@@ -243,6 +249,7 @@ choices:
     randclimber
     multiplehillclimber
     Kmeansclusterdistance
+    Kmeansclusterbatteries
     optimize""")
             command = (input("> ")).lower()
             repeats = 1

@@ -1,16 +1,13 @@
 To do list
 
-* Runnen en plotjes maken (Feline)
+* Runnen en plotjes maken (Feline) -> MEE BEZIG
+* Nog een Helper_algoritme implementeren voor runtime?
 * Kmeansclustering
-* README algorithms: (feline mee bezig)
-    * hillclimber
-    * RANDCLIMBER
+* README algorithms:
     * battery_optimization
     * Kmeansclustering
 * README Helper_algoritme
-* Als je een hele grote stoel hebt, is het dan een bank? Ik vind van wel - Jochem
-* Findings eruit gooien (plaatje dfs al opgeslagen)
-    * Als we mappen veranderen -> grote README aanpassen
+* Als je een hele grote stoel hebt, is het dan een bank?
 * Requirements checken + aanvullen?
-    * ergens een library gedownload?
+    * libraries erin gezet, maar missen nog versie nummers
 * Ik heb BFS gesloopt denk ik :)
