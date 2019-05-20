@@ -1,0 +1,10 @@
+To do list
+
+- plotjes
+- Als je een hele grote stoel hebt, is het dan een bank?
+- Helper_algoritme: save_fig? Runtime?
+- Kmeansclustering
+- README van algoritmes en helper
+- Opslaan van beste configuratie wijk
+- Findings eruit gooien?
+- requirements checken + aanvullen? 
