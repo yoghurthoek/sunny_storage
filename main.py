@@ -18,6 +18,7 @@ from Helper_algorithms.reset import reset
 from Helper_algorithms.visualize import visualize
 from Helper_algorithms.write_to_csv import write_to_csv
 from Algorithms.KmeansClusterdistance import KmeansClusterdistance
+from Algorithms.KmeansClusterbatteries import KmeansClusterbatteries
 
 
 def input_random(batteries, houses, command, repeats=1):
@@ -176,11 +177,16 @@ def input_batoptimize(batteries, houses, command, base, repeats=1):
     print(price)
     visualize(batteries, houses)
 
+def battery_Kmeans(batteries, houses, command):
+    a, b = KmeansClusterbatteries(batteries, houses)
+    print(a)
+    print(b)
+
 
 functions = {
     "RANDOM": input_random,
     "FIRST-FIT": input_firstfit,
-    "AVERAGE_FIT": input_averagefit,
+    "AVERAGE-FIT": input_averagefit,
     "GREEDY": input_greedy,
     "BREADTH-FIRST": input_bfs,
     "DEPTH-FIRST": input_branchnbound,
@@ -188,7 +194,8 @@ functions = {
     "RANDCLIMBER": input_randclimber,
     "MULTIPLEHILLCLIMBER": input_multclimber,
     "KMEANSCLUSTERDISTANCE": input_kmeans,
-    "OPTIMIZE": input_batoptimize
+    "OPTIMIZE": input_batoptimize,
+    "KMEANSCLUSTERBATTERIES": battery_Kmeans
 }
 
 if __name__ == "__main__":
@@ -214,10 +221,10 @@ if __name__ == "__main__":
             command = argv[2].upper()
             try:
                 functions[command](grid.batteries, grid.houses, command)
-            except TypeError:
-                print("base: greedy or random")
-                base = (input("> ")).upper()
-                functions[command](grid.batteries, grid.houses, command, base)
+            # except TypeError:
+            #     print("base: greedy or random")
+            #     base = (input("> ")).upper()
+            #     functions[command](grid.batteries, grid.houses, command, base)
             except KeyError:
                 print("invalid command")
         elif len(argv) == 2:
@@ -225,7 +232,7 @@ if __name__ == "__main__":
             print("""which algorithm to execute:
 choices:
     random
-    first_fit
+    first-fit
     average-fit
     greedy
     breadth-first
@@ -234,13 +241,14 @@ choices:
     randclimber
     multiplehillclimber
     Kmeansclusterdistance
+    Kmeansclusterbatteries
     optimize""")
             command = (input("> ")).upper()
             try:
                 functions[command](grid.batteries, grid.houses, command)
-            except TypeError:
-                print("base: greedy or random")
-                base = (input("> ")).upper()
-                functions[command](grid.batteries, grid.houses, command, base)
+            # except TypeError:
+            #     print("base: greedy or random")
+            #     base = (input("> ")).upper()
+            #     functions[command](grid.batteries, grid.houses, command, base)
             except KeyError:
                 print("invalid command")
