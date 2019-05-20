@@ -7,14 +7,18 @@ If we still want our lamp to work at night and our phones charged in 100 years, 
 
 To test if we can actually make a 'smart grid', we use different neighborhoods for this project. We have 3 standard neighborhoods, which all have 150 houses and 5 batteries. Since we have to connect the houses to the batteries, we are working with a state space of 5^150 = 7E104. So, a lot of possibilities to connect the houses! We generated our own neighborhoods with less houses and batteries to reduce the state space and test our algorithms. The images of the standard neighborhoods can be found in the folder 'Data'. An example of the first neighborhood:
 <img src="Data/wijk1.png" />
+<sub><sup>combining the two tags</sup></sub>
 
 So, we have a lot of possibilities to connect houses with batteries. However, we also have limitations. Firstly, all of the houses have solar panels that generate a maximum output. Secondly, all of the batteries have a maximum capacity, which can not be exceeded when connecting houses to batteries. Lastly, the total costs have to be a low as possible. The costs are calculated as following:
 * **Battery costs:** 5000 per battery (until SmartBatteryCompany helps us!)
 * **Cable costs:** 9 per grid segment
 
-Next to this houses can only be connected to 1 battery and not with eachother.
+Next to this houses can only be connected to 1 battery and not with each other.
 
-The first part of the assignment is to connect all the houses with the batteries and take care of the limitations. The second part is to calculate the total costs of the neighborhood and try to optimize that. The third part is the total cost need to optimized by moving the batteries. For the last part we get a little help from the SmartBatteryCompany! They have developed three new batteries with different capacities and prices. We can use as many as we want, but the goal is again to optimize the total cost.
+The first part of the assignment is to connect all the houses with the batteries and take care of the limitations. We implemented the algorithms averagefit and decreasingfirstfit for this part. The second part is to calculate the total costs of the neighborhood and try to optimize that. We implemented
+
+
+The third part is the total cost need to optimized by moving the batteries. For the last part we get a little help from the SmartBatteryCompany! They have developed three new batteries with different capacities and prices. We can use as many as we want, but the goal is again to optimize the total cost.
 
 >> hier moet nog stuk over die nieuwe batterijen
 

@@ -1,5 +1,5 @@
 """
-Simpelere dfs
+Simpelere branchnbound
 """
 
 from collections import deque
