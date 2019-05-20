@@ -38,7 +38,7 @@ pip install -r requirements.txt
 ```
 
 ### Structure
-* **Algorithms:** in this folder are all the scripts for programmed algorithms
+* **Algorithms:** in this folder are the scripts of the algorithms we implemented for every part of the assignment
 * **Classes:** all needed classes are in this folder
     * We implemented classes for houses, batteries and the grid
     * All other classes are needed for the algorithms

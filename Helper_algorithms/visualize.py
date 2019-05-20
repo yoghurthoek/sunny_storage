@@ -1,9 +1,10 @@
 import matplotlib.pyplot as plt
 from matplotlib.path import Path
 import matplotlib.ticker as ticker
+import os
 
 
-def visualize(b, h):
+def visualize(b, h, wijk, command):
     fig, ax = plt.subplots()
 
     # Use different colors depending on battery connection
@@ -51,4 +52,6 @@ def visualize(b, h):
     ax.grid(b=True, which='major', linewidth=1.5)
     ax.grid(b=True, which='minor', linewidth=0.5)
 
+    output = os.path.dirname(os.getcwd())+f"\\sunny_storage\\Output_Data\\bestwijk{wijk}_{command}.png"
+    plt.savefig(output)
     plt.show()
