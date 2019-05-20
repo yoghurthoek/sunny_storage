@@ -180,10 +180,10 @@ def input_batoptimize(batteries, houses, command, base, repeats=1):
 functions = {
     "RANDOM": input_random,
     "FIRST-FIT": input_firstfit,
-    "AVERAGE_FIT": input_averagefit,
+    "AVERAGE-FIT": input_averagefit,
     "GREEDY": input_greedy,
     "BREADTH-FIRST": input_bfs,
-    "DEPTH-FIRST": input_branchnbound,
+    "BRANCHNBOUND": input_branchnbound,
     "HILLCLIMBER": input_hillclimber,
     "RANDCLIMBER": input_randclimber,
     "MULTIPLEHILLCLIMBER": input_multclimber,

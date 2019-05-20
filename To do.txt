@@ -10,3 +10,4 @@ To do list
 - Findings eruit gooien? (ik heb het fig al ergens anders opgeslagen)
 - requirements checken + aanvullen?
 - Als we mappen veranderen: grote README aanpassen
+- Hoofdletters uit algorithms halen
