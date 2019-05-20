@@ -15,6 +15,9 @@ So, we have a lot of possibilities to connect houses with batteries. However, we
 Next to this houses can only be connected to 1 battery and not with eachother.
 
 The first part of the assignment is to connect all the houses with the batteries and take care of the limitations. The second part is to calculate the total costs of the neighborhood and try to optimize that. The third part is the total cost need to optimized by moving the batteries. For the last part we get a little help from the SmartBatteryCompany! They have developed three new batteries with different capacities and prices. We can use as many as we want, but the goal is again to optimize the total cost.
+
+>> hier moet nog stuk over die nieuwe batterijen
+
 <br></br>
 
 ## Getting Started
@@ -25,7 +28,7 @@ The codebase is written in [Python3.6.3](https://www.python.org/downloads/). Pac
 ```
 pip install -r requirements.txt
 ```
-
+>> requirements nog maken :D
 
 ### Structure
 * **Algorithms:** in this folder are all the scripts for programmed algorithms

@@ -26,7 +26,7 @@ def input_random(batteries, houses, command, repeats=1):
         print("run how many times?")
         repeats = int(input("> "))
     best = Node()
-    best.price = 70000
+    best.price = 100000
     for i in range(0, repeats):
         random_alg(distdict, batteries, houses)
         price = price_calc(batteries, distdict)
@@ -56,7 +56,7 @@ def input_greedy(batteries, houses, command, repeats=1):
         print("run how many times?")
         repeats = int(input("> "))
     best = Node()
-    best.price = 70000
+    best.price = 100000
     for i in range(0, repeats):
         greedy(dist, batteries, houses)
         price = price_calc(batteries, distdict)
@@ -83,7 +83,7 @@ def input_dfs(batteries, houses, command, repeats=1):
     node = Node()
     best = Node()
     dist, distdict, lowbprice = distancearr(batteries, houses)
-    best.price = 700000
+    best.price = 100000
     node.lowbound = lowbprice
     dfs(node, batteries, houses, distdict, dist, best)
     price = price_calc(batteries, distdict)
@@ -98,7 +98,7 @@ def input_hillclimber(batteries, houses, command, base, repeats=1):
         print("run how many times?")
         repeats = int(input("> "))
     best = Node()
-    best.price = 70000
+    best.price = 100000
     for i in range(0, repeats):
         if base == "GREEDY":
             greedy(dist, batteries, houses)
@@ -125,7 +125,7 @@ def input_randclimber(batteries, houses, command, base, repeats=1):
         print("run how many times?")
         repeats = int(input("> "))
     best = Node()
-    best.price = 70000
+    best.price = 100000
     for i in range(0, repeats):
         if base == "GREEDY":
             greedy(dist, batteries, houses)
