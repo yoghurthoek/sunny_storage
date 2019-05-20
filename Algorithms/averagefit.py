@@ -1,4 +1,4 @@
-def Averagefit(grid, b, h):
+def averagefit(grid, b, h):
     for key in b:
         count = 1
         backcount = 150

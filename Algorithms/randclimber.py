@@ -1,7 +1,7 @@
 import random
 
 
-def Randclimber(repetitions, distdict, b, h):
+def randclimber(repetitions, distdict, b, h):
     """
     A version of hillclimber which switches random houses iteratively
     """

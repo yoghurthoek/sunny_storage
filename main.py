@@ -1,11 +1,11 @@
 from sys import argv
-from Algorithms.averagefit import Averagefit
+from Algorithms.averagefit import averagefit
 from Algorithms.bfs import bfs
-from Algorithms.decreasingfirstfit import Decreasingfirstfit
+from Algorithms.decreasingfirstfit import decreasingfirstfit
 from Algorithms.branchnbound import branchnbound
 from Algorithms.greedy import greedy
 #from Algorithms.multiplehillclimber import multhillclimber
-from Algorithms.randclimber import Randclimber
+from Algorithms.randclimber import randclimber
 from Classes.thegrid import Grid
 from Classes.node import Node
 from Algorithms.hillclimber import hillclimber
@@ -45,12 +45,12 @@ def input_random(batteries, houses, command, repeats=1):
 
 
 def input_firstfit(batteries, houses, command, repeats=1):
-    Decreasingfirstfit(grid, batteries, houses)
+    decreasingfirstfit(grid, batteries, houses)
     visualize(batteries, houses)
 
 
 def input_averagefit(batteries, houses, command, repeats=1):
-    Averagefit(grid, batteries, houses)
+    averagefit(grid, batteries, houses)
     visualize(batteries, houses)
 
 
@@ -139,7 +139,7 @@ def input_randclimber(batteries, houses, command, base, repeats=1):
             greedy(dist, batteries, houses)
         elif base == "random":
             random_alg(distdict, batteries, houses)
-        Randclimber(repetitions, distdict, batteries, houses)
+        randclimber(repetitions, distdict, batteries, houses)
         price = price_calc(batteries, distdict)
         if price < best.price:
             best.batts = [[], [], [], [], []]

@@ -1,4 +1,4 @@
-def Decreasingfirstfit(grid, b, h):
+def decreasingfirstfit(grid, b, h):
     for nr in h:
         for key in b:
             if h[nr].output + b[key].filled < b[key].capacity:
