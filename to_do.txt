@@ -1,6 +1,10 @@
 To do list
 
 * Runnen en plotjes maken (Feline) -> MEE BEZIG
+    * Randclimber (10000) greedy
+    * Randclimber (10000) random
+    * Optimization random
+    * Optimization greedy
 * Nog een Helper_algoritme implementeren voor runtime?
 * Kmeansclustering
 * README algorithms:
@@ -8,3 +12,5 @@ To do list
     * Kmeansclustering
 * README Helper_algoritme
 * Ik heb BFS gesloopt denk ik :)
+* Simulated annealing?
+* Boven comments ipv losse comments erin
