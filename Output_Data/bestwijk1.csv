@@ -2,3 +2,5 @@
 57517,greedy
 56302,random_hillclimber
 55429,greedy_hillclimber
+55501,greedy_randclimber10000
+56230,random_randclimber10000
