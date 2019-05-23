@@ -9,9 +9,7 @@ To do list
     * battery_optimization
     * Kmeansclustering
 * README Helper_algoritme
-    * nodetoclasses
     * clustertoclasses
-    * reset
 * Boven comments ipv losse comments erin
 * Plot titel met algoritme en prijs
 * nummer kiezen voor algoritme
