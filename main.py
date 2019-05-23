@@ -4,7 +4,6 @@ from Algorithms.bfs import bfs
 from Algorithms.decreasingfirstfit import decreasingfirstfit
 from Algorithms.branchnbound import branchnbound
 from Algorithms.greedy import greedy
-#from Algorithms.multiplehillclimber import multhillclimber
 from Algorithms.randclimber import randclimber
 from Classes.thegrid import Grid
 from Classes.node import Node
@@ -47,12 +46,12 @@ def input_random(batteries, houses, command, repeats=1):
 
 def input_firstfit(batteries, houses, command, repeats=1):
     decreasingfirstfit(grid, batteries, houses)
-    visualize(batteries, houses)
+    visualize(batteries, houses, argv[1], command)
 
 
 def input_averagefit(batteries, houses, command, repeats=1):
     averagefit(grid, batteries, houses)
-    visualize(batteries, houses)
+    visualize(batteries, houses, argv[1], command)
 
 
 def input_greedy(batteries, houses, command, repeats=1):
@@ -81,9 +80,9 @@ def input_bfs(batteries, houses, command, repeats=1):
     node = Node()
     best = Node()
     dist, distdict, lowbprice = distancearr(batteries, houses)
-    best.price = greedy(dist, batteries, houses)
+    best.price = 100000
     bfs(node, batteries, houses, distdict, best)
-    visualize(batteries, houses)
+    visualize(batteries, houses, argv[1], command)
 
 
 def input_branchnbound(batteries, houses, command, repeats=1):
@@ -92,10 +91,11 @@ def input_branchnbound(batteries, houses, command, repeats=1):
     dist, distdict, lowbprice = distancearr(batteries, houses)
     best.price = 100000
     node.lowbound = lowbprice
-    branchnbound(node, batteries, houses, distdict, dist, best)
+    best = branchnbound(node, batteries, houses, distdict, dist, best)
+    nodetoclasses(batteries, houses, best)
     price = price_calc(batteries, distdict)
     print(price)
-    visualize(batteries, houses)
+    visualize(batteries, houses, argv[1], command)
 
 
 def input_hillclimber(batteries, houses, command, base, repeats=1):
@@ -154,29 +154,12 @@ def input_randclimber(batteries, houses, command, base, repeats=1):
         visualize(batteries, houses, argv[1], command)
 
 
-def input_multclimber(batteries, houses, command, base):
-    # print("repeat until no change for how many times?")
-    # repetitions = int(input("> "))
-    # dist, distdict, lowbprice = distancearr(grid.batteries, grid.houses)
-    # Greedy(dist, grid.batteries, grid.houses)
-    # price = price_calc(grid.batteries, distdict)
-    # node = Node()
-    # node.fillnode(grid.batteries, grid.houses, price)
-    # print(f"Price of greedy: {price}")
-    # multhillclimber(node, repetitions, distdict, grid.batteries, grid.houses)
-    # price = price_calc(grid.batteries, distdict)
-    # print(f"Price after climbing: {price}")
-    # visualize(grid.batteries, grid.houses)
-    pass
-
-
 def input_kmeans(batteries, houses, command, repeats=1):
     print("how many clusters?")
     k = int(input("> "))
     clusters, connectedhomes = KmeansClusterdistance(houses, batteries, k)
-    # print(clusters, connectedhomes)
     clustertoclasses(batteries, houses, clusters, connectedhomes)
-    visualize(batteries, houses)
+    visualize(batteries, houses, argv[1], command)
 
 
 def input_batoptimize(batteries, houses, command, base, repeats=1):
@@ -187,7 +170,8 @@ def input_batoptimize(batteries, houses, command, base, repeats=1):
     price = price_calc(batteries, distdict)
     write_to_csv(argv[1], command, price)
     print(price)
-    visualize(batteries, houses)
+    visualize(batteries, houses, argv[1], command)
+
 
 def battery_Kmeans(batteries, houses, command):
     a, b = KmeansClusterbatteries(batteries, houses)
@@ -204,7 +188,6 @@ functions = {
     "branchnbound": input_branchnbound,
     "hillclimber": input_hillclimber,
     "randclimber": input_randclimber,
-    "multiplehillclimber": input_multclimber,
     "kmeansclusterdistance": input_kmeans,
     "optimize": input_batoptimize
 }
@@ -243,11 +226,10 @@ choices:
     first-fit
     average-fit
     greedy
-    breadth-first
-    depth-first
+    breadth-first (only with wijk 5)
+    branchnbound (might not finish in this lifetime)
     hillclimber
     randclimber
-    multiplehillclimber
     Kmeansclusterdistance
     Kmeansclusterbatteries
     optimize""")

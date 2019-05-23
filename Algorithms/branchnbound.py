@@ -17,14 +17,17 @@ def branchnbound(startnode, b, h, distdict, dist, best):
     nrofnodes = 0
     timestoend = 0
     max = len(h)
+
     # Create a queue / or stack
     stack = deque([startnode])
+
     # while stack is not empty
     while stack:
         try:
             # if want to try depth first use pop for breadth use popleft
             curnode = stack.pop()
             nrofnodes += 1
+
             # When you've reached a possible solution checks if better
             if curnode.level == max:
                 timestoend += 1
@@ -36,10 +39,10 @@ def branchnbound(startnode, b, h, distdict, dist, best):
                 continue
             if curnode.level == 0:
                 print("back to the start")
+
             # Short version of branch and bound to maybe improve performance
             if curnode.price + curnode.lowbound >= best.price:
                 continue
-            # stack.extend(children(curnode, b, h, distdict, dist, max))
             for node in children(curnode, b, h, distdict, dist, max):
                 stack.append(node)
         except KeyboardInterrupt:
@@ -50,15 +53,7 @@ def branchnbound(startnode, b, h, distdict, dist, best):
     print(f"Times reached max depth : {timestoend}")
     print(best.price)
 
-    # Set best configuration into the battery class to visualize
-    for bat in b:
-        for housekey in best.batts[bat]:
-            b[bat].connected.append(h[housekey])
-
-    # Set house connections to true, so does not get blacked out in visualize
-    for bat in b:
-        for house in b[bat].connected:
-            house.pluggedin = b[bat]
+    return best
 
 
 def children(node, b, h, distdict, dist, max):
