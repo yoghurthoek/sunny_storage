@@ -4,22 +4,17 @@ To do list
     * Optimization random voor alle drie de wijken
     * Optimization greedy voor alle drie de wijken
     * Kmeans voor alle drie de wijken
-* Kmeansclustering afmaken/opnieuw maken (Bart)
+* Kmeansclustering afmaken/opnieuw maken
 * README algorithms:
     * battery_optimization
     * Kmeansclustering
-* README Helper_algoritme
-    * clustertoclasses
 * Boven comments ipv losse comments erin
     * battery_optimization
-    * bfs
-    * branchnbound
-    * greedy
-    * randclimber
-    * random
     * main?
+* Er staan nog comments in branchnbound, greedy, randclimber -> eruit halen?
 * Plot titel met algoritme en prijs
 * nummer kiezen voor algoritme
+* Batt optimization fixen -> alleen visualize werkt niet
 
 
 Wat is wel klaar :)
