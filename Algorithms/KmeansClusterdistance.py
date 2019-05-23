@@ -4,9 +4,9 @@ from copy import deepcopy
 def KmeansClusterdistance(h, b, k):
 
         clustercenters = []
-        keylist = list(range(0, 50))
+        keylist = range(0, 50)
         housecoordinates = {}
-        k_list = list(range(0, k))
+        k_list = range(0, k)
         for number in k_list:
             clustercenters.append([0,0,0])
             clustercenters[number][0] = random.choice(keylist)
@@ -27,7 +27,7 @@ def KmeansClusterdistance(h, b, k):
                         manhatbest = manhat
                         bestp = p[2]
                 housecoordinates[bestp].append(h[house].id)
-            # print(clustercenters, housecoordinates)
+
 
             startover = 0
             oldclustercenters = deepcopy(clustercenters)

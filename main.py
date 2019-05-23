@@ -173,7 +173,7 @@ def input_batoptimize(batteries, houses, command, base, repeats=1):
     visualize(batteries, houses, argv[1], command)
 
 
-def battery_Kmeans(batteries, houses, command):
+def battery_Kmeans(batteries, houses, command, repeats):
     a, b = KmeansClusterbatteries(batteries, houses)
     print(a)
     print(b)
@@ -189,6 +189,7 @@ functions = {
     "hillclimber": input_hillclimber,
     "randclimber": input_randclimber,
     "kmeansclusterdistance": input_kmeans,
+    "kmeansclusterbatteries": battery_Kmeans,
     "optimize": input_batoptimize
 }
 
