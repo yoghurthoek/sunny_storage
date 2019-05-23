@@ -11,5 +11,18 @@ To do list
 * README Helper_algoritme
     * clustertoclasses
 * Boven comments ipv losse comments erin
+    * battery_optimization
+    * bfs
+    * branchnbound
+    * greedy
+    * randclimber
+    * random
+
 * Plot titel met algoritme en prijs
 * nummer kiezen voor algoritme
+
+
+Wat is wel klaar :)
+- alles in de map classes
+- alles in de map data
+- alles in de map output_data
