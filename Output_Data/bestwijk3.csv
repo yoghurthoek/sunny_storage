@@ -2,3 +2,5 @@
 45745,greedy
 43765,greedy_hillclimber
 43909,random_hillclimber
+43765,greedy_randclimber10000
+43891,random_randclimber10000
