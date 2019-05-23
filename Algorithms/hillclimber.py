@@ -1,5 +1,8 @@
 def hillclimber(dist, distdict, b, h):
-
+    """
+    Iterates over all houses and checks if an improvement can be made by
+    switching the connections of 2 houses
+    """
     for nr1 in h:
         for nr2 in h:
             # Checkt of huizen niet al bij zelfde batterij zitten

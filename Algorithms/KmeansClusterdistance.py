@@ -27,6 +27,10 @@ def KmeansClusterdistance(h, b, k):
                         manhatbest = manhat
                         bestp = p[2]
                 housecoordinates[bestp].append(h[house].id)
+<<<<<<< HEAD
+=======
+
+>>>>>>> d36a526e0fff884f26e01f08bf8e665e924ee4cc
 
             startover = 0
             oldclustercenters = deepcopy(clustercenters)
