@@ -1,10 +1,9 @@
 To do list
 
-* Runnen en plotjes maken (Feline) -> MEE BEZIG
+* Runnen en plotjes maken (Feline)
     * Optimization random voor alle drie de wijken
     * Optimization greedy voor alle drie de wijken
     * Kmeans voor alle drie de wijken
-* Nog een Helper_algoritme implementeren voor runtime? (Bfs/Dfs)
 * Kmeansclustering afmaken/opnieuw maken (Bart)
 * README algorithms:
     * battery_optimization
@@ -12,9 +11,7 @@ To do list
 * README Helper_algoritme
     * nodetoclasses
     * clustertoclasses
-    * reset 
-* Ik heb BFS gesloopt denk ik :)
-* Simulated annealing?
+    * reset
 * Boven comments ipv losse comments erin
 * Plot titel met algoritme en prijs
 * nummer kiezen voor algoritme
