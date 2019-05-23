@@ -3,6 +3,7 @@ from copy import deepcopy
 
 
 def KmeansClusterbatteries(b, h):
+    """This function implements Kmeansclustering etc..."""
 
     batteryamount = 5
     totalcaphouse = 0
@@ -12,12 +13,17 @@ def KmeansClusterbatteries(b, h):
         totalcaphouse += h[house].output
     batterylist_pos = {0: ["Powerstar", 450, 900, 0, 0, 0], 1: ["Imerse-II", 900, 1350, 0, 0, 0], 2: ["Imerse-III", 1800, 1800, 0, 0, 0]}
 
+<<<<<<< HEAD
+    for batteryamount in range(5, 18):
+=======
     while batteryamount < 18:
+>>>>>>> 6634557e79eeee9ca21a3ccff9590d9176e5bc27
         used_batteries = {}
-        batteryamountlist = list(range(0, batteryamount))
+        batteryamountlist = range(batteryamount)
         bestfit = 10000
         housecapleft = totalcaphouse
 
+        #package met alle permutaties van een lijst
         for battery in batterylist_pos:
             fit = totalcaphouse/batteryamount - batterylist_pos[battery][1]
             if fit > 0 and fit < bestfit:
@@ -32,7 +38,7 @@ def KmeansClusterbatteries(b, h):
                 used_batteries[instance].append(batterylist_pos[0][1])
             elif batterylist_pos[1][1] < housecapleft:
                 used_batteries[instance].append(batterylist_pos[1][1])
-        print(used_batteries)
+        # print(used_batteries)
 
         startover = 0
         while startover < batteryamount:
@@ -40,7 +46,8 @@ def KmeansClusterbatteries(b, h):
                 housecoordinates[number] = []
                 used_batteries[number][0][3] = random.choice(keylist)
                 used_batteries[number][0][4] = random.choice(keylist)
-                used_batteries[number][0][5] = used_batteries[number][0][2]
+                used_batteries[number][0][5] = used_batteries[number][0][1]
+                # print(used_batteries)
             for house in h:
                 manhatbest = 1000
                 for key in used_batteries:
@@ -50,9 +57,9 @@ def KmeansClusterbatteries(b, h):
                         if manhat < manhatbest:
                             manhatbest = manhat
                             bestbattery = key
-                        housecoordinates[bestbattery] = h[house].id
-                        used_batteries[bestbattery][0][5] -= h[house].output
-            # print(clustercenters, housecoordinates)
+                            housecoordinates[bestbattery].append(h[house].id)
+                            used_batteries[bestbattery][0][5] -= h[house].output
+            # print(housecoordinates)
 
             startover = 0
             old_used_batteries = deepcopy(used_batteries)
@@ -66,9 +73,9 @@ def KmeansClusterbatteries(b, h):
                         totalx += house.posx
                         totaly += house.posy
                         totalh += 1
-                    used_batteries[i][1] = round(totalx/totalh)
-                    used_batteries[i][2] = round(totaly/totalh)
-                if old_used_batteries[i][1] == used_batteries[i][1] and old_used_batteries[i][2] == used_batteries[i][2]:
+                    used_batteries[i][0][1] = round(totalx/totalh)
+                    used_batteries[i][0][2] = round(totaly/totalh)
+                if old_used_batteries[i][0][1] == used_batteries[i][0][1] and old_used_batteries[i][0][2] == used_batteries[i][0][2]:
                     startover += 1
-        batteryamount += 1
+                    print(used_batteries, end="\r")
     return used_batteries, housecoordinates
