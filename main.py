@@ -175,8 +175,13 @@ def input_kmeans(batteries, houses, command, repeats=1):
     k = int(input("> "))
     clusters, connectedhomes = KmeansClusterdistance(houses, batteries, k)
     # print(clusters, connectedhomes)
-    clustertoclasses(batteries, houses, clusters, connectedhomes)
-    visualize(batteries, houses)
+    b, h = clustertoclasses(batteries, houses, clusters, connectedhomes)
+    batteries = b
+    houses = h
+    for bat in batteries:
+        print(batteries[bat].posx)
+        print(batteries[bat].posy)
+    visualize(batteries, houses, argv[1], command)
 
 
 def input_batoptimize(batteries, houses, command, base, repeats=1):
@@ -191,8 +196,8 @@ def input_batoptimize(batteries, houses, command, base, repeats=1):
 
 def battery_Kmeans(batteries, houses, command, repeats):
     a, b = KmeansClusterbatteries(batteries, houses)
-    print(a)
-    print(b)
+    # print(a)
+    # print(b)
 
 
 functions = {
