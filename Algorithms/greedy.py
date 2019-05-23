@@ -3,7 +3,8 @@ import random
 
 def greedy(dist, b, h):
     """
-
+    This algorithm chooses randomly a house and connects it to a battery based
+    on best (shortest) distance.
     """
     # Keeps repeating until all houses are placed
     output = 0

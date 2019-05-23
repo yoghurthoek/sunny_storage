@@ -11,7 +11,6 @@ def decreasingfirstfit(grid, b, h):
                 h[nr].pluggedin = b[key]
                 break
 
-    # Checks
     for key in b:
         print(b[key].filled)
     for house in h:

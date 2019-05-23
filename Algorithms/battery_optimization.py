@@ -1,7 +1,8 @@
 def battery_optimization(b):
-
+    """
+    Tekstjes
+    """
     positions = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
-
     for bat in b:
         i = 0
         for h in b[bat].connected:

@@ -1,7 +1,3 @@
-"""
-Simpelere branchnbound
-"""
-
 from collections import deque
 import pickle
 import time
@@ -10,8 +6,9 @@ import operator
 
 def branchnbound(startnode, b, h, distdict, dist, best):
     """
-    Implements a depth first search
-    because it takes long
+    This algorithm creates a stack with all possible configurations. It is also
+    an exhaustive algorithm with a (very) long runtime. We tried to prune the
+    stack, making it a branch 'n bound algorithm. Should only try wijk 5.
     """
     start = time.time()
     nrofnodes = 0

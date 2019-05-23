@@ -3,9 +3,8 @@ import random
 
 def random_alg(distdict, b, h):
     """
+    This algorithm connects houses and batteries randomly
     """
-
-    # Repeats until all houses are connected
     output = 0
     while output == 0:
         keylist = list(range(0, 150))

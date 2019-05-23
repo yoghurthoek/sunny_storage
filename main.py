@@ -39,8 +39,8 @@ def input_random(batteries, houses, command, repeats=1):
         reset(batteries, houses)
     savefig = bestplot(argv[1], command, best.price)
     print(best.price)
+    nodetoclasses(batteries, houses, best)
     if savefig is True:
-        nodetoclasses(batteries, houses, best)
         visualize(batteries, houses, argv[1], command)
 
 
@@ -116,12 +116,14 @@ def input_hillclimber(batteries, houses, command, base, repeats=1):
         if price < best.price:
             best.batts = [[], [], [], [], []]
             best.fillnode(batteries, houses, price)
+            bat_op = batteries
+            houses_op = houses
         write_to_csv(argv[1], command, price)
         reset(batteries, houses)
     savefig = bestplot(argv[1], command, best.price)
     print(best.price)
+    nodetoclasses(batteries, houses, best)
     if savefig is True:
-        nodetoclasses(batteries, houses, best)
         visualize(batteries, houses, argv[1], command)
 
 
@@ -164,12 +166,13 @@ def input_kmeans(batteries, houses, command, repeats=1):
 
 def input_batoptimize(batteries, houses, command, base, repeats=1):
     command = base + "-->" + "hillclimber" + "-->" + "optimize"
-    input_hillclimber(batteries, houses, "hillclimber", base)
+    output = input_hillclimber(batteries, houses, "hillclimber", base)
     battery_optimization(batteries)
     dist, distdict, lowbprice = distancearr(batteries, houses)
     price = price_calc(batteries, distdict)
     write_to_csv(argv[1], command, price)
     print(price)
+    # alleen visualize werkt nog niet
     visualize(batteries, houses, argv[1], command)
 
 
