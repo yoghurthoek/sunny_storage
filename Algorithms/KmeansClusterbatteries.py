@@ -1,7 +1,6 @@
 import random
 from copy import deepcopy
 
-
 def KmeansClusterbatteries(b, h):
     """This function implements Kmeansclustering etc..."""
 
@@ -13,11 +12,7 @@ def KmeansClusterbatteries(b, h):
         totalcaphouse += h[house].output
     batterylist_pos = {0: ["Powerstar", 450, 900, 0, 0, 0], 1: ["Imerse-II", 900, 1350, 0, 0, 0], 2: ["Imerse-III", 1800, 1800, 0, 0, 0]}
 
-<<<<<<< HEAD
     for batteryamount in range(5, 18):
-=======
-    while batteryamount < 18:
->>>>>>> 6634557e79eeee9ca21a3ccff9590d9176e5bc27
         used_batteries = {}
         batteryamountlist = range(batteryamount)
         bestfit = 10000
@@ -77,5 +72,4 @@ def KmeansClusterbatteries(b, h):
                     used_batteries[i][0][2] = round(totaly/totalh)
                 if old_used_batteries[i][0][1] == used_batteries[i][0][1] and old_used_batteries[i][0][2] == used_batteries[i][0][2]:
                     startover += 1
-                    print(used_batteries, end="\r")
     return used_batteries, housecoordinates

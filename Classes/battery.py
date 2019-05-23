@@ -8,6 +8,7 @@ class Battery(object):
         self.capacity = capacity
         self.filled = 0
         self.connected = []
+        self.price = 5000
 
     def __str__(self):
         return f"Battery nr.{self.id}"

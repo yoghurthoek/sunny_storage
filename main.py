@@ -155,22 +155,27 @@ def input_randclimber(batteries, houses, command, base, repeats=1):
 
 
 def input_kmeans(batteries, houses, command, repeats=1):
-    print("how many clusters?")
-    k = int(input("> "))
-    clusters, connectedhomes = KmeansClusterdistance(houses, batteries, k)
-<<<<<<< HEAD
-    # print(clusters, connectedhomes)
-    b, h = clustertoclasses(batteries, houses, clusters, connectedhomes)
-    batteries = b
-    houses = h
-    for bat in batteries:
-        print(batteries[bat].posx)
-        print(batteries[bat].posy)
-=======
-    clustertoclasses(batteries, houses, clusters, connectedhomes)
->>>>>>> 6634557e79eeee9ca21a3ccff9590d9176e5bc27
+    # print("how many clusters?")
+    # k = int(input("> "))
+    bestprice = 100000
+    for k in range(5, 12):
+        clusters, connectedhomes = KmeansClusterdistance(houses, batteries, k)
+        # print(clusters, connectedhomes)
+        b, h = clustertoclasses(batteries, houses, clusters, connectedhomes)
+        if b == False:
+            k -= 1
+            continue
+        batteries = b
+        houses = h
+        dist, distdict, lowbprice = distancearr(batteries, houses)
+        price = price_calc(batteries, distdict)
+        if price < bestprice:
+            print(price)
+            print(k)
+            bestprice = price
+            bestbat = batteries
+    batteries = bestbat
     visualize(batteries, houses, argv[1], command)
-
 
 def input_batoptimize(batteries, houses, command, base, repeats=1):
     command = base + "-->" + "hillclimber" + "-->" + "optimize"
