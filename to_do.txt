@@ -30,6 +30,6 @@ To do list
 * Ik heb BFS gesloopt denk ik :)
 * Simulated annealing?
 * Boven comments ipv losse comments erin
-* readme output data
 * test of requirements werken
-* Plot titel met algoritme en prijs 
+* Plot titel met algoritme en prijs
+* nummer kiezen voor algoritme
