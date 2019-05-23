@@ -19,7 +19,6 @@ def KmeansClusterbatteries(b, h):
         housecapleft = totalcaphouse
 
         for battery in batterylist_pos:
-            batterylist_pos[battery][1]
             fit = totalcaphouse/batteryamount - batterylist_pos[battery][1]
             if fit > 0 and fit < bestfit:
                 fit = bestfit
@@ -39,20 +38,20 @@ def KmeansClusterbatteries(b, h):
         while startover < batteryamount:
             for number in batteryamountlist:
                 housecoordinates[number] = []
-                used_batteries[number][3] = random.choice(keylist)
-                used_batteries[number][4] = random.choice(keylist)
-                used_batteries[number][5] = used_batteries[number][2]
+                used_batteries[number][0][3] = random.choice(keylist)
+                used_batteries[number][0][4] = random.choice(keylist)
+                used_batteries[number][0][5] = used_batteries[number][0][2]
             for house in h:
                 manhatbest = 1000
                 for key in used_batteries:
-                    manhat = abs(used_batteries[key][3] - h[house].posx) + \
-                             abs(used_batteries[key][4] - h[house].posy)
-                    if used_batteries[key][5] > h[house].output:
+                    manhat = abs(used_batteries[key][0][3] - h[house].posx) + \
+                             abs(used_batteries[key][0][4] - h[house].posy)
+                    if used_batteries[key][0][5] > h[house].output:
                         if manhat < manhatbest:
                             manhatbest = manhat
                             bestbattery = key
                         housecoordinates[bestbattery] = h[house].id
-                        used_batteries[bestbattery][5] -= h[house].output
+                        used_batteries[bestbattery][0][5] -= h[house].output
             # print(clustercenters, housecoordinates)
 
             startover = 0
