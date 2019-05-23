@@ -14,6 +14,8 @@ def distancearr(b, h):
             dist[house].append((manhat, batt))
         dist[house] = sorted(dist[house])
         lowbprice += dist[house][0][0] * 9
+
+    # Transform into a dict for certain functions
     distdict = {}
     for nr in h:
         distdict[nr] = {}

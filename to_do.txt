@@ -1,35 +1,30 @@
 To do list
 
-<<<<<<< HEAD
 * Runnen en plotjes maken (Feline)
-* Nog een Helper_algoritme implementeren voor save_fig? en runtime?
-* Kmeansclustering
-* README algorithms: (feline mee bezig)
-    * hillclimber
-    * RANDCLIMBER
-    * battery_optimization
-    * Kmeansclustering
-* README Helper_algoritme
-* Opslaan van beste prijs png wijk
-* Findings eruit gooien (plaatje dfs al opgeslagen)
-    * Als we mappen veranderen -> grote README aanpassen
-* Requirements checken + aanvullen?
-    * ergens een library gedownload?
-=======
-* Runnen en plotjes maken (Feline) -> MEE BEZIG
     * Optimization random voor alle drie de wijken
     * Optimization greedy voor alle drie de wijken
     * Kmeans voor alle drie de wijken
-* Nog een Helper_algoritme implementeren voor runtime? (Bfs/Dfs)
 * Kmeansclustering afmaken/opnieuw maken (Bart)
 * README algorithms:
     * battery_optimization
     * Kmeansclustering
 * README Helper_algoritme
->>>>>>> 32d0db5403460d260a84a99d436e81721dad19c7
-* Ik heb BFS gesloopt denk ik :)
-* Simulated annealing?
+    * clustertoclasses
 * Boven comments ipv losse comments erin
-* test of requirements werken
+    * battery_optimization
+    * bfs
+    * branchnbound
+    * greedy
+    * randclimber
+    * random
+    * main?
 * Plot titel met algoritme en prijs
 * nummer kiezen voor algoritme
+
+
+Wat is wel klaar :)
+- alles in de map classes
+- alles in de map data
+- alles in de map output_data
+- grote README en requirements
+- alles in de map presentations

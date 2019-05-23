@@ -1,9 +1,13 @@
-def Averagefit(grid, b, h):
+def averagefit(grid, b, h):
+    """
+    Connects houses to batteries when houses are ordered small to big.
+    Tries to fit houses taking the biggest and the smallest outputs together.
+    """
     for key in b:
-        count = 1
-        backcount = 150
+        count = 0
+        backcount = 149
         while b[key].filled < b[key].capacity:
-            if count > 150 or backcount < 1:
+            if count > 149 or backcount < 0:
                 break
             if h[count].output + h[backcount].output + b[key].filled < b[key].capacity:
                 if h[count].pluggedin is not False:

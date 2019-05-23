@@ -1,11 +1,10 @@
 from sys import argv
-from Algorithms.averagefit import Averagefit
+from Algorithms.averagefit import averagefit
 from Algorithms.bfs import bfs
-from Algorithms.decreasingfirstfit import Decreasingfirstfit
+from Algorithms.decreasingfirstfit import decreasingfirstfit
 from Algorithms.branchnbound import branchnbound
 from Algorithms.greedy import greedy
-#from Algorithms.multiplehillclimber import multhillclimber
-from Algorithms.randclimber import Randclimber
+from Algorithms.randclimber import randclimber
 from Classes.thegrid import Grid
 from Classes.node import Node
 from Algorithms.hillclimber import hillclimber
@@ -46,13 +45,13 @@ def input_random(batteries, houses, command, repeats=1):
 
 
 def input_firstfit(batteries, houses, command, repeats=1):
-    Decreasingfirstfit(grid, batteries, houses)
-    visualize(batteries, houses)
+    decreasingfirstfit(grid, batteries, houses)
+    visualize(batteries, houses, argv[1], command)
 
 
 def input_averagefit(batteries, houses, command, repeats=1):
-    Averagefit(grid, batteries, houses)
-    visualize(batteries, houses)
+    averagefit(grid, batteries, houses)
+    visualize(batteries, houses, argv[1], command)
 
 
 def input_greedy(batteries, houses, command, repeats=1):
@@ -81,9 +80,9 @@ def input_bfs(batteries, houses, command, repeats=1):
     node = Node()
     best = Node()
     dist, distdict, lowbprice = distancearr(batteries, houses)
-    best.price = greedy(dist, batteries, houses)
+    best.price = 100000
     bfs(node, batteries, houses, distdict, best)
-    visualize(batteries, houses)
+    visualize(batteries, houses, argv[1], command)
 
 
 def input_branchnbound(batteries, houses, command, repeats=1):
@@ -92,10 +91,11 @@ def input_branchnbound(batteries, houses, command, repeats=1):
     dist, distdict, lowbprice = distancearr(batteries, houses)
     best.price = 100000
     node.lowbound = lowbprice
-    branchnbound(node, batteries, houses, distdict, dist, best)
+    best = branchnbound(node, batteries, houses, distdict, dist, best)
+    nodetoclasses(batteries, houses, best)
     price = price_calc(batteries, distdict)
     print(price)
-    visualize(batteries, houses)
+    visualize(batteries, houses, argv[1], command)
 
 
 def input_hillclimber(batteries, houses, command, base, repeats=1):
@@ -140,7 +140,7 @@ def input_randclimber(batteries, houses, command, base, repeats=1):
             greedy(dist, batteries, houses)
         elif base == "random":
             random_alg(distdict, batteries, houses)
-        Randclimber(repetitions, distdict, batteries, houses)
+        randclimber(repetitions, distdict, batteries, houses)
         price = price_calc(batteries, distdict)
         if price < best.price:
             best.batts = [[], [], [], [], []]
@@ -154,26 +154,11 @@ def input_randclimber(batteries, houses, command, base, repeats=1):
         visualize(batteries, houses, argv[1], command)
 
 
-def input_multclimber(batteries, houses, command, base):
-    # print("repeat until no change for how many times?")
-    # repetitions = int(input("> "))
-    # dist, distdict, lowbprice = distancearr(grid.batteries, grid.houses)
-    # Greedy(dist, grid.batteries, grid.houses)
-    # price = price_calc(grid.batteries, distdict)
-    # node = Node()
-    # node.fillnode(grid.batteries, grid.houses, price)
-    # print(f"Price of greedy: {price}")
-    # multhillclimber(node, repetitions, distdict, grid.batteries, grid.houses)
-    # price = price_calc(grid.batteries, distdict)
-    # print(f"Price after climbing: {price}")
-    # visualize(grid.batteries, grid.houses)
-    pass
-
-
 def input_kmeans(batteries, houses, command, repeats=1):
     print("how many clusters?")
     k = int(input("> "))
     clusters, connectedhomes = KmeansClusterdistance(houses, batteries, k)
+<<<<<<< HEAD
     # print(clusters, connectedhomes)
     b, h = clustertoclasses(batteries, houses, clusters, connectedhomes)
     batteries = b
@@ -181,6 +166,9 @@ def input_kmeans(batteries, houses, command, repeats=1):
     for bat in batteries:
         print(batteries[bat].posx)
         print(batteries[bat].posy)
+=======
+    clustertoclasses(batteries, houses, clusters, connectedhomes)
+>>>>>>> 6634557e79eeee9ca21a3ccff9590d9176e5bc27
     visualize(batteries, houses, argv[1], command)
 
 
@@ -192,7 +180,8 @@ def input_batoptimize(batteries, houses, command, base, repeats=1):
     price = price_calc(batteries, distdict)
     write_to_csv(argv[1], command, price)
     print(price)
-    visualize(batteries, houses)
+    visualize(batteries, houses, argv[1], command)
+
 
 def battery_Kmeans(batteries, houses, command, repeats):
     a, b = KmeansClusterbatteries(batteries, houses)
@@ -209,7 +198,6 @@ functions = {
     "branchnbound": input_branchnbound,
     "hillclimber": input_hillclimber,
     "randclimber": input_randclimber,
-    "multiplehillclimber": input_multclimber,
     "kmeansclusterdistance": input_kmeans,
     "kmeansclusterbatteries": battery_Kmeans,
     "optimize": input_batoptimize
@@ -249,11 +237,10 @@ choices:
     first-fit
     average-fit
     greedy
-    breadth-first
-    depth-first
+    breadth-first (only with wijk 5)
+    branchnbound (might not finish in this lifetime)
     hillclimber
     randclimber
-    multiplehillclimber
     Kmeansclusterdistance
     Kmeansclusterbatteries
     optimize""")

@@ -1,9 +1,10 @@
 import random
 
 
-def Randclimber(repetitions, distdict, b, h):
+def randclimber(repetitions, distdict, b, h):
     """
-    A version of hillclimber which switches random houses iteratively
+    A version of hillclimber which switches 2 random houses until no
+    improvements are made for the set number of times
     """
 # Set a while loop which changes random houses and keeps if the price is lower
     startover = 0
