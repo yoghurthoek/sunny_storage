@@ -17,7 +17,7 @@ To do list
     * greedy
     * randclimber
     * random
-
+    * main?
 * Plot titel met algoritme en prijs
 * nummer kiezen voor algoritme
 
@@ -26,3 +26,5 @@ Wat is wel klaar :)
 - alles in de map classes
 - alles in de map data
 - alles in de map output_data
+- grote README en requirements
+- alles in de map presentations
