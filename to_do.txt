@@ -10,6 +10,9 @@ To do list
     * battery_optimization
     * Kmeansclustering
 * README Helper_algoritme
+    * nodetoclasses
+    * clustertoclasses
+    * reset 
 * Ik heb BFS gesloopt denk ik :)
 * Simulated annealing?
 * Boven comments ipv losse comments erin
