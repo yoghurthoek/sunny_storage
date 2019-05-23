@@ -14,3 +14,5 @@ To do list
 * Simulated annealing?
 * Boven comments ipv losse comments erin
 * readme output data
+* test of requirements werken
+* Plot titel met algoritme en prijs 
