@@ -7,7 +7,7 @@ import os
 def visualize(b, h, wijk, command):
     """
     Helper-algorithm that is needed to visualize grid configurations in
-    a plot. Is only called when a configuration with the best price is found. 
+    a plot. Is only called when a configuration with the best price is found.
     """
 
     fig, ax = plt.subplots()
@@ -52,6 +52,11 @@ def visualize(b, h, wijk, command):
     ax.grid(b=True, which='major', linewidth=1.5)
     ax.grid(b=True, which='minor', linewidth=0.5)
 
-    output = os.path.dirname(os.getcwd())+f"\\sunny_storage\\Output_Data\\bestwijk{wijk}_{command}.png"
+    # Set title
+    fig.suptitle(f"Wijk{wijk}_{command}")
+    ax.set_title(f"Price: {price}")
+
+    output = os.path.dirname(os.getcwd(
+        ))+f"\\sunny_storage\\Output_Data\\bestwijk{wijk}_{command}.png"
     plt.savefig(output)
     plt.show()
