@@ -181,7 +181,6 @@ def input_kmeans(batteries, houses, command):
     bestprice = 100000
     for k in range(5, 17):
         clusters, connectedhomes = KmeansClusterdistance(houses, batteries, k)
-        # print(clusters, connectedhomes)
         b, h = clustertoclasses(batteries, houses, clusters, connectedhomes)
         if b is False:
             k -= 1
@@ -219,7 +218,7 @@ if __name__ == "__main__":
     if int(argv[1]) > 0 and int(argv[1]) < 6:
         grid = Grid(argv[1])
         if len(argv) == 2:
-            print("""which algorithm to execute:
+            print("""which algorithm to execute, please type the number:
 choices:
 1. random
 2. first-fit
