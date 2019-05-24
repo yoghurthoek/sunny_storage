@@ -1,7 +1,7 @@
 def decreasingfirstfit(b, h):
     """
     Connects houses to batteries by trying to fit into first battery and
-    if not possible try the next
+    if not possible try the next.
     """
     for nr in h:
         for key in b:

@@ -1,6 +1,6 @@
 import csv
 
-"""classes"""
+"""Classes"""
 from Classes.house import House
 from Classes.battery import Battery
 import os
@@ -12,8 +12,8 @@ class Grid():
     def __init__(self, nr):
         """initializes grid"""
 
-        batteryload = os.path.dirname(os.getcwd())+f"\\sunny_storage\\Data\\wijk{nr}_batterijen.csv"
-        housesload = os.path.dirname(os.getcwd())+f"\\sunny_storage\\Data\\wijk{nr}_huizen.csv"
+        batteryload = os.path.dirname(os.getcwd()) + f"\\sunny_storage\\Data\\wijk{nr}_batterijen.csv"
+        housesload = os.path.dirname(os.getcwd()) + f"\\sunny_storage\\Data\\wijk{nr}_huizen.csv"
 
         self.grid = self.create_grid(51, 51)
         self.houses = self.load_houses(housesload)
@@ -42,7 +42,6 @@ class Grid():
                 house = House(id, posx, posy, output)
                 houses[id] = house
 
-                # Add house to grid
                 self.grid[posy][posx] = houses[id]
 
         return houses
@@ -63,7 +62,6 @@ class Grid():
                 battery = Battery(id, posx, posy, capacity)
                 batteries[id] = battery
 
-                # Add battery to the grid
                 self.grid[posy][posx] = batteries[id]
 
         return batteries

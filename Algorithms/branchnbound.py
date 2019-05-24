@@ -1,3 +1,8 @@
+"""
+Implements a branch 'n bound algorithm, but should only try wijk5 because the
+state space of the others is too big.
+"""
+
 from collections import deque
 import pickle
 import time
@@ -6,9 +11,8 @@ import operator
 
 def branchnbound(startnode, b, h, distdict, dist, best):
     """
-    This algorithm creates a stack with all possible configurations. It is also
-    an exhaustive algorithm with a (very) long runtime. We tried to prune the
-    stack, making it a branch 'n bound algorithm. Should only try wijk 4.
+    Uses children to go in a depth-first manner through the state space.
+    Returns the best price possible with this algorithm.
     """
     start = time.time()
     nrofnodes = 0

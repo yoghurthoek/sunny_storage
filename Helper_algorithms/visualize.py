@@ -4,7 +4,12 @@ import matplotlib.ticker as ticker
 import os
 
 
-def visualize(b, h, wijk, command, price):
+def visualize(b, h, wijk, command):
+    """
+    Helper-algorithm that is needed to visualize grid configurations in
+    a plot. Is only called when a configuration with the best price is found.
+    """
+
     fig, ax = plt.subplots()
 
     colors = ["#1f78b4", "#e31a1c", "#ff7f00",  "gold", "#33a02c", "#fb9a99",
@@ -16,7 +21,6 @@ def visualize(b, h, wijk, command, price):
                    [Path.MOVETO, Path.LINETO, Path.LINETO,
                     Path.LINETO, Path.LINETO, Path.CLOSEPOLY, ])
 
-    # Plot battery and connected houses, then go to next battery
     for k in b:
         ax.plot(b[k].posx, b[k].posy, color=colors[i],
                 marker='P', markersize=10, markeredgecolor='k')
@@ -29,27 +33,22 @@ def visualize(b, h, wijk, command, price):
                     color=colors[i], linestyle='-', linewidth=1)
         i += 1
 
-    # Plot unconnected houses if they are there
     for k in h:
         if h[k].pluggedin is False:
             ax.plot(h[k].posx, h[k].posy, color='k', marker=cmarker,
                     markersize=15)
 
-    # Set grid limits
     ax.set_xlim((-1, 51))
     ax.set_ylim((-1, 51))
 
-    # Set ticks for minor gridlines
     minorspace = ticker.MultipleLocator()
     ax.xaxis.set_minor_locator(minorspace)
     ax.yaxis.set_minor_locator(minorspace)
 
-    # Set ticks for major gridlines
     majorspace = ticker.MultipleLocator(10)
     ax.xaxis.set_major_locator(majorspace)
     ax.yaxis.set_major_locator(majorspace)
 
-    # Draw in gridlines
     ax.grid(b=True, which='major', linewidth=1.5)
     ax.grid(b=True, which='minor', linewidth=0.5)
 

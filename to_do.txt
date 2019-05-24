@@ -1,5 +1,4 @@
 To do list
-
 * Runnen en plotjes maken (Feline)
     * Optimization random voor alle drie de wijken
     * Optimization greedy voor alle drie de wijken
@@ -7,12 +6,8 @@ To do list
 * Plot titel met algoritme en prijs
 * nummer kiezen voor algoritme
 * Batt optimization fixen -> meerdere runs
-* alle variabele namen in het engels
+* optimize anders aanroepen
 
 
 Wat is wel klaar :)
-- alles in de map classes
-- alles in de map data
-- alles in de map output_data
-- grote README en requirements
-- alles in de map presentations
+Alle mappen zijn gecheckt, grote README en requirements werken ook naar toebehoren

@@ -1,8 +1,11 @@
 from Classes.battery import Battery
-from Classes.thegrid import Grid
 
 
-def clustertoclasses(b, h, cluster, connectedhomes, movebat=False):
+def clustertoclasses(b, h, cluster, connectedhomes, movebat = False):
+    """
+    Helper-algorithm that is used to transfer the Kmeanscluster output to
+    the grid.
+    """
 
     b = {}
     for key in connectedhomes:
@@ -26,11 +29,10 @@ def clustertoclasses(b, h, cluster, connectedhomes, movebat=False):
             capacity = 1800
             price = 1800
         elif row[3] > 1800:
-            print("Clusterfuck")
+            print("Not possible")
             return False, False
         filled = row[3]
 
-        # Make battery object with id as key
         battery = Battery(id, posx, posy, capacity)
         b[id] = battery
         b[id].filled = filled
