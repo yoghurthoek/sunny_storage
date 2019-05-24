@@ -81,7 +81,8 @@ def input_bfs(batteries, houses, command, repeats=1):
     best = Node()
     dist, distdict, lowbprice = distancearr(batteries, houses)
     best.price = 100000
-    bfs(node, batteries, houses, distdict, best)
+    best = bfs(node, batteries, houses, distdict, best)
+    nodetoclasses(batteries, houses, best)
     visualize(batteries, houses, argv[1], command)
 
 
