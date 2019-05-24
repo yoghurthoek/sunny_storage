@@ -32,7 +32,6 @@ def bfs(startnode, b, h, distdict, best):
     print(end - start)
     print(f"Nodes visited: {nrofnodes}")
     print(f"Depth ended: {curnode.level}")
-    print(best.price)
 
     return best
 

@@ -30,8 +30,6 @@ def branchnbound(startnode, b, h, distdict, dist, best):
                     end = time.time()
                     print(end - start)
                 continue
-            if curnode.level == 0:
-                print("back to the start")
 
             if curnode.price + curnode.lowbound >= best.price:
                 continue
@@ -43,7 +41,6 @@ def branchnbound(startnode, b, h, distdict, dist, best):
     print(end - start)
     print(f"Nodes visited : {nrofnodes}")
     print(f"Times reached max depth : {timestoend}")
-    print(best.price)
 
     return best
 

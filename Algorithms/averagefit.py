@@ -1,4 +1,4 @@
-def averagefit(grid, b, h):
+def averagefit(b, h):
     """
     Connects houses to batteries when houses are ordered small to big.
     Tries to fit houses taking the biggest and the smallest outputs together.
