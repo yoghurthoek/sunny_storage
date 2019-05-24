@@ -9,9 +9,9 @@ In this folder are the scripts of the algorithms we implemented for every part o
 
 2. Calculate the total costs of the neighborhood and try to optimize:
     * **bfs:** this algorithm creates a queue with all possible configurations. It is an exhaustive algorithm and uses a lot of memory.
-        * Since this algorithm uses so much memory, it can only be runned with neighborhood 4/5
+        * Since this algorithm uses so much memory, it can only be runned with neighborhood 4
     * **branchnbound:** this algorithm creates a stack with all possible configurations. It is also an exhaustive algorithm with a (very) long runtime. We tried to prune the stack, making it a branch 'n bound algorithm.
-        * Since the runningtime is still long, it can only be runned with neighborhood 4/5
+        * Since the runningtime is still long, it can only be runned with neighborhood 4
     * **greedy:** this algorithm chooses randomly a house and connects it to a battery based on best (shortest) distance.
     * **hillclimber:** this algorithm starts with a greedy or random base and tries to find a better solution by  switching houses.
     * **randclimber:** this algorithm connects houses and batteries randomly and tries to optimize by switching houses.
