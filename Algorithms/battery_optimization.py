@@ -1,6 +1,7 @@
 def battery_optimization(b):
     """
-    Tekstjes
+    This program optimizes the location of batteries based on the location of
+    all the houses that are connected to it.
     """
     positions = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
     for bat in b:
