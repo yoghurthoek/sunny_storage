@@ -19,7 +19,7 @@ In this folder are the scripts of the algorithms we implemented for every part o
 
 
 3. Optimization of the total costs by moving the batteries:
-    * **battery_optimization:** text
+    * **battery_optimization:** this algorithm moves the location of the batteries after connections with houses have been established. It garantees that the sum of the manhatandistance of a battery to all the connected houses is minimalized. 
 
 
 4. Optimization of the total costs by moving and using other batteries:

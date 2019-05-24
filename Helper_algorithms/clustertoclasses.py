@@ -16,20 +16,18 @@ def clustertoclasses(b, h, cluster, connectedhomes, movebat=False):
         posx = row[0]
         posy = row[1]
         id = row[2]
-        if movebat == True:
-            capacity = 1507
-        else:
-            if row[3] < 450:
-                capacity = 450
-                price = 900
-            elif row[3] < 900:
-                capacity = 900
-                price = 1350
-            elif row[3] < 1800:
-                capacity = 1800
-                price = 1800
-            elif row[3] > 1800:
-                return False, False
+        if row[3] < 450:
+            capacity = 450
+            price = 900
+        elif row[3] < 900:
+            capacity = 900
+            price = 1350
+        elif row[3] < 1800:
+            capacity = 1800
+            price = 1800
+        elif row[3] > 1800:
+            print("Clusterfuck")
+            return False, False
         filled = row[3]
 
         # Make battery object with id as key
