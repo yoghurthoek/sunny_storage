@@ -4,7 +4,7 @@ import matplotlib.ticker as ticker
 import os
 
 
-def visualize(b, h, wijk, command):
+def visualize(b, h, wijk, command, price):
     fig, ax = plt.subplots()
 
     colors = ["#1f78b4", "#e31a1c", "#ff7f00",  "gold", "#33a02c", "#fb9a99",
@@ -53,6 +53,11 @@ def visualize(b, h, wijk, command):
     ax.grid(b=True, which='major', linewidth=1.5)
     ax.grid(b=True, which='minor', linewidth=0.5)
 
-    output = os.path.dirname(os.getcwd())+f"\\sunny_storage\\Output_Data\\bestwijk{wijk}_{command}.png"
+    # Set title
+    fig.suptitle(f"Wijk{wijk}_{command}")
+    ax.set_title(f"Price: {price}")
+
+    output = os.path.dirname(os.getcwd(
+        ))+f"\\sunny_storage\\Output_Data\\bestwijk{wijk}_{command}.png"
     plt.savefig(output)
     plt.show()

@@ -8,7 +8,7 @@ def branchnbound(startnode, b, h, distdict, dist, best):
     """
     This algorithm creates a stack with all possible configurations. It is also
     an exhaustive algorithm with a (very) long runtime. We tried to prune the
-    stack, making it a branch 'n bound algorithm. Should only try wijk 5.
+    stack, making it a branch 'n bound algorithm. Should only try wijk 4.
     """
     start = time.time()
     nrofnodes = 0

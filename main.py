@@ -11,6 +11,7 @@ from Algorithms.hillclimber import hillclimber
 from Algorithms.random import random_alg
 from Algorithms.battery_optimization import battery_optimization
 from Helper_algorithms.bestplot import bestplot
+from Helper_algorithms.clusterbatplacement import clusterbatplacement
 from Helper_algorithms.clustertoclasses import clustertoclasses
 from Helper_algorithms.distancearr import distancearr
 from Helper_algorithms.nodetoclasses import nodetoclasses
@@ -39,7 +40,7 @@ def input_random(batteries, houses, command):
     print(f"Best price found: {best.price}")
     nodetoclasses(batteries, houses, best)
     if savefig is True:
-        visualize(batteries, houses, argv[1], command)
+        visualize(batteries, houses, argv[1], command, best.price)
 
 
 def input_firstfit(batteries, houses, command):
@@ -79,7 +80,7 @@ def input_greedy(batteries, houses, command):
     print(f"Best price found: {best.price}")
     if savefig is True:
         nodetoclasses(batteries, houses, best)
-        visualize(batteries, houses, argv[1], command)
+        visualize(batteries, houses, argv[1], command, best.price)
 
 
 def input_bfs(batteries, houses, command):
@@ -102,7 +103,7 @@ def input_branchnbound(batteries, houses, command):
     nodetoclasses(batteries, houses, best)
     price = price_calc(batteries, distdict)
     print(f"Best price found: {price}")
-    visualize(batteries, houses, argv[1], command)
+    visualize(batteries, houses, argv[1], command, best.price)
 
 
 def input_hillclimber(batteries, houses, command):
@@ -130,7 +131,7 @@ def input_hillclimber(batteries, houses, command):
     print(f"Best price found: {best.price}")
     nodetoclasses(batteries, houses, best)
     if savefig is True:
-        visualize(batteries, houses, argv[1], command)
+        visualize(batteries, houses, argv[1], command, best.price)
 
 
 def input_randclimber(batteries, houses, command):
@@ -160,12 +161,21 @@ def input_randclimber(batteries, houses, command):
     print(best.price)
     if savefig is True:
         nodetoclasses(batteries, houses, best)
-        visualize(batteries, houses, argv[1], command)
+        visualize(batteries, houses, argv[1], command, best.price)
+
+
+def input_kmeansbat(batteries, houses, command):
+    k = len(batteries)
+    clusters, connectedhomes = KmeansClusterdistance(houses, batteries, k)
+    clusterbatplacement(batteries, houses, clusters, connectedhomes)
+    print("input algorithm to run")
+    secondcommand = (input("> ")).lower()
+    functions[secondcommand](grid.batteries, grid.houses, command)
 
 
 def input_kmeans(batteries, houses, command):
     bestprice = 100000
-    for k in range(5, 12):
+    for k in range(5, 17):
         clusters, connectedhomes = KmeansClusterdistance(houses, batteries, k)
         # print(clusters, connectedhomes)
         b, h = clustertoclasses(batteries, houses, clusters, connectedhomes)
@@ -182,7 +192,7 @@ def input_kmeans(batteries, houses, command):
             bestprice = price
             bestbat = batteries
     batteries = bestbat
-    visualize(batteries, houses, argv[1], command)
+    visualize(batteries, houses, argv[1], command, bestprice)
 
 
 def input_batoptimize(batteries, houses, command):
@@ -193,7 +203,7 @@ def input_batoptimize(batteries, houses, command):
     price = price_calc(batteries, distdict)
     write_to_csv(argv[1], command, price)
     print(price)
-    visualize(batteries, houses, argv[1], command)
+    visualize(batteries, houses, argv[1], command, price)
 
 
 def funcdict():
@@ -206,6 +216,7 @@ def funcdict():
         "branchnbound": input_branchnbound,
         "hillclimber": input_hillclimber,
         "randclimber": input_randclimber,
+        "kmeansbattplacement": input_kmeansbat,
         "kmeansclusterdistance": input_kmeans,
         "optimize": input_batoptimize
     }
@@ -222,10 +233,11 @@ random
 first-fit
 average-fit
 greedy
-breadth-first (only with wijk 5)
+breadth-first (only with wijk 4)
 branchnbound (might not finish in this lifetime)
 hillclimber
 randclimber
+kmeansbattplacement
 kmeansclusterdistance
 optimize""")
             command = (input("> ")).lower()
