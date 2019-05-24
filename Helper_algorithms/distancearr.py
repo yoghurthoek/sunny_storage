@@ -3,6 +3,7 @@ def distancearr(b, h):
     Gives manhattan distance for every combination of battery and house
     format: [for every house[(mhdistance, key of battery), ...]]
     """
+
     dist = []
     lowbprice = 0
     for house in h:
