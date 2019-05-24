@@ -219,7 +219,7 @@ if __name__ == "__main__":
     if int(argv[1]) > 0 and int(argv[1]) < 6:
         grid = Grid(argv[1])
         if len(argv) == 2:
-            print("""which algorithm to execute:
+            print("""which algorithm to execute, please type the number:
 choices:
 1. random
 2. first-fit
