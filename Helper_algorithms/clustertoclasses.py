@@ -1,7 +1,7 @@
 from Classes.battery import Battery
 
 
-def clustertoclasses(b, h, cluster, connectedhomes, movebat = False):
+def clustertoclasses(b, h, cluster, connectedhomes):
     """
     Helper-algorithm that is used to transfer the Kmeanscluster output to
     the grid.
