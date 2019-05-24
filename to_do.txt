@@ -14,7 +14,6 @@ To do list
 * Plot titel met algoritme en prijs
 * nummer kiezen voor algoritme
 * Batt optimization fixen -> meerdere runs
-* visualize fixen op bfs
 
 
 Wat is wel klaar :)
