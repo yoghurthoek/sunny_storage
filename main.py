@@ -110,6 +110,8 @@ def input_hillclimber(batteries, houses, command):
     dist, distdict, lowbprice = distancearr(batteries, houses)
     print("base: greedy or random")
     base = (input("> ")).lower()
+    if base != "greedy" and base != "random":
+        return False
     command = base + "_" + command
     print("run how many times?")
     repeats = int(input("> "))
@@ -143,6 +145,8 @@ def input_randclimber(batteries, houses, command):
     dist, distdict, lowbprice = distancearr(batteries, houses)
     print("base: greedy or random")
     base = (input("> ")).lower()
+    if base != "greedy" and base != "random":
+        return False
     print("repeat until no change for how many times?")
     repetitions = int(input("> "))
     command = base + "_" + command + str(repetitions)
