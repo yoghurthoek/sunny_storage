@@ -1,12 +1,10 @@
 class Node(object):
+    """Node object"""
 
     def __init__(self):
-        # to access battery 1 self.batts[0].append()
         self.batts = [[], [], [], [], []]
         self.fill = [[0], [0], [0], [0], [0]]
         self.price = 0
-
-        # bnb only
         self.level = 0
         self.lowbound = 0
 

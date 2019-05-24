@@ -1,7 +1,7 @@
 def distancearr(b, h):
     """
     Gives manhattan distance for every combination of battery and house
-    format: [for every house[(mhdistance, key of battery), ...]]
+    format: [for every house[(mhdistance, key of battery)]]
     """
 
     dist = []
@@ -9,14 +9,12 @@ def distancearr(b, h):
     for house in h:
         dist.append([])
         for batt in b:
-            # manhattan distance calculation |x1 - x2| + |y1 - y2|
             manhat = abs(b[batt].posx - h[house].posx) + \
                      abs(b[batt].posy - h[house].posy)
             dist[house].append((manhat, batt))
         dist[house] = sorted(dist[house])
         lowbprice += dist[house][0][0] * 9
 
-    # Transform into a dict for certain functions
     distdict = {}
     for nr in h:
         distdict[nr] = {}
