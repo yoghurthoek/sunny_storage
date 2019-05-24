@@ -139,7 +139,6 @@ def input_hillclimber(batteries, houses, command):
         visualize(batteries, houses, argv[1], command, price)
 
 
-
 def input_randclimber(batteries, houses, command):
     dist, distdict, lowbprice = distancearr(batteries, houses)
     print("base: greedy or random")
@@ -199,18 +198,19 @@ def input_kmeans(batteries, houses, command):
     batteries = bestbat
     visualize(batteries, houses, argv[1], command, bestprice)
 
+
 def funcdict():
     functions = {
-        "1": input_random,
-        "2": input_firstfit,
-        "3": input_averagefit,
-        "4": input_greedy,
-        "5": input_bfs,
-        "6": input_branchnbound,
-        "7": input_hillclimber,
-        "8": input_randclimber,
-        "9": input_kmeansbat,
-        "10": input_kmeans
+        "1": (input_random, "random"),
+        "2": (input_firstfit, "first-fit"),
+        "3": (input_averagefit, "average-fit"),
+        "4": (input_greedy, "greedy"),
+        "5": (input_bfs, "breadth-first"),
+        "6": (input_branchnbound, "branchnbound"),
+        "7": (input_hillclimber, "hillclimber"),
+        "8": (input_randclimber, "randclimber"),
+        "9": (input_kmeansbat, "kmeansbatplacement"),
+        "10": (input_kmeans, "kmeansdistance")
     }
     return functions
 
@@ -234,4 +234,5 @@ choices:
 """)
             command = (input("> ")).lower()
             functions = funcdict()
-            functions[command](grid.batteries, grid.houses, command)
+            functions[command][0](
+                grid.batteries, grid.houses, functions[command][1])
