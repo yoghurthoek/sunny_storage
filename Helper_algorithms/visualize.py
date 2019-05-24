@@ -4,7 +4,7 @@ import matplotlib.ticker as ticker
 import os
 
 
-def visualize(b, h, wijk, command, price):
+def visualize(b, h, wijk, command, price=0):
     """
     Helper-algorithm that is needed to visualize grid configurations in
     a plot. Is only called when a configuration with the best price is found.
@@ -54,7 +54,8 @@ def visualize(b, h, wijk, command, price):
 
     # Set title
     fig.suptitle(f"Wijk{wijk}_{command}")
-    ax.set_title(f"Price: {price}")
+    if price != 0:
+        ax.set_title(f"Price: {price}")
 
     output = os.path.dirname(os.getcwd(
         ))+f"\\sunny_storage\\Output_Data\\bestwijk{wijk}_{command}.png"

@@ -124,6 +124,8 @@ def input_bfs(batteries, houses, command):
     best.price = 100000
     best = bfs(node, batteries, houses, distdict, best)
     nodetoclasses(batteries, houses, best)
+    price = price_calc(batteries, distdict)
+    print(f"Best price found: {price}")
     visualize(batteries, houses, argv[1], command)
 
 
@@ -285,7 +287,7 @@ def funcdict():
 
 
 if __name__ == "__main__":
-    if int(argv[1]) > 0 and int(argv[1]) < 6:
+    if int(argv[1]) > 0 and int(argv[1]) < 5:
         grid = Grid(argv[1])
         if len(argv) == 2:
             print("""which algorithm to execute, please type the number:
@@ -305,3 +307,5 @@ choices:
             functions = funcdict()
             functions[command][0](
                 grid.batteries, grid.houses, functions[command][1])
+    else:
+        print("Not a valid input. Use : python main.py <district nr>")
