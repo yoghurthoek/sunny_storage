@@ -43,6 +43,7 @@ def KmeansClusterdistance(h, b, k):
                     clustercenters[i][0] = round(totalx/totalh)
                     clustercenters[i][1] = round(totaly/totalh)
 
-                if oldclustercenters[i][0] == clustercenters[i][0] and oldclustercenters[i][1] == clustercenters[i][1]:
+                if oldclustercenters[i][0] == clustercenters[i][0]  \
+                    and oldclustercenters[i][1] == clustercenters[i][1]:
                     startover += 1
         return clustercenters, housecoordinates

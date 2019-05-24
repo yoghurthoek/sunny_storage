@@ -25,6 +25,7 @@ def clustertoclasses(b, h, cluster, connectedhomes):
             capacity = 1800
             price = 1800
         elif row[3] > 1800:
+            print("Retry")
             return False, False
         filled = row[3]
 

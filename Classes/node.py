@@ -6,7 +6,7 @@ class Node(object):
         self.fill = [[0], [0], [0], [0], [0]]
         self.price = 0
 
-        # dfs only
+        # bnb only
         self.level = 0
         self.lowbound = 0
 
