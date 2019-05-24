@@ -8,7 +8,6 @@ def randclimber(repetitions, distdict, b, h):
     """
     startover = 0
     while startover < repetitions:
-        # Select 2 random houses
         h1 = random.choice(h)
         h2 = random.choice(h)
         if not h1.pluggedin == h2.pluggedin:
@@ -16,8 +15,10 @@ def randclimber(repetitions, distdict, b, h):
                     b[h2.pluggedin.id].capacity and \
                     h2.output + b[h1.pluggedin.id].filled - h1.output < \
                     b[h1.pluggedin.id].capacity:
-                curprice = distdict[h1.id][h1.pluggedin.id] + distdict[h2.id][h2.pluggedin.id]
-                swapprice = distdict[h1.id][h2.pluggedin.id] + distdict[h2.id][h1.pluggedin.id]
+                curprice = distdict[h1.id][h1.pluggedin.id] + \
+                           distdict[h2.id][h2.pluggedin.id]
+                swapprice = distdict[h1.id][h2.pluggedin.id] + \
+                            distdict[h2.id][h1.pluggedin.id]
                 if curprice > swapprice:
                     b[h1.pluggedin.id].filled += h2.output - h1.output
                     b[h2.pluggedin.id].filled += h1.output - h2.output

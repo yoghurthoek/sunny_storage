@@ -1,10 +1,13 @@
 def nodetoclasses(b, h, node):
-    # Set best configuration into the battery class to visualize
+    """
+    Helper-algorithm that is needed to transfer the information in the nodes
+    to the grid.
+    """
+
     for bat in b:
         for housekey in node.batts[bat]:
             b[bat].connected.append(h[housekey])
 
-    # Set house connections to true, so does not get blacked out in visualize
     for bat in b:
         for house in b[bat].connected:
             house.pluggedin = b[bat]

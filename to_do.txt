@@ -9,6 +9,8 @@ To do list
 * Batt optimization fixen -> meerdere runs
 * alle variabele namen in het engels
 
+* optimize anders aanroepen
+
 
 Wat is wel klaar :)
 - alles in de map classes

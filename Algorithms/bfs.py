@@ -1,3 +1,8 @@
+"""
+Implements a breadth first search, but should only try wijk5 because the
+state space of the others is too big.
+"""
+
 from collections import deque
 import pickle
 import time
@@ -5,8 +10,8 @@ import time
 
 def bfs(startnode, b, h, distdict, best):
     """
-    Implements a breadth first search, but should only try wijk5 because it
-    takes long
+    Uses children to implement a version of breadth-first search.
+    Returns the best price found.
     """
     start = time.time()
     max = len(h)

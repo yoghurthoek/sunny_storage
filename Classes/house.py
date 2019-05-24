@@ -1,5 +1,5 @@
 class House(object):
-    """House object housing house things"""
+    """House object"""
 
     def __init__(self, id, x, y, output):
         self.id = id

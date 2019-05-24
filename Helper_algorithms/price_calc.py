@@ -1,4 +1,7 @@
 def price_calc(b, distdict):
+    """
+    Helper-algorithm that is needed to calculate the price of a configuration.
+    """
 
     price = 0
     for bat in b:

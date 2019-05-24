@@ -9,7 +9,8 @@ def averagefit(grid, b, h):
         while b[key].filled < b[key].capacity:
             if count > 149 or backcount < 0:
                 break
-            if h[count].output + h[backcount].output + b[key].filled < b[key].capacity:
+            if h[count].output + h[backcount].output \
+                + b[key].filled < b[key].capacity:
                 if h[count].pluggedin is not False:
                     count += 1
                 elif h[backcount].pluggedin is not False:
