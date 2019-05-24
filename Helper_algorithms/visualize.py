@@ -7,10 +7,9 @@ import os
 def visualize(b, h, wijk, command):
     fig, ax = plt.subplots()
 
-    # Use different colors depending on battery connection
-    colors = ["r", "b", "g", "gold", "m", "hotpink", "cyan", "orange",
-              "black", "olive", "aquamarine", "plum", "indigo", "rosybrown",
-              "darkgray", "darkgoldenrod", "maroon"]
+    colors = ["#1f78b4", "#e31a1c", "#ff7f00",  "gold", "#33a02c", "#fb9a99",
+              "#fdbf6f", "#a6cee3", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928",
+              "black", "#b2df8a", "#B1A8A1", "FF0000", "FF00F9"]
     i = 0
     cmarker = Path([(-0.5, -0.5), (-0.5, 0.5), (0., 1.), (0.5, 0.5),
                     (0.5, -0.5), (-0.5, -0.5), ],

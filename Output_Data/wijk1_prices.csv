@@ -60004,3 +60004,7 @@
 56527,random_randclimber10000
 56950,random_randclimber10000
 56770,random_randclimber10000
+57607,greedy_hillclimber
+46510,greedy_hillclimber_optimize
+56635,greedy_hillclimber
+45673,greedy_hillclimber_optimize

@@ -19,7 +19,6 @@ from Helper_algorithms.reset import reset
 from Helper_algorithms.visualize import visualize
 from Helper_algorithms.write_to_csv import write_to_csv
 from Algorithms.KmeansClusterdistance import KmeansClusterdistance
-from Algorithms.KmeansClusterbatteries import KmeansClusterbatteries
 
 
 def input_random(batteries, houses, command, repeats=1):
@@ -189,12 +188,6 @@ def input_batoptimize(batteries, houses, command, base, repeats=1):
     visualize(batteries, houses, argv[1], command)
 
 
-def battery_Kmeans(batteries, houses, command, repeats):
-    a, b = KmeansClusterbatteries(batteries, houses)
-    # print(a)
-    # print(b)
-
-
 functions = {
     "random": input_random,
     "first-fit": input_firstfit,
@@ -205,7 +198,6 @@ functions = {
     "hillclimber": input_hillclimber,
     "randclimber": input_randclimber,
     "kmeansclusterdistance": input_kmeans,
-    "kmeansclusterbatteries": battery_Kmeans,
     "optimize": input_batoptimize
 }
 
@@ -247,8 +239,7 @@ choices:
     branchnbound (might not finish in this lifetime)
     hillclimber
     randclimber
-    Kmeansclusterdistance
-    Kmeansclusterbatteries
+    kmeansclusterdistance
     optimize""")
             command = (input("> ")).lower()
             repeats = 1
