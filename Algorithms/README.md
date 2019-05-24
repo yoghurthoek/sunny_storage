@@ -19,10 +19,8 @@ In this folder are the scripts of the algorithms we implemented for every part o
 
 
 3. Optimization of the total costs by moving the batteries:
-    * **battery_optimization:** this algorithm moves the location of the batteries after connections with houses have been established. It garantees that the sum of the manhatandistance of a battery to all the connected houses is minimalized. 
+    * **battery_optimization:** this algorithm moves the location of the batteries after connections with houses have been established. It garantees that the sum of the manhatandistance of a battery to all the connected houses is minimalized.
 
 
 4. Optimization of the total costs by moving and using other batteries:
-    * **KmeansClusterBatteries**
-    * **KmeansClusterdistance**
->text over kmean<
+    * **KmeansClusterdistance:** this algorithm takes the desired amount of clusters between 5 and 17 as input. The capacity of available batteries and the maximal output of the houses on the grid makes the minimum amount of clusters necessary 5. More then 17 clusters will very likely, not give a better solution then one with less clusters. The algorithm returns a grid with the desired amount of clusters on (local) optimal positions.   

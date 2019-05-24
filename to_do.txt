@@ -4,9 +4,6 @@ To do list
     * Optimization random voor alle drie de wijken
     * Optimization greedy voor alle drie de wijken
     * Kmeans voor alle drie de wijken
-* README algorithms:
-    * battery_optimization
-    * Kmeansclustering
 * Plot titel met algoritme en prijs
 * nummer kiezen voor algoritme
 * Batt optimization fixen -> meerdere runs
