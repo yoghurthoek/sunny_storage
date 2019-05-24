@@ -15,6 +15,7 @@ To do list
 * Plot titel met algoritme en prijs
 * nummer kiezen voor algoritme
 * Batt optimization fixen -> alleen visualize werkt niet
+* visualize fixen op bfs
 
 
 Wat is wel klaar :)
