@@ -188,9 +188,13 @@ def input_hillclimber(batteries, houses, command):
 
 def input_randclimber(batteries, houses, command):
     """
-    Iterates over all houses and checks if an improvement can be made by
-    switching the connections of 2 houses.
+    A version of hillclimber which switches 2 random houses until no
+    improvements are made for the set number of times. It asks for number of
+    repeats to run the algorithm. It saves all solutions to one .csv file and
+    it writes the best price of all repeats to another .csv file. The best
+    price is also visualized.
     """
+
     dist, distdict, lowbprice = distancearr(batteries, houses)
     print("base: greedy or random")
     base = (input("> ")).lower()
@@ -221,6 +225,11 @@ def input_randclimber(batteries, houses, command):
 
 
 def input_kmeansbat(batteries, houses, command):
+    """
+    Kmeans with standard batteries (capacity 1507, price 5000) followed by
+    hillclimber and battery optimizition.
+    """
+
     k = len(batteries)
     clusters, connectedhomes = KmeansClusterdistance(houses, batteries, k)
     clusterbatplacement(batteries, houses, clusters, connectedhomes)
@@ -229,6 +238,12 @@ def input_kmeansbat(batteries, houses, command):
 
 
 def input_kmeans(batteries, houses, command):
+    """
+    this algorithm takes the desired amount of clusters between 5 and 17 as
+    input. The algorithm returns a grid with the desired amount of clusters
+    on (local) optimal positions.
+    """
+
     bestprice = 100000
     for k in range(5, 17):
         clusters, connectedhomes = KmeansClusterdistance(houses, batteries, k)
