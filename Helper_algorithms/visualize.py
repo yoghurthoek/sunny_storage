@@ -4,7 +4,7 @@ import matplotlib.ticker as ticker
 import os
 
 
-def visualize(b, h, wijk, command):
+def visualize(b, h, wijk, command, price):
     """
     Helper-algorithm that is needed to visualize grid configurations in
     a plot. Is only called when a configuration with the best price is found.

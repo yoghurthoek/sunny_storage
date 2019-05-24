@@ -132,6 +132,12 @@ def input_hillclimber(batteries, houses, command):
     nodetoclasses(batteries, houses, best)
     if savefig is True:
         visualize(batteries, houses, argv[1], command, best.price)
+        battery_optimization(batteries)
+        dist, distdict, lowbprice = distancearr(batteries, houses)
+        price = price_calc(batteries, distdict)
+        print(f"Best price found with optimize: {price}")
+        visualize(batteries, houses, argv[1], command, price)
+
 
 
 def input_randclimber(batteries, houses, command):
@@ -194,31 +200,18 @@ def input_kmeans(batteries, houses, command):
     batteries = bestbat
     visualize(batteries, houses, argv[1], command, bestprice)
 
-
-def input_batoptimize(batteries, houses, command):
-    output = input_hillclimber(batteries, houses, "hillclimber")
-    # command = base + "_" + "hillclimber" + "_" + "optimize"
-    battery_optimization(batteries)
-    dist, distdict, lowbprice = distancearr(batteries, houses)
-    price = price_calc(batteries, distdict)
-    write_to_csv(argv[1], command, price)
-    print(price)
-    visualize(batteries, houses, argv[1], command, price)
-
-
 def funcdict():
     functions = {
-        "random": input_random,
-        "first-fit": input_firstfit,
-        "average-fit": input_averagefit,
-        "greedy": input_greedy,
-        "breadth-first": input_bfs,
-        "branchnbound": input_branchnbound,
-        "hillclimber": input_hillclimber,
-        "randclimber": input_randclimber,
-        "kmeansbattplacement": input_kmeansbat,
-        "kmeansclusterdistance": input_kmeans,
-        "optimize": input_batoptimize
+        "1": input_random,
+        "2": input_firstfit,
+        "3": input_averagefit,
+        "4": input_greedy,
+        "5": input_bfs,
+        "6": input_branchnbound,
+        "7": input_hillclimber,
+        "8": input_randclimber,
+        "9": input_kmeansbat,
+        "10": input_kmeans
     }
     return functions
 
@@ -229,17 +222,17 @@ if __name__ == "__main__":
         if len(argv) == 2:
             print("""which algorithm to execute:
 choices:
-random
-first-fit
-average-fit
-greedy
-breadth-first (only with wijk 4)
-branchnbound (might not finish in this lifetime)
-hillclimber
-randclimber
-kmeansbattplacement
-kmeansclusterdistance
-optimize""")
+1. random
+2. first-fit
+3. average-fit
+4. greedy
+5. breadth-first (only with wijk 4)
+6. branchnbound (might not finish in this lifetime)
+7. hillclimber
+8. randclimber
+9. kmeansbattplacement
+10. kmeansclusterdistance
+""")
             command = (input("> ")).lower()
             functions = funcdict()
             functions[command](grid.batteries, grid.houses, command)

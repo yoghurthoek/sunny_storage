@@ -1,4 +1,4 @@
-def reset(b, h):\
+def reset(b, h):
     """
     Helper-algorithm that resets the grid configuration to unplugged.
     """
