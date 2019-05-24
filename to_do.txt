@@ -7,12 +7,10 @@ To do list
 * README algorithms:
     * battery_optimization
     * Kmeansclustering
-* Boven comments ipv losse comments erin
-    * battery_optimization
-    * main?
 * Plot titel met algoritme en prijs
 * nummer kiezen voor algoritme
 * Batt optimization fixen -> meerdere runs
+* alle variabele namen in het engels
 
 
 Wat is wel klaar :)
