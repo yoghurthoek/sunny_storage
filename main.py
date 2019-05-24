@@ -139,7 +139,6 @@ def input_hillclimber(batteries, houses, command):
         visualize(batteries, houses, argv[1], command, price)
 
 
-
 def input_randclimber(batteries, houses, command):
     dist, distdict, lowbprice = distancearr(batteries, houses)
     print("base: greedy or random")
@@ -182,7 +181,6 @@ def input_kmeans(batteries, houses, command):
     bestprice = 100000
     for k in range(5, 17):
         clusters, connectedhomes = KmeansClusterdistance(houses, batteries, k)
-        # print(clusters, connectedhomes)
         b, h = clustertoclasses(batteries, houses, clusters, connectedhomes)
         if b is False:
             k -= 1
@@ -198,6 +196,7 @@ def input_kmeans(batteries, houses, command):
             bestbat = batteries
     batteries = bestbat
     visualize(batteries, houses, argv[1], command, bestprice)
+
 
 def funcdict():
     functions = {
