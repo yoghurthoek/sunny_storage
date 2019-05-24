@@ -168,9 +168,8 @@ def input_kmeansbat(batteries, houses, command):
     k = len(batteries)
     clusters, connectedhomes = KmeansClusterdistance(houses, batteries, k)
     clusterbatplacement(batteries, houses, clusters, connectedhomes)
-    print("input algorithm to run")
-    secondcommand = (input("> ")).lower()
-    functions[secondcommand](grid.batteries, grid.houses, command)
+    command = "hillclimber_" + command
+    input_hillclimber(batteries, houses, command)
 
 
 def input_kmeans(batteries, houses, command):
