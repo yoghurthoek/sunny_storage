@@ -157,8 +157,6 @@ def input_randclimber(batteries, houses, command, base, repeats=1):
 
 
 def input_kmeans(batteries, houses, command, repeats=1):
-    # print("how many clusters?")
-    # k = int(input("> "))
     bestprice = 100000
     for k in range(5, 12):
         clusters, connectedhomes = KmeansClusterdistance(houses, batteries, k)
@@ -180,14 +178,13 @@ def input_kmeans(batteries, houses, command, repeats=1):
     visualize(batteries, houses, argv[1], command)
 
 def input_batoptimize(batteries, houses, command, base, repeats=1):
-    command = base + "-->" + "hillclimber" + "-->" + "optimize"
+    command = base + "_" + "hillclimber" + "_" + "optimize"
     output = input_hillclimber(batteries, houses, "hillclimber", base)
     battery_optimization(batteries)
     dist, distdict, lowbprice = distancearr(batteries, houses)
     price = price_calc(batteries, distdict)
     write_to_csv(argv[1], command, price)
     print(price)
-    # alleen visualize werkt nog niet
     visualize(batteries, houses, argv[1], command)
 
 
