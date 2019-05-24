@@ -1,3 +1,7 @@
+"""
+Our script can runned as following: python main.py [number of neighbourhood].
+"""
+
 from sys import argv
 from Algorithms.averagefit import averagefit
 from Algorithms.bfs import bfs
@@ -23,6 +27,13 @@ from Algorithms.KmeansClusterdistance import KmeansClusterdistance
 
 
 def input_random(batteries, houses, command):
+    """
+    This algorithm connects houses and batteries randomly. It asks for number
+    of repeats to run the algorithm. It saves all solutions to one .csv file
+    and it writes the best price of all repeats to another .csv file. The best
+    price is also visualized.
+    """
+
     dist, distdict, lowbprice = distancearr(batteries, houses)
     print("run how many times?")
     repeats = int(input("> "))
@@ -44,6 +55,11 @@ def input_random(batteries, houses, command):
 
 
 def input_firstfit(batteries, houses, command):
+    """
+    Connects houses to batteries by trying to fit into first battery and
+    if not possible try the next.
+    """
+
     print("use sorted list y/n")
     sorted = input("> ").lower()
     if sorted == "y" or sorted == "yes":
@@ -55,6 +71,11 @@ def input_firstfit(batteries, houses, command):
 
 
 def input_averagefit(batteries, houses, command):
+    """
+    Connects houses to batteries when houses are ordered small to big.
+    Tries to fit houses taking the biggest and the smallest outputs together.
+    """
+
     grid.houses = grid.load_houses(
         f"Data/wijk{argv[1]}_huizensortedhigh-low.csv")
     houses = grid.houses
@@ -63,6 +84,14 @@ def input_averagefit(batteries, houses, command):
 
 
 def input_greedy(batteries, houses, command):
+    """
+    This algorithm chooses randomly a house and connects it to a battery based
+    on best (shortest) distance. It asks for number of repeats to run the
+    algorithm. It saves all solutions to one .csv file and it writes the
+    best price of all repeats to another .csv file. The best price is
+    also visualized.
+    """
+
     dist, distdict, lowbprice = distancearr(batteries, houses)
     print("run how many times?")
     repeats = int(input("> "))
@@ -84,6 +113,11 @@ def input_greedy(batteries, houses, command):
 
 
 def input_bfs(batteries, houses, command):
+    """
+    Only neighbourhood 4 should be tried, because the state space of the other
+    neighbourhoods is too big.
+    """
+
     node = Node()
     best = Node()
     dist, distdict, lowbprice = distancearr(batteries, houses)
@@ -94,6 +128,11 @@ def input_bfs(batteries, houses, command):
 
 
 def input_branchnbound(batteries, houses, command):
+    """
+    Only neighbourhood 4 should be tried, because the state space of the other
+    neighbourhoods is too big.
+    """
+
     node = Node()
     best = Node()
     dist, distdict, lowbprice = distancearr(batteries, houses)
@@ -107,9 +146,19 @@ def input_branchnbound(batteries, houses, command):
 
 
 def input_hillclimber(batteries, houses, command):
+    """
+    Iterates over all houses and checks if an improvement can be made by
+    switching the connections of 2 houses. It asks for number of repeats to run
+    the algorithm. It saves all solutions to one .csv file and it writes the
+    best price of all repeats to another .csv file. The best price is
+    also visualized.
+    """
+
     dist, distdict, lowbprice = distancearr(batteries, houses)
     print("base: greedy or random")
     base = (input("> ")).lower()
+    if base != "greedy" and base != "random":
+        return False
     command = base + "_" + command
     print("run how many times?")
     repeats = int(input("> "))
@@ -140,9 +189,19 @@ def input_hillclimber(batteries, houses, command):
 
 
 def input_randclimber(batteries, houses, command):
+    """
+    A version of hillclimber which switches 2 random houses until no
+    improvements are made for the set number of times. It asks for number of
+    repeats to run the algorithm. It saves all solutions to one .csv file and
+    it writes the best price of all repeats to another .csv file. The best
+    price is also visualized.
+    """
+
     dist, distdict, lowbprice = distancearr(batteries, houses)
     print("base: greedy or random")
     base = (input("> ")).lower()
+    if base != "greedy" and base != "random":
+        return False
     print("repeat until no change for how many times?")
     repetitions = int(input("> "))
     command = base + "_" + command + str(repetitions)
@@ -170,6 +229,11 @@ def input_randclimber(batteries, houses, command):
 
 
 def input_kmeansbat(batteries, houses, command):
+    """
+    Kmeans with standard batteries (capacity 1507, price 5000) followed by
+    hillclimber and battery optimizition.
+    """
+
     k = len(batteries)
     clusters, connectedhomes = KmeansClusterdistance(houses, batteries, k)
     clusterbatplacement(batteries, houses, clusters, connectedhomes)
@@ -178,6 +242,12 @@ def input_kmeansbat(batteries, houses, command):
 
 
 def input_kmeans(batteries, houses, command):
+    """
+    this algorithm takes the desired amount of clusters between 5 and 17 as
+    input. The algorithm returns a grid with the desired amount of clusters
+    on (local) optimal positions.
+    """
+
     bestprice = 100000
     for k in range(5, 17):
         clusters, connectedhomes = KmeansClusterdistance(houses, batteries, k)

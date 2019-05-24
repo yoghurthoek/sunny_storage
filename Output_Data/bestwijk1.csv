@@ -4,3 +4,5 @@
 55429,greedy_hillclimber
 55501,greedy_randclimber10000
 56230,random_randclimber10000
+41677,greedy_hillclimber_kmeansbatplacement
+41344,random_hillclimber_kmeansbatplacement

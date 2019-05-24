@@ -1,6 +1,6 @@
 """
-Implements a breadth first search, but should only try wijk5 because the
-state space of the others is too big.
+Implements a breadth first search, but should only try neighbourhood 4
+because the state space of the others is too big.
 """
 
 from collections import deque

@@ -1,8 +1,0 @@
-To do list
-* Runnen en plotjes maken (Feline)
-    * Optimization random voor alle drie de wijken -> deze moet nog meerdere malen gerund kunnen worden
-    * Optimization greedy voor alle drie de wijken
-    * Kmeans voor alle drie de wijken -> deze moet ook nog meerdere malen gerund kunnen worden
-
-Wat is wel klaar :)
-Alle mappen zijn gecheckt, grote README en requirements werken ook naar toebehoren
